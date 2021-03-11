@@ -1,0 +1,54 @@
+[
+    {
+    "name":"SandisK1",
+    "price":"300",
+    "description":"BestPd",
+    "rating":4.5,
+    "images": [{"public_id":"1",
+        "url":"mypic.com"}],
+        "category":"Electronics",
+        "seller":"Ebay",
+        "stock": 100,
+        "numofReviews":32,
+        "reviews":[]    
+},
+    {
+    "name":"SandisK2",
+    "price":"300",
+    "description":"BestPd",
+    "rating":4.5,
+    "images": [{"public_id":"1",
+        "url":"mypic.com"}],
+        "category":"Electronics",
+        "seller":"Ebay",
+        "stock": 100,
+        "numofReviews":32,
+        "reviews":[]    
+},
+    {
+    "name":"SandisK3",
+    "price":"300",
+    "description":"BestPd",
+    "rating":4.5,
+    "images": [{"public_id":"1",
+        "url":"mypic.com"}],
+        "category":"Electronics",
+        "seller":"Ebay",
+        "stock": 100,
+        "numofReviews":32,
+        "reviews":[]    
+},
+    {
+    "name":"SandisK4",
+    "price":"300",
+    "description":"BestPd",
+    "rating":4.5,
+    "images": [{"public_id":"1",
+        "url":"mypic.com"}],
+        "category":"Electronics",
+        "seller":"Ebay",
+        "stock": 100,
+        "numofReviews":32,
+        "reviews":[]    
+}
+]
