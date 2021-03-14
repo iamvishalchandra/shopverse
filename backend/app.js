@@ -8,8 +8,8 @@ app.use(cookieParser());
 
 // Import all routes
 
-const products = require("./routes/product");
-const users = require("./routes/user");
+const products = require("./routes/product.routes");
+const users = require("./routes/user.routes");
 
 app.use("/api/v1", products);
 app.use("/api/v1", users);

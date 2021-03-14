@@ -2,6 +2,7 @@ const UserModel = require("../models/userModel");
 const ErrorHandler = require("../utils/errorHandler");
 const catchAsyncError = require("../middlewares/catchAsyncError");
 const sendToken = require("../utils/jwtToken");
+const sendEmail = require("../utils/sendEmail");
 
 // Register a User  =>  /api/v1/register
 
@@ -45,6 +46,44 @@ exports.loginUser = catchAsyncError(async (req, res, next) => {
   if (!isPasswordMatched) return next(new ErrorHandler("Wrong Password", 401));
 
   sendToken(user, 200, res);
+});
+
+// Get Reset Token
+exports.recoverPassword = catchAsyncError(async (req, res, next) => {
+  const user = await UserModel.findOne({ email: req.body.email });
+
+  if (!user)
+    return next(new ErrorHandler(`User don't exit with this email`, 404));
+
+  // Get reset Token
+  const resetToken = user.getResetPasswordToken();
+  await user.save({ validateBeforeSave: false });
+
+  // Create reset password URL
+  const resetUrl = `${req.protocol}://${req.get(
+    "host"
+  )}/api/v1/password/reset/${resetToken}`;
+
+  const message = `To change your Shopverse password go to: ${resetUrl}\n\nPlease ignore if already did or if it's not you.`;
+
+  try {
+    await sendEmail({
+      email: user.email,
+      subject: "Password Recovery Shopverse",
+      message,
+    });
+
+    res.status(200).json({
+      success: true,
+      message: `Email send to: ${user.email}`,
+    });
+  } catch (error) {
+    user.resetPasswordToken = undefined;
+    user.resetPasswordExpiry = undefined;
+
+    await user.save({ validateBeforeSave: false });
+    return next(new ErrorHandler(error.message, 500));
+  }
 });
 
 // Logout => /api/v1/logout
