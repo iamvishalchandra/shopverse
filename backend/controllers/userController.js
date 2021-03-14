@@ -21,7 +21,7 @@ exports.registerUser = catchAsyncError(async (req, res, next) => {
   sendToken(user, 200, res);
 });
 
-// Login User => /a[i]/v1/login
+// Login User => /api/v1/login
 
 exports.loginUser = catchAsyncError(async (req, res, next) => {
   const { email, password } = req.body;
@@ -45,4 +45,18 @@ exports.loginUser = catchAsyncError(async (req, res, next) => {
   if (!isPasswordMatched) return next(new ErrorHandler("Wrong Password", 401));
 
   sendToken(user, 200, res);
+});
+
+// Logout => /api/v1/logout
+
+exports.logoutUser = catchAsyncError(async (req, res, next) => {
+  res.cookie("token", "", {
+    expires: new Date(Date.now),
+    httpOnly: true,
+  });
+
+  res.status(200).json({
+    success: true,
+    message: "Logged Out",
+  });
 });
