@@ -145,6 +145,26 @@ exports.updatePassword = catchAsyncError(async (req, res, next) => {
   sendToken(user, 200, res);
 });
 
+//Update Profile => /api/v1/me/update
+exports.updateProfile = catchAsyncError(async (req, res, next) => {
+  const newUserData = {
+    name: req.body.name,
+    email: req.body.email,
+  };
+
+  // Update Avatar - TBC
+
+  const user = await UserModel.findByIdAndUpdate(req.user.id, newUserData, {
+    new: true,
+    runValidators: true,
+    userFindAndModify: false,
+  });
+
+  res.status(200).json({
+    success: true,
+  });
+});
+
 // Logout => /api/v1/logout
 
 exports.logoutUser = catchAsyncError(async (req, res, next) => {
@@ -156,5 +176,68 @@ exports.logoutUser = catchAsyncError(async (req, res, next) => {
   res.status(200).json({
     success: true,
     message: "Logged Out",
+  });
+});
+
+// Admin Routes
+
+// Get All users => /api/v1/admin/users
+exports.allUsers = catchAsyncError(async (req, res, next) => {
+  const users = await UserModel.find();
+  res.status(200).json({
+    success: true,
+    users,
+  });
+});
+
+// Get User Deatails => /api/v1/admin/user/:id
+exports.getUserDeatails = catchAsyncError(async (req, res, next) => {
+  const user = await UserModel.findById(req.params.id);
+
+  if (!user)
+    return next(
+      new ErrorHandler(`No user in database with id: ${req.params.id}`, 404)
+    );
+
+  res.status(200).json({
+    success: true,
+    user,
+  });
+});
+
+// Update User Profile => /api/v1/admin/user/:id
+exports.updateUser = catchAsyncError(async (req, res, next) => {
+  const newUserData = {
+    name: req.body.name,
+    email: req.body.email,
+    role: req.body.role,
+  };
+
+  const user = await UserModel.findByIdAndUpdate(req.params.id, newUserData, {
+    new: true,
+    runValidators: true,
+    userFindAndModify: false,
+  });
+
+  res.status(200).json({
+    success: true,
+  });
+});
+
+// Delete User => /api/v1/admin/user/:id
+exports.deleteUser = catchAsyncError(async (req, res, next) => {
+  const user = await UserModel.findById(req.params.id);
+
+  if (!user)
+    return next(
+      new ErrorHandler(`No user in database with id: ${req.params.id}`, 404)
+    );
+
+  // Remove Avatar - TBC
+
+  await user.remove();
+
+  res.status(200).json({
+    success: true,
   });
 });
