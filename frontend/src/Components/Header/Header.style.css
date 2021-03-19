@@ -1,0 +1,124 @@
+.header {
+  min-width: 300px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #232f3e;
+  padding: 1rem 1rem;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.header__container__left__logo__image {
+  cursor: pointer;
+  width: 50px;
+}
+
+.header__container__mid {
+  width: 50%;
+}
+
+.header__container__mid__input {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.header__container__mid__input__searchBar {
+  border: none;
+  border-top-left-radius: 7px;
+  border-bottom-left-radius: 7px;
+  height: 0.4rem;
+  padding: 1.1rem 1rem;
+  width: 100%;
+}
+
+.header__container__mid__input__btn {
+  cursor: pointer;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  background-color: #febd69;
+  padding: 0.65rem;
+}
+
+.header__container__mid__input__btn__searchIcon {
+  width: 20px;
+}
+
+.header__container__right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 20%;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.header__container__right__loginBtn {
+  background-color: #febd69;
+  border: none;
+  padding: 0.4rem 1.8rem;
+  font-family: calibri;
+  margin-right: 10px;
+  border-radius: 3px;
+  font-size: large;
+  cursor: pointer;
+}
+
+.header__container__right__cart {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.header__container__right__cart__span--count {
+  background-color: #febd69;
+  padding: 0.2rem 0.8rem;
+  border-radius: 0.2rem;
+  color: black;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.header__container__right__cart__span--text {
+  font-size: 1.2rem;
+  color: white;
+  margin-right: 3px;
+}
+
+@media (max-width: 650px) {
+  .header {
+    position: relative;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+  }
+  .header__container__mid {
+    width: 100%;
+  }
+  .header__container__right {
+    position: absolute;
+    width: 50%;
+    top: 10px;
+    right: 0;
+  }
+}
+/*# sourceMappingURL=Header.style.css.map */

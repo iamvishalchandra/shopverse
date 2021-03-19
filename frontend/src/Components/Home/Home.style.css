@@ -1,0 +1,12 @@
+.home__h1 {
+  margin: 1.8rem 0 2rem 1rem;
+}
+
+.home__section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+/*# sourceMappingURL=Home.style.css.map */
