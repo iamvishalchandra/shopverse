@@ -24,7 +24,7 @@ const ProductCard = ({ link, name, images, ratings, reviews, price }) => {
           ({reviews} Reviews)
         </span>
       </div>
-      <p className="productCard__price">₹ {price}</p>
+      <p className="productCard__price">₹{price}</p>
 
       <Link to={`/product/${link}`} className="productCard__viewDetails">
         View Details

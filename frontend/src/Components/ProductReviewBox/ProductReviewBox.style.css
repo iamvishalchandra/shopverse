@@ -1,0 +1,91 @@
+.productReviewBox {
+  border-radius: 5px;
+}
+
+.productReviewBox__addReview {
+  border-radius: 2rem;
+  background-color: #fa9c23;
+  border: none;
+  margin-top: 2.5rem;
+  padding: 0.5rem 0;
+  width: 200px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.productReviewBox__body {
+  position: fixed;
+  top: 0;
+  left: 20%;
+  margin-left: 10px;
+  padding: 12px;
+  border-radius: 10px;
+  width: 500px;
+  background-color: rgba(245, 245, 245, 0.835);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.productReviewBox__body__top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.productReviewBox__body__top__title {
+  font-size: x-large;
+  color: #494949;
+}
+
+.productReviewBox__body__top__closebtn {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  font-size: large;
+  margin-right: 10px;
+}
+
+.productReviewBox__body__rating__stars {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  list-style: none;
+}
+
+.productReviewBox__body__rating__stars__icon {
+  margin: 0 5px;
+}
+
+.productReviewBox__body__review__box {
+  width: 99%;
+  height: 100px;
+}
+
+.productReviewBox__body__submit {
+  position: relative;
+  margin-top: 50px;
+}
+
+.productReviewBox__body__submit__button {
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+  bottom: 2px;
+  border-radius: 2rem;
+  background-color: #fa9c23;
+  border: none;
+  padding: 0.5rem 0;
+  width: 100px;
+  color: white;
+  font-weight: bold;
+}
+/*# sourceMappingURL=ProductReviewBox.style.css.map */

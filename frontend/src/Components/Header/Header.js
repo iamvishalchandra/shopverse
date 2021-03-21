@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Header.style.css";
 
 const Header = () => {
@@ -6,11 +7,13 @@ const Header = () => {
     <div className="header">
       <div className="header__container  header__container__left">
         <div className="header__container__left__logo">
-          <img
-            className="header__container__left__logo__image"
-            src="/photo/logo.png"
-            alt=""
-          />
+          <Link to="/">
+            <img
+              className="header__container__left__logo__image"
+              src="/photo/logo.png"
+              alt=""
+            />
+          </Link>
         </div>
       </div>
 

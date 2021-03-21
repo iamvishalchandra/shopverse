@@ -1,0 +1,140 @@
+@mixin border {
+  border: 2px solid red;
+}
+
+.productDetails {
+  hr {
+    margin: 20px 0;
+  }
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 10%;
+
+  &__photos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &__image {
+      width: 300px;
+    }
+  }
+
+  &__details {
+    width: 700px;
+
+    display: flex;
+    flex-direction: column;
+
+    &__title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: rgb(65, 62, 62);
+    }
+
+    &__id {
+      color: grey;
+      font-size: 0.8rem;
+    }
+
+    &__userInputs {
+      display: flex;
+      align-items: center;
+
+      &__reviews {
+        font-size: 0.85rem;
+        color: grey;
+        margin-left: 0.5rem;
+      }
+    }
+
+    &__price {
+      font-size: 2rem;
+      font-weight: bold;
+    }
+
+    &__cart {
+      margin: 2rem 0rem;
+      display: flex;
+
+      &__counter {
+        cursor: pointer;
+        color: black;
+        padding: 0.1rem 0.5rem;
+        border-radius: 5px;
+
+        &--decrease {
+          background-color: red;
+        }
+        &--increase {
+          background-color: green;
+        }
+      }
+
+      &__count {
+        margin: 0.5rem 0rem;
+        padding: 0rem 0.7rem;
+        color: grey;
+        border: none;
+        width: 3rem;
+        display: flex;
+        // margin: 0 0.2rem;
+        text-align: center;
+      }
+
+      &__addBtn {
+        background-color: #fa9c23;
+        border: none;
+        color: white;
+        border-color: #fa9c23;
+        padding: 0.4rem 1rem;
+        margin-left: 1rem;
+        border-radius: 1rem;
+        font-weight: bold;
+        cursor: pointer;
+      }
+    }
+
+    &__stock {
+      font-weight: bold;
+      font-size: 1.1rem;
+      color: gray;
+
+      &__status {
+        font-weight: bold;
+        margin-left: 0.3rem;
+
+        &--in {
+          color: green;
+        }
+        &--out {
+          color: red;
+        }
+      }
+    }
+
+    &__description {
+      display: flex;
+      flex-direction: column;
+      object-fit: contain;
+
+      &__title {
+        font-size: 2rem;
+        font-weight: 700;
+        color: rgb(65, 62, 62);
+        margin-bottom: 1rem;
+      }
+    }
+
+    &__seller {
+      font-weight: bold;
+      color: gray;
+
+      &__name {
+        color: black;
+        font-size: 0.9rem;
+      }
+    }
+  }
+}

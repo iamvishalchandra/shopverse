@@ -1,0 +1,86 @@
+.productReviewBox {
+  border-radius: 5px;
+
+  &__addReview {
+    border-radius: 2rem;
+    background-color: #fa9c23;
+    border: none;
+    margin-top: 2.5rem;
+    padding: 0.5rem 0;
+    width: 200px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  &__body {
+    position: fixed;
+    top: 0;
+    left: 20%;
+    margin-left: 10px;
+    padding: 12px;
+
+    border-radius: 10px;
+    width: 500px;
+    background-color: rgba(245, 245, 245, 0.835);
+
+    display: flex;
+    flex-direction: column;
+
+    &__top {
+      display: flex;
+      justify-content: space-between;
+
+      &__title {
+        font-size: x-large;
+        color: rgb(73, 73, 73);
+      }
+
+      &__closebtn {
+        cursor: pointer;
+        background-color: transparent;
+        border: none;
+        font-size: large;
+        margin-right: 10px;
+      }
+    }
+
+    &__rating {
+      &__stars {
+        display: flex;
+        list-style: none;
+
+        &__icon {
+          margin: 0 5px;
+        }
+      }
+    }
+
+    &__review {
+      &__box {
+        width: 99%;
+        height: 100px;
+      }
+    }
+
+    &__submit {
+      position: relative;
+      margin-top: 50px;
+
+      &__button {
+        cursor: pointer;
+        position: absolute;
+        right: 10px;
+        bottom: 2px;
+
+        border-radius: 2rem;
+        background-color: #fa9c23;
+        border: none;
+        padding: 0.5rem 0;
+        width: 100px;
+        color: white;
+        font-weight: bold;
+      }
+    }
+  }
+}
