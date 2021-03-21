@@ -3,6 +3,8 @@
 }
 
 .home {
+  display: flex;
+  flex-direction: column;
   &__h1 {
     margin: 1.8rem 0 2rem 1rem;
   }
@@ -10,5 +12,38 @@
   &__section {
     display: flex;
     flex-wrap: wrap;
+  }
+
+  &__paination {
+    display: flex;
+    justify-content: center;
+
+    &__items {
+      display: inline-block;
+      // border: 2px solid black;
+      margin-top: 50px;
+    }
+
+    &__links {
+      color: black;
+      text-decoration: none;
+      padding: 10px;
+      border: 1px solid black;
+      border-left: none;
+
+      &--first {
+        border-left: 1px solid black;
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+      }
+      &--last {
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+      }
+
+      &--link {
+        background-color: #fa9c23;
+      }
+    }
   }
 }

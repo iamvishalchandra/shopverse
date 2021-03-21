@@ -1,5 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
+import SearchBar from "../SearchBar/SearchBar";
 import "./Header.style.css";
 
 const Header = () => {
@@ -18,21 +19,7 @@ const Header = () => {
       </div>
 
       <div className="header__container header__container__mid">
-        <div className="header__container__mid__input">
-          <input
-            type="text"
-            className="header__container__mid__input__searchBar"
-            placeholder="Enter Product Name...  "
-          />
-          <div className="header__container__mid__input__btn">
-            <img
-              className="header__container__mid__input__btn__searchIcon"
-              src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Search_Icon.svg"
-              alt=""
-            />
-            {/* <i className="header__container__mid__input__btn__icon">🔍</i> */}
-          </div>
-        </div>
+        <Route render={({ history }) => <SearchBar history={history} />} />
       </div>
 
       <div className="header__container header__container__right">
