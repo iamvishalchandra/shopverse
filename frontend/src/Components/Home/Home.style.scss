@@ -12,6 +12,18 @@
   &__section {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+
+    &__keyword {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      &__slider {
+        width: 700px;
+        margin-bottom: 50px;
+      }
+    }
   }
 
   &__paination {
@@ -20,7 +32,6 @@
 
     &__items {
       display: inline-block;
-      // border: 2px solid black;
       margin-top: 50px;
     }
 
