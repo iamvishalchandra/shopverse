@@ -18,7 +18,10 @@ const ProductCard = ({ link, name, images, ratings, reviews, price }) => {
       </div>
       <div className="productCard__rating">
         <div className="productCard__rating__stars">
-          <div className="productCard__rating__stars__icon">⭐⭐⭐⭐⭐🌟</div>
+          {/* ⭐⭐⭐⭐⭐🌟 */}
+          <div className="productCard__rating__stars__icon">
+            ⭐⭐⭐⭐⭐🌟 {ratings}
+          </div>
         </div>
         <span className="productCard__rating__reviews">
           ({reviews} Reviews)

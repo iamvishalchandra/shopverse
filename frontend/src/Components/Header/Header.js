@@ -23,7 +23,9 @@ const Header = () => {
       </div>
 
       <div className="header__container header__container__right">
-        <button className="header__container__right__loginBtn">Login</button>
+        <Link to="/login">
+          <button className="header__container__right__loginBtn">Login</button>
+        </Link>
         <div className="header__container header__container__right__cart">
           <span className="header__container header__container__right__cart__span header__container header__container__right__cart__span--count">
             2

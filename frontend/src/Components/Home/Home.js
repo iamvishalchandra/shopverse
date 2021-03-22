@@ -9,12 +9,13 @@ import ProductCard from "../ProductCard/ProductCard";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 import "./Home.style.css";
-import { createSliderWithTooltip } from "rc-slider";
+const { createSliderWithTooltip } = Slider;
 
 const Range = createSliderWithTooltip(Slider.Range);
 const Home = ({ match }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [priceRange, setPriceRange] = useState([1, 100000]);
+  const [minPriceRange, maxPriceRange] = [1, 10000]; //Initial Price Range
+  const [priceRange, setPriceRange] = useState([minPriceRange, maxPriceRange]);
   const dispatch = useDispatch();
   const alert = useAlert();
   const keyword = match.params.keyword;
@@ -23,16 +24,55 @@ const Home = ({ match }) => {
     products,
     error,
     productsCount,
+    filteredProductsCount,
     resultsPerPage,
   } = useSelector((state) => state.products);
+
+  const [category, setCategory] = useState("");
+  const [rating, setRating] = useState(0);
+
+  const categories = [
+    "Accesories",
+    "Beauty",
+    "Books",
+    "Clothes",
+    "Computers",
+    "Electronics",
+    "Entertainment",
+    "Food",
+    "Gaming",
+    "Headphones",
+    "Health",
+    "Home",
+    "Cameras",
+    "Laptop",
+    "Movies",
+    "Outdoors",
+    "Shows",
+    "Sports",
+    "Television",
+    "Video",
+  ];
 
   useEffect(() => {
     if (error) {
       return alert.error(error);
     }
 
-    dispatch(getProducts(currentPage, keyword, priceRange));
-  }, [dispatch, alert, error, currentPage, keyword, priceRange]);
+    dispatch(getProducts(currentPage, keyword, priceRange, category, rating));
+  }, [
+    dispatch,
+    alert,
+    error,
+    currentPage,
+    keyword,
+    priceRange,
+    category,
+    rating,
+  ]);
+
+  let count = resultsPerPage;
+  if (keyword) count = filteredProductsCount;
 
   return (
     <div className="home">
@@ -45,17 +85,49 @@ const Home = ({ match }) => {
           <div className="home__section__keyword">
             <div className="home__section__keyword__slider">
               <Range
-                marks={{ 1: `Rs. 1`, 100000: `Rs. 100000` }}
-                min={1}
-                max={100000}
-                defaultValue={[1, 100000]}
+                marks={{
+                  1: `Rs.${minPriceRange}`,
+                  100000: `Rs.${maxPriceRange}`,
+                }}
+                min={minPriceRange}
+                max={maxPriceRange}
+                defaultValue={[minPriceRange, maxPriceRange]}
                 tipFormatter={(value) => `Rs.${value}`}
                 tipProps={{ placement: "top", visible: true }}
                 value={priceRange}
                 onChange={(priceRange) => setPriceRange(priceRange)}
               />
             </div>
-
+            <div className="home__section__keyword__category">
+              <h4 className="home__section__keyword__category__title">
+                Category
+              </h4>
+              <ul className="home__section__keyword__category__list">
+                {categories.map((category) => (
+                  <li
+                    className="home__section__keyword__category__list__items"
+                    key={category}
+                    onClick={() => setCategory(category)}
+                  >
+                    {category}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="home__section__keyword__rating">
+              <h4 className="home__section__keyword__rating__title">Rating</h4>
+              <ul className="home__section__keyword__rating__list">
+                {[5, 4, 3, 2, 1].map((star) => (
+                  <li
+                    className="home__section__keyword__rating__list__items"
+                    key={star}
+                    onClick={() => setRating(star)}
+                  >
+                    🌟{star} Stars
+                  </li>
+                ))}
+              </ul>
+            </div>
             <div className="home__section">
               {loading ? (
                 <Loader />
@@ -69,6 +141,7 @@ const Home = ({ match }) => {
                     images={product.images[0].url}
                     reviews={product.totalReviews}
                     price={product.price}
+                    ratings={product.rating}
                   />
                 ))
               )}
@@ -91,7 +164,7 @@ const Home = ({ match }) => {
         )}
       </section>
 
-      {resultsPerPage <= productsCount && (
+      {resultsPerPage <= count && (
         <div className="home__paination">
           <Pagination
             activePage={currentPage}

@@ -18,9 +18,8 @@
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
 .home__section__keyword {
@@ -42,6 +41,97 @@
 .home__section__keyword__slider {
   width: 700px;
   margin-bottom: 50px;
+}
+
+.home__section__keyword__category {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.home__section__keyword__category__title {
+  margin-bottom: 20px;
+  font-size: x-large;
+}
+
+.home__section__keyword__category__list {
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.home__section__keyword__category__list__items {
+  cursor: pointer;
+  padding: 5px;
+  margin: 5px;
+  border: 1px solid black;
+  background-color: whitesmoke;
+  border-radius: 20px;
+}
+
+.home__section__keyword__rating {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 40px;
+}
+
+.home__section__keyword__rating__title {
+  margin-bottom: 20px;
+  font-size: x-large;
+}
+
+.home__section__keyword__rating__list {
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.home__section__keyword__rating__list__items {
+  cursor: pointer;
+  padding: 5px;
+  margin: 5px;
+  border: 1px solid black;
+  background-color: whitesmoke;
+  border-radius: 20px;
 }
 
 .home__paination {

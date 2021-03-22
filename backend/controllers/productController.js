@@ -21,9 +21,13 @@ exports.getProducts = catchAsyncError(async (req, res, next) => {
 
   const apiFeatures = new APIFeatures(ProductModel.find(), req.query)
     .search()
-    .filter()
-    .pagination(resultsPerPage);
-  const products = await apiFeatures.query;
+    .filter();
+
+  let products = await apiFeatures.query;
+  let filteredProductsCount = products.length;
+
+  apiFeatures.pagination(resultsPerPage);
+  products = await apiFeatures.query;
 
   // setTimeout(() => {
   res.status(200).json({
@@ -31,6 +35,7 @@ exports.getProducts = catchAsyncError(async (req, res, next) => {
     count: products.length,
     productCount,
     resultsPerPage,
+    filteredProductsCount,
     products,
   });
   // }, 2000);

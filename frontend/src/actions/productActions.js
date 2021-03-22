@@ -12,15 +12,19 @@ import {
 export const getProducts = (
   currentPage = 1,
   keyword = "",
-  priceRange
+  priceRange,
+  category,
+  rating
 ) => async (dispatch) => {
   try {
-    console.log(keyword);
-
     dispatch({ type: ALL_PRODUCTS_REQUEST });
-    const { data } = await axios.get(
-      `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[lte]=${priceRange[1]}&price[gte]=${priceRange[0]}`
-    );
+
+    let url = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[lte]=${priceRange[1]}&price[gte]=${priceRange[0]}&rating[gte]=${rating}`;
+    console.log(rating);
+    if (category)
+      url = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[lte]=${priceRange[1]}&price[gte]=${priceRange[0]}&category=${category}&rating[gte]=${rating}`;
+
+    const { data } = await axios.get(url);
 
     dispatch({ type: ALL_PRODUCTS_SUCCESS, payload: data });
   } catch (error) {

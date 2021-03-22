@@ -5,6 +5,7 @@ import Header from "./Components/Header/Header";
 import Home from "./Components/Home/Home";
 import ProductDetails from "./Components/ProductDetails/ProductDetails";
 import "./App.css";
+import LoginUser from "./Components/LoginUser/LoginUser";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/" component={Home} exact />
         <Route path="/search/:keyword" component={Home} />
         <Route path="/product/:id" component={ProductDetails} exact />
+        <Route path="/login" component={LoginUser} exact />
         <Footer />
       </div>
     </Router>
