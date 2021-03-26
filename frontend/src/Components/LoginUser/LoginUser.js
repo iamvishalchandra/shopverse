@@ -3,6 +3,7 @@ import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { clearErrors, userlogin } from "../../actions/userActions";
+import MetaData from "../MetaData";
 import Loader from "../Loader/Loader";
 
 import "./LoginUser.style.css";
@@ -34,6 +35,7 @@ const LoginUser = ({ history }) => {
 
   return (
     <div className="loginUser">
+      <MetaData title={`Login`} />
       {loading ? (
         <Loader />
       ) : (
