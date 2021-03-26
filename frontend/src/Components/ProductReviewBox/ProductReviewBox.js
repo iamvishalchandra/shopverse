@@ -1,11 +1,9 @@
 import React, { useState } from "react";
+import Ratings from "../Ratings/Ratings";
 import "./ProductReviewBox.style.css";
 
 const ProductReviewBox = () => {
   const [popup, setPopup] = useState(false);
-  // function reviewBox() {
-
-  // }
 
   return (
     <div className="productReviewBox">
@@ -31,23 +29,7 @@ const ProductReviewBox = () => {
           </div>
           <hr />
           <div className="productReviewBox__body__rating">
-            <ul className="productReviewBox__body__rating__stars">
-              <li className="productReviewBox__body__rating__stars__icon productReviewBox__body__rating__stars__icon--1">
-                <li className="fa">Star 1</li>
-              </li>
-              <li className="productReviewBox__body__rating__stars__icon productReviewBox__body__rating__stars__icon--2">
-                <li className="fa">Star 2</li>
-              </li>
-              <li className="productReviewBox__body__rating__stars__icon productReviewBox__body__rating__stars__icon--3">
-                <li className="fa">Star 3</li>
-              </li>
-              <li className="productReviewBox__body__rating__stars__icon productReviewBox__body__rating__stars__icon--4">
-                <li className="fa">Star 4</li>
-              </li>
-              <li className="productReviewBox__body__rating__stars__icon productReviewBox__body__rating__stars__icon--5">
-                <li className="fa">Star 5</li>
-              </li>
-            </ul>
+            <Ratings />
           </div>
           <hr />
           <div className="productReviewBox__body__review">

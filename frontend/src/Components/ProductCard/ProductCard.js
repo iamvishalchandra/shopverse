@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Ratings from "../Ratings/Ratings";
 import "./ProductCard.style.css";
 
 const ProductCard = ({ link, name, images, ratings, reviews, price }) => {
@@ -18,9 +19,8 @@ const ProductCard = ({ link, name, images, ratings, reviews, price }) => {
       </div>
       <div className="productCard__rating">
         <div className="productCard__rating__stars">
-          {/* ⭐⭐⭐⭐⭐🌟 */}
           <div className="productCard__rating__stars__icon">
-            ⭐⭐⭐⭐⭐🌟 {ratings}
+            <Ratings ratings={ratings} />
           </div>
         </div>
         <span className="productCard__rating__reviews">

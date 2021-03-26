@@ -24,7 +24,7 @@ const SearchBar = ({ history }) => {
             src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Search_Icon.svg"
             alt=""
           />
-          {/* <i className="searchbar__input__btn__icon">🔍</i> */}
+          <i className="searchbar__input__btn__icon">🔍</i>
         </button>
       </form>
     </div>

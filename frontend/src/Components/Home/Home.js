@@ -10,8 +10,8 @@ import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 import "./Home.style.css";
 const { createSliderWithTooltip } = Slider;
-
 const Range = createSliderWithTooltip(Slider.Range);
+
 const Home = ({ match }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [minPriceRange, maxPriceRange] = [1, 10000]; //Initial Price Range
@@ -159,6 +159,7 @@ const Home = ({ match }) => {
               images={product.images[0].url}
               reviews={product.totalReviews}
               price={product.price}
+              ratings={product.rating}
             />
           ))
         )}

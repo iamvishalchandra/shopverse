@@ -25,7 +25,7 @@ const LoginUser = ({ history }) => {
       alert.error(error);
       dispatch(clearErrors());
     }
-  }, [dispatch, isAuthenticated, error, history]);
+  }, [dispatch, alert, isAuthenticated, error, history]);
 
   const submitHandle = (e) => {
     e.preventDefault();
