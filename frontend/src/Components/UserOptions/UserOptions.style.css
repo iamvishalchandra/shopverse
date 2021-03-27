@@ -1,0 +1,26 @@
+.userOptions {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  top: 50px;
+  right: 5px;
+  width: 150px;
+  font-size: large;
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 5px;
+}
+
+.userOptions a {
+  margin: 3px;
+  text-decoration: none;
+}
+/*# sourceMappingURL=UserOptions.style.css.map */

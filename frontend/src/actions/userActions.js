@@ -7,6 +7,11 @@ import {
   SIGNUP_USER_FAIL,
   SIGNUP_USER_REQUEST,
   SIGNUP_USER_SUCCESS,
+  LOAD_USER_REQUEST,
+  LOAD_USER_SUCCESS,
+  LOAD_USER_FAIL,
+  LOGOUT_FAIL,
+  LOGOUT_SUCCESS,
 } from "../constants/userConstants";
 
 //User Login Section
@@ -40,6 +45,29 @@ export const signUp = (userData) => async (dispatch) => {
     dispatch({ type: SIGNUP_USER_SUCCESS, payload: data.user });
   } catch (error) {
     dispatch({ type: SIGNUP_USER_FAIL, payload: error.response.data.message });
+  }
+};
+
+// Load User
+
+export const loadUser = () => async (dispatch) => {
+  try {
+    dispatch({ type: LOAD_USER_REQUEST });
+    const { data } = await axios.get("api/v1/me");
+    dispatch({ type: LOAD_USER_SUCCESS, payload: data.user });
+  } catch (error) {
+    dispatch({ type: LOAD_USER_FAIL, payload: error.data.response.message });
+  }
+};
+
+// Logout User
+
+export const logOut = () => async (dispatch) => {
+  try {
+    await axios.get("/api/v1/logout");
+    dispatch({ type: LOGOUT_SUCCESS });
+  } catch (error) {
+    dispatch({ type: LOGOUT_FAIL, payload: error.data.response.message });
   }
 };
 

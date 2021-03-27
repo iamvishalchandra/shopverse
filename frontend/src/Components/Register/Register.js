@@ -7,15 +7,12 @@ import "./Register.style.css";
 
 const Register = ({ history }) => {
   const [user, setUser] = useState({ name: "", email: "", password: "" });
-  const [name, email, password] = user;
+  const { name, email, password } = user;
   const [avatar, setAvatar] = useState("");
   const [avatarPreview, setAvatarPreview] = useState("/photo/logo.png");
 
   const alert = useAlert();
   const dispatch = useDispatch();
-
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
 
   const { isAuthenticated, error, loading } = useSelector(
     (state) => state.user
@@ -26,6 +23,7 @@ const Register = ({ history }) => {
 
     if (error) {
       alert.error(error);
+      console.log(error);
       dispatch(clearErrors());
     }
   }, [dispatch, alert, isAuthenticated, error, history]);
@@ -44,6 +42,7 @@ const Register = ({ history }) => {
   const onChange = (e) => {
     if (e.target.name === "avatar") {
       const reader = new FileReader();
+
       reader.onload = () => {
         if (reader.readyState === 2) {
           setAvatarPreview(reader.result);
@@ -51,16 +50,17 @@ const Register = ({ history }) => {
         }
       };
       reader.readAsDataURL(e.target.files[0]);
+    } else {
+      setUser({ ...user, [e.target.name]: e.target.value });
     }
   };
 
   return (
-    <div>
-      <h1>Register User</h1>
+    <div className="register">
       <MetaData title={`Register Account`} />
       <div>
+        <h1>Registeration</h1>
         <form onSubmit={submitHandle} encType="multipart/form-data">
-          <h1>Register</h1>
           <div>
             <label htmlFor="name-field">Name</label>
             <input
@@ -72,7 +72,7 @@ const Register = ({ history }) => {
             />
           </div>
           <div>
-            <label htmlFor="email-field">Email</label>
+            <label htmlFor="email_field">Email</label>
             <input
               type="email"
               id="email_field"
@@ -82,7 +82,7 @@ const Register = ({ history }) => {
             />
           </div>
           <div>
-            <label htmlFor="password-field">password</label>
+            <label htmlFor="password_field">password</label>
             <input
               type="password"
               id="password_field"
@@ -92,12 +92,18 @@ const Register = ({ history }) => {
             />
           </div>
           <div>
-            <label htmlFor="avatar-upload">avatar</label>
+            <label htmlFor="avatar-upload">Avatar</label>
             <div>
               <div>
-                <figure>
-                  <img src={avatarPreview} alt="Avatar" />
-                </figure>
+                {/* <figure> */}
+                {avatarPreview && (
+                  <img
+                    src={avatarPreview}
+                    alt="Avatar"
+                    style={{ width: "100px" }}
+                  />
+                )}
+                {/* </figure> */}
               </div>
             </div>
             <div>
@@ -105,11 +111,10 @@ const Register = ({ history }) => {
                 type="file"
                 id="customFile"
                 name="avatar"
-                value={avatar}
-                onChange={onChange}
                 accept="/images/*"
+                onChange={onChange}
               />
-              <label htmlFor="customFile">Choose Avatar</label>
+              {/* <label htmlFor="customFile">Choose Avatar</label> */}
             </div>
           </div>
           <button

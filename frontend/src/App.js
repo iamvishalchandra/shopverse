@@ -6,8 +6,16 @@ import Home from "./Components/Home/Home";
 import ProductDetails from "./Components/ProductDetails/ProductDetails";
 import "./App.css";
 import LoginUser from "./Components/LoginUser/LoginUser";
+import Register from "./Components/Register/Register";
+import { useEffect } from "react";
+import store from "./store";
+import { loadUser } from "./actions/userActions";
 
 function App() {
+  useEffect(() => {
+    store.dispatch(loadUser());
+  }, []);
+
   return (
     <Router>
       <div className="app">
@@ -15,7 +23,8 @@ function App() {
         <Route path="/" component={Home} exact />
         <Route path="/search/:keyword" component={Home} />
         <Route path="/product/:id" component={ProductDetails} exact />
-        <Route path="/login" component={LoginUser} exact />
+        <Route path="/login" component={LoginUser} />
+        <Route path="/signup" component={Register} />
         <Footer />
       </div>
     </Router>

@@ -15,7 +15,6 @@ process.on("uncaughtException", (err) => {
 
 dotenv.config({ path: "backend/config/config.env" });
 
-// try {
 // Connection to database
 db();
 
@@ -42,6 +41,3 @@ process.on("unhandledRejection", (err) => {
     process.exit(1);
   });
 });
-// } catch {
-//   (error) => console.log(error);
-// }
