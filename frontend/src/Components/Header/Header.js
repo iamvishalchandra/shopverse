@@ -1,14 +1,11 @@
 import React, { useState } from "react";
-import { useAlert } from "react-alert";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Link, Route } from "react-router-dom";
 import SearchBar from "../SearchBar/SearchBar";
 import UserOptions from "../UserOptions/UserOptions";
 import "./Header.style.css";
 
 const Header = () => {
-  const alert = useAlert();
-  const dispatch = useDispatch();
   const { user, loading } = useSelector((state) => state.user);
   const [userOptions, setUserOptions] = useState(false);
 
@@ -43,25 +40,26 @@ const Header = () => {
         </Link>
         {user ? (
           <>
-            {/* <Link to="#!">
-              <button className="header__container__right__button header__container__right__logoutBtn">
-                Logout
-              </button>
-            </Link> */}
-
-            <div
-              className="header__container__right__user"
-              onClick={() => setUserOptions(!userOptions)}
-            >
+            <div className="header__container__right__user">
               <img
                 className="header__container__right__user__avatar"
                 src={user?.avatar?.url}
                 alt={user?.name}
+                onClick={() => setUserOptions(!userOptions)}
               />
-              <span className="header__container__right__user__name">
+              <span
+                className="header__container__right__user__name"
+                onClick={() => setUserOptions(!userOptions)}
+              >
                 {user?.name}
               </span>
-              {userOptions && <UserOptions user={user} />}
+              {userOptions && (
+                <UserOptions
+                  user={user}
+                  userOptions={userOptions}
+                  setUserOptions={setUserOptions}
+                />
+              )}
             </div>
           </>
         ) : (

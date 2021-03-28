@@ -11,7 +11,7 @@ const {
   updatePassword,
   updateProfile,
   allUsers,
-  getUserDeatails,
+  getUserDetails,
   updateUser,
   deleteUser,
 } = require("../controllers/userController");
@@ -37,7 +37,7 @@ router
   .get(isAuthenticatedUser, authorizeRoles("admin"), allUsers);
 router
   .route("/admin/user/:id")
-  .get(isAuthenticatedUser, authorizeRoles("admin"), getUserDeatails)
+  .get(isAuthenticatedUser, authorizeRoles("admin"), getUserDetails)
   .put(isAuthenticatedUser, authorizeRoles("admin"), updateUser)
   .delete(isAuthenticatedUser, authorizeRoles("admin"), deleteUser);
 

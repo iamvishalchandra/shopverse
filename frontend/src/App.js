@@ -10,6 +10,8 @@ import Register from "./Components/Register/Register";
 import { useEffect } from "react";
 import store from "./store";
 import { loadUser } from "./actions/userActions";
+import Profile from "./Components/Profile/Profile";
+import ProtectedRoute from "./Components/routes/ProtectedRoute";
 
 function App() {
   useEffect(() => {
@@ -25,6 +27,7 @@ function App() {
         <Route path="/product/:id" component={ProductDetails} exact />
         <Route path="/login" component={LoginUser} />
         <Route path="/signup" component={Register} />
+        <ProtectedRoute path="/me" component={Profile} exact />
         <Footer />
       </div>
     </Router>

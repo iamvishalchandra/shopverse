@@ -29,7 +29,7 @@
       display: flex;
       align-items: center;
       width: 25%;
-      justify-content: space-around;
+      justify-content: space-between;
 
       &__button {
         background-color: #febd69;
@@ -66,18 +66,23 @@
       &__user {
         position: relative;
         display: flex;
-        flex-direction: column;
+        width: 70%;
+
         align-items: center;
-        cursor: pointer;
         &__avatar {
           border: 2px solid whitesmoke;
           width: 60px;
           height: 60px;
           border-radius: 50px;
+          overflow: hidden;
+          cursor: pointer;
         }
         &__name {
           color: whitesmoke;
-          margin-top: 10px;
+          cursor: pointer;
+          text-decoration: underline;
+          margin-left: 10px;
+          font-size: x-large;
         }
       }
     }
