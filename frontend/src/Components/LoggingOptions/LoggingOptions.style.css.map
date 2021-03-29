@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,eAAe,CAAC;EACd,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,MAAM;CAcvB;;AAZE,AAAD,sBAAQ,CAAC;EACP,KAAK,EAAE,KAAK;EACZ,SAAS,EAAE,IAAI;CAChB;;AAEA,AAAD,sBAAQ,CAAC;EACP,KAAK,EAAE,KAAK;EACZ,MAAM,EAAE,IAAI;EACZ,MAAM,EAAE,MAAM;EACd,SAAS,EAAE,KAAK;EAChB,KAAK,EAAE,IAAI;CACZ",
+    "sources": [
+        "LoggingOptions.style.scss"
+    ],
+    "names": [],
+    "file": "LoggingOptions.style.css"
+}

@@ -1,0 +1,17 @@
+.loggingOptions {
+  display: flex;
+  flex-direction: column;
+
+  &__label {
+    color: black;
+    font-size: 20px;
+  }
+
+  &__input {
+    width: 250px;
+    height: 30px;
+    margin: 10px 0;
+    font-size: large;
+    color: grey;
+  }
+}

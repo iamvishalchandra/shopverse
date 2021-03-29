@@ -1,4 +1,40 @@
-.loginUser__form {
+.loginUser {
+  min-width: 300px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.loginUser__title {
+  font-size: 60px;
+  padding: 10px;
+}
+
+.loginUser__container {
+  border: 1px solid lightgray;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  border-radius: 5px;
+  background-color: whitesmoke;
+  padding: 20px;
+}
+
+.loginUser__container__form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -12,5 +48,36 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.loginUser__container__form__button {
+  text-decoration: none;
+  color: black;
+  padding: 5px;
+  margin: 10px;
+}
+
+.loginUser__container__form__button:hover {
+  text-decoration: underline;
+}
+
+.loginUser__container__form__accountHolder {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.loginUser__container__form__accountHolder__login {
+  border: 1px solid grey;
+  border-radius: 5px;
+  background-color: #faa230;
+  font-size: larger;
+  cursor: pointer;
 }
 /*# sourceMappingURL=LoginUser.style.css.map */

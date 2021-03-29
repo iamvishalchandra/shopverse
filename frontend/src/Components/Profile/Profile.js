@@ -23,7 +23,7 @@ const Profile = () => {
                 <img
                   src={user.avatar?.url}
                   alt={user.name}
-                  className="profile__container__avatar__figure"
+                  className="profile__container__avatar__figure__photo"
                 />
               </figure>
               <Link
@@ -41,8 +41,20 @@ const Profile = () => {
                 value={String(user?.createdAt).substring(0, 10)}
               />
 
-              {user?.role !== "admin" && <Link to="/orders/me">My Orders</Link>}
-              <Link to="/password/update">Change Password</Link>
+              {user?.role !== "admin" && (
+                <Link
+                  to="/orders/me"
+                  className="profile__container__details__orders profile__container__links"
+                >
+                  My Orders
+                </Link>
+              )}
+              <Link
+                to="/password/update"
+                className="profile__container__details__changePassword profile__container__links"
+              >
+                Change Password
+              </Link>
             </div>
           </div>
         </>

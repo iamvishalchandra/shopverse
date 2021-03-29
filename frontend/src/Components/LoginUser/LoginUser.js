@@ -7,6 +7,7 @@ import MetaData from "../MetaData";
 import Loader from "../Loader/Loader";
 
 import "./LoginUser.style.css";
+import LoggingOptions from "../LoggingOptions/LoggingOptions";
 
 const LoginUser = ({ history }) => {
   const alert = useAlert();
@@ -35,39 +36,63 @@ const LoginUser = ({ history }) => {
 
   return (
     <div className="loginUser">
+      <h1 className="loginUser__title">Login</h1>
       <MetaData title={`Login`} />
       {loading ? (
         <Loader />
       ) : (
-        <div>
-          <div>
-            <form className="loginUser__form" onSubmit={submitHandle}>
-              <h1>Login</h1>
-              <div>
-                <label htmlFor="email_field">Email</label>
-                <input
-                  type="email"
-                  id="email_field"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </div>
+        <div className="loginUser__container">
+          <form className="loginUser__container__form" onSubmit={submitHandle}>
+            <LoggingOptions
+              type="email"
+              id="email_field"
+              text="Email"
+              values={email}
+              setValues={setEmail}
+            />
+            {/* <label htmlFor="email_field">Email</label>
+              <input
+                type="email"
+                id="email_field"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              /> */}
 
-              <div>
-                <label htmlFor="password_field">Password</label>
-                <input
-                  type="password"
-                  id="password_field"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </div>
-              <Link to="/password/forgot">Forgot Password?</Link>
-
-              <button type="submit">LOGIN</button>
-              <Link to="/signup">SIGN UP</Link>
-            </form>
-          </div>
+            <LoggingOptions
+              type="password"
+              id="password_field"
+              text="Password"
+              values={password}
+              setValues={setPassword}
+            />
+            {/* <label htmlFor="password_field">Password</label>
+              <input
+                type="password"
+                id="password_field"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              /> */}
+            <div className="loginUser__container__form__accountHolder">
+              <button
+                type="submit"
+                className="loginUser__container__form__button loginUser__container__form__accountHolder__login"
+              >
+                Login
+              </button>
+              <Link
+                to="/password/forgot"
+                className="loginUser__container__form__button loginUser__container__form__accountHolder__forgot"
+              >
+                Forgot Password?
+              </Link>
+            </div>
+            <Link
+              to="/signup"
+              className="loginUser__container__form__button loginUser__container__form__signup"
+            >
+              Create New Account
+            </Link>
+          </form>
         </div>
       )}
     </div>

@@ -1,8 +1,54 @@
 .loginUser {
-  &__form {
+  min-width: 300px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__title {
+    font-size: 60px;
+    padding: 10px;
+  }
+
+  &__container {
+    border: 1px solid lightgray;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    height: fit-content;
+    border-radius: 5px;
+    background-color: whitesmoke;
+    padding: 20px;
+
+    &__form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      &__button {
+        text-decoration: none;
+        color: black;
+        padding: 5px;
+        margin: 10px;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+      &__accountHolder {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &__login {
+          border: 1px solid grey;
+          border-radius: 5px;
+          background-color: #faa230;
+          font-size: larger;
+          cursor: pointer;
+        }
+      }
+    }
   }
 }

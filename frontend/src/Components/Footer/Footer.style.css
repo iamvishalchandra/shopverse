@@ -7,6 +7,6 @@
           justify-content: center;
   margin-top: 8rem;
   color: grey;
-  width: 100%;
+  min-width: 300px;
 }
 /*# sourceMappingURL=Footer.style.css.map */

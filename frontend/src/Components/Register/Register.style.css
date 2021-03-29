@@ -1,4 +1,5 @@
 .register {
+  min-width: 300px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -9,8 +10,133 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.register__title {
+  font-size: 60px;
+  padding: 10px;
+}
+
+.register__container {
+  border: 1px solid lightgray;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  border-radius: 5px;
+  background-color: whitesmoke;
+  padding: 20px;
+}
+
+.register__container__button {
+  text-decoration: none;
+  color: black;
+  padding: 5px;
+  margin: 10px;
+  width: 100%;
+}
+
+.register__container__button:hover {
+  text-decoration: underline;
+}
+
+.register__container__form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.register__container__form__avatar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.register__container__form__avatar__label {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.register__container__form__avatar__body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.register__container__form__avatar__body__photo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+}
+
+.register__container__form__avatar__body__upload {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 200px;
+}
+
+.register__container__form__avatar__body__upload__label {
+  background-color: #faa230;
+  padding: 10px;
+  border-radius: 7px;
+  color: black;
+  cursor: pointer;
+}
+
+.register__container__form__avatar__body__upload__label:hover {
+  text-decoration: underline;
+}
+
+.register__container__form__avatar__body__upload__input {
+  width: 0.1px;
+  cursor: pointer;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.register__container__form__register {
+  margin-top: 30px;
+  background-color: #faa230;
+  border: none;
+  cursor: pointer;
+  height: 40px;
+  border-radius: 5px;
+}
+
+.register__container__logIn__redirect {
+  text-decoration: underline;
 }
 /*# sourceMappingURL=Register.style.css.map */

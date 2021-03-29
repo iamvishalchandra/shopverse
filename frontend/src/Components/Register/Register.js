@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { clearErrors, signUp } from "../../actions/userActions";
+import LoggingOptions from "../LoggingOptions/LoggingOptions";
 import MetaData from "../MetaData";
+import UploadIcon from "../Photos/UploadIcon.svg";
 import "./Register.style.css";
 
 const Register = ({ history }) => {
   const [user, setUser] = useState({ name: "", email: "", password: "" });
   const { name, email, password } = user;
   const [avatar, setAvatar] = useState("");
-  const [avatarPreview, setAvatarPreview] = useState("/photo/logo.png");
+  const [avatarPreview, setAvatarPreview] = useState(UploadIcon);
 
   const alert = useAlert();
   const dispatch = useDispatch();
@@ -17,13 +20,13 @@ const Register = ({ history }) => {
   const { isAuthenticated, error, loading } = useSelector(
     (state) => state.user
   );
+  console.log(loading);
 
   useEffect(() => {
     if (isAuthenticated) history.push("/");
 
     if (error) {
       alert.error(error);
-      console.log(error);
       dispatch(clearErrors());
     }
   }, [dispatch, alert, isAuthenticated, error, history]);
@@ -55,13 +58,31 @@ const Register = ({ history }) => {
     }
   };
 
+  const submitVerification = () => {
+    if (name === "" || email === "" || password === "" || avatar === "")
+      return alert.error("Box Empty");
+  };
+
   return (
     <div className="register">
       <MetaData title={`Register Account`} />
-      <div>
-        <h1>Registeration</h1>
-        <form onSubmit={submitHandle} encType="multipart/form-data">
-          <div>
+      <h1 className="register__title">Registeration</h1>
+      <div className="register__container">
+        <form
+          onSubmit={submitHandle}
+          encType="multipart/form-data"
+          className="register__container__form"
+        >
+          <LoggingOptions
+            type="name"
+            id="name_field"
+            text="Name"
+            values={name}
+            setValues={onChange}
+            register
+          />
+
+          {/* <div>
             <label htmlFor="name-field">Name</label>
             <input
               type="name"
@@ -70,8 +91,16 @@ const Register = ({ history }) => {
               value={name}
               onChange={onChange}
             />
-          </div>
-          <div>
+          </div> */}
+          <LoggingOptions
+            type="email"
+            id="email_field"
+            text="Email"
+            values={email}
+            setValues={onChange}
+            register
+          />
+          {/* <div>
             <label htmlFor="email_field">Email</label>
             <input
               type="email"
@@ -80,8 +109,17 @@ const Register = ({ history }) => {
               value={email}
               onChange={onChange}
             />
-          </div>
-          <div>
+          </div> */}
+
+          <LoggingOptions
+            type="password"
+            id="password_field"
+            text="Password"
+            values={password}
+            setValues={onChange}
+            register
+          />
+          {/* <div>
             <label htmlFor="password_field">password</label>
             <input
               type="password"
@@ -90,41 +128,76 @@ const Register = ({ history }) => {
               value={password}
               onChange={onChange}
             />
-          </div>
-          <div>
-            <label htmlFor="avatar-upload">Avatar</label>
-            <div>
-              <div>
-                {/* <figure> */}
-                {avatarPreview && (
-                  <img
-                    src={avatarPreview}
-                    alt="Avatar"
-                    style={{ width: "100px" }}
-                  />
-                )}
-                {/* </figure> */}
+          </div> */}
+
+          <div className="register__container__form__avatar">
+            <label
+              htmlFor="avatar-upload"
+              className="register__container__form__avatar__label"
+            >
+              Avatar
+            </label>
+
+            <div className="register__container__form__avatar__body">
+              {/* <figure> */}
+              {avatarPreview && (
+                <img
+                  src={avatarPreview}
+                  alt="Avatar"
+                  // style={{ width: "20px" }}
+                  className="register__container__form__avatar__body__photo"
+                />
+              )}
+              {/* </figure> */}
+
+              {/* <LoggingOptions
+              type="file"
+              id="customFile"
+              text="Choose Avatar"
+              name="avatar"
+              accept="/images/*"
+              // values={password}
+              setValues={onChange}
+              register
+            /> */}
+              <div className="register__container__form__avatar__body__upload">
+                <label
+                  htmlFor="customFile"
+                  className="register__container__form__avatar__body__upload__label"
+                >
+                  Choose Avatar
+                </label>
+                <input
+                  type="file"
+                  id="customFile"
+                  name="avatar"
+                  accept="/images/*"
+                  onChange={onChange}
+                  className="register__container__form__avatar__body__upload__input"
+                />
               </div>
-            </div>
-            <div>
-              <input
-                type="file"
-                id="customFile"
-                name="avatar"
-                accept="/images/*"
-                onChange={onChange}
-              />
-              {/* <label htmlFor="customFile">Choose Avatar</label> */}
             </div>
           </div>
           <button
             id="register_button"
             type="submit"
             disabled={loading ? true : false}
+            style={{ visibility: loading ? "hidden" : "inherit" }}
+            className="register__container__button register__container__form__register"
+            onClick={submitVerification}
           >
-            Register
+            Create Account
           </button>
         </form>
+        <div className="register__container__logIn">
+          Already Have Account?
+          <Link
+            className="register__container__button register__container__logIn__redirect"
+            to="/login"
+          >
+            Log In
+          </Link>
+        </div>
       </div>
     </div>
   );
