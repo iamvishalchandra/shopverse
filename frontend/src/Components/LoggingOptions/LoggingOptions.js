@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./LoggingOptions.style.css";
 
 const LoggingOptions = ({ type, id, text, values, setValues, register }) => {

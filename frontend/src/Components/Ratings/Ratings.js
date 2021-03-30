@@ -4,7 +4,6 @@ import "./Ratings.style.css";
 const Ratings = ({ ratings }) => {
   const [rating, setRating] = useState(null);
   const [hover, setHover] = useState(null);
-  console.log(ratings);
 
   return (
     <div className="ratings">

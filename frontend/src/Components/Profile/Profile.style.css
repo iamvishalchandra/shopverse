@@ -13,7 +13,7 @@
 }
 
 .profile__title {
-  font-size: 5rem;
+  font-size: 3em;
   text-decoration: underline;
   margin-bottom: 50px;
 }
@@ -69,10 +69,16 @@
   width: 20%;
 }
 
+.profile__container__avatar__figure {
+  width: 16rem;
+  height: 16rem;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
 .profile__container__avatar__figure__photo {
-  width: 250px;
-  height: 250px;
-  border-radius: 250px;
+  width: 100%;
+  height: 100%;
 }
 
 .profile__container__details {

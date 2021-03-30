@@ -10,11 +10,10 @@ import "./LoginUser.style.css";
 import LoggingOptions from "../LoggingOptions/LoggingOptions";
 
 const LoginUser = ({ history }) => {
-  const alert = useAlert();
-  const dispatch = useDispatch();
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const alert = useAlert();
+  const dispatch = useDispatch();
 
   const { isAuthenticated, error, loading } = useSelector(
     (state) => state.user
@@ -34,6 +33,18 @@ const LoginUser = ({ history }) => {
     dispatch(userlogin(email, password));
   };
 
+  function verify(value, name, e) {
+    if (value === "") {
+      e.preventDefault();
+      return alert.error(`${name} input can't be empty`);
+    }
+  }
+
+  const submitVerification = async (e) => {
+    await verify(email, "Email", e);
+    await verify(password, "Password", e);
+  };
+
   return (
     <div className="loginUser">
       <h1 className="loginUser__title">Login</h1>
@@ -50,13 +61,6 @@ const LoginUser = ({ history }) => {
               values={email}
               setValues={setEmail}
             />
-            {/* <label htmlFor="email_field">Email</label>
-              <input
-                type="email"
-                id="email_field"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              /> */}
 
             <LoggingOptions
               type="password"
@@ -65,17 +69,12 @@ const LoginUser = ({ history }) => {
               values={password}
               setValues={setPassword}
             />
-            {/* <label htmlFor="password_field">Password</label>
-              <input
-                type="password"
-                id="password_field"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              /> */}
+
             <div className="loginUser__container__form__accountHolder">
               <button
                 type="submit"
                 className="loginUser__container__form__button loginUser__container__form__accountHolder__login"
+                onClick={submitVerification}
               >
                 Login
               </button>

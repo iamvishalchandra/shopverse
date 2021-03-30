@@ -33,7 +33,7 @@ const UserOptions = ({ user, userOptions, setUserOptions }) => {
         </Link>
         <Link
           onClick={() => setUserOptions(!userOptions)}
-          to="/"
+          to="/me"
           style={{ color: "red" }}
           onClick={logOutHandler}
         >

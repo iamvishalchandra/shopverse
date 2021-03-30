@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import { Redirect, Route } from "react-router-dom";
 
@@ -10,7 +10,7 @@ const ProtectedRoute = ({ component: Component, ...rest }) => {
         <Route
           {...rest}
           render={(props) => {
-            if (isAuthenticated === false) return <Redirect to="login" />;
+            if (isAuthenticated === false) return <Redirect to="/login" />;
             return <Component {...props} />;
           }}
         />

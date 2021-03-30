@@ -5,6 +5,7 @@ const sendToken = require("../utils/jwtToken");
 const sendEmail = require("../utils/sendEmail");
 const crypto = require("crypto");
 const cloudinary = require("cloudinary");
+const userModel = require("../models/userModel");
 
 // Register a User  =>  /api/v1/register
 
@@ -77,13 +78,13 @@ exports.recoverPassword = catchAsyncError(async (req, res, next) => {
   try {
     await sendEmail({
       email: user.email,
-      subject: "Password Recovery Shopverse",
+      subject: "Password Recovery | Shopverse",
       message,
     });
 
     res.status(200).json({
       success: true,
-      message: `Email send to: ${user.email}`,
+      message: `Email send at: ${user.email}`,
     });
   } catch (error) {
     user.resetPasswordToken = undefined;
@@ -143,8 +144,7 @@ exports.updatePassword = catchAsyncError(async (req, res, next) => {
 
   // Check User's Old Password
   const isPasswordMatched = await user.matchPassword(req.body.oldPassword);
-
-  if (!isPasswordMatched)
+  if (isPasswordMatched === false)
     return next(new ErrorHandler("Old Password don't match", 400));
 
   user.password = req.body.newPassword;
@@ -159,7 +159,23 @@ exports.updateProfile = catchAsyncError(async (req, res, next) => {
     email: req.body.email,
   };
 
-  // Update Avatar - TBC
+  // Update Avatar
+
+  if (req.body.avatar !== "") {
+    const user = await userModel.findById(req.user.id);
+    const avatarId = user?.avatar?.public_id;
+    const res = await cloudinary.v2.uploader.destroy(avatarId);
+    const result = await cloudinary.v2.uploader.upload(req.body.avatar, {
+      folder: "shopVerse/avatars",
+      width: 150,
+      crop: "scale",
+    });
+
+    newUserData.avatar = {
+      public_id: result.public_id,
+      url: result.secure_url,
+    };
+  }
 
   const user = await UserModel.findByIdAndUpdate(req.user.id, newUserData, {
     new: true,

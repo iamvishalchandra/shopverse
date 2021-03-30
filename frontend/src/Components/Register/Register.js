@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { clearErrors, signUp } from "../../actions/userActions";
 import LoggingOptions from "../LoggingOptions/LoggingOptions";
 import MetaData from "../MetaData";
-import UploadIcon from "../Photos/UploadIcon.svg";
+import UploadIcon from "../../Photos/UploadIcon.svg";
 import "./Register.style.css";
 
 const Register = ({ history }) => {
@@ -20,7 +20,6 @@ const Register = ({ history }) => {
   const { isAuthenticated, error, loading } = useSelector(
     (state) => state.user
   );
-  console.log(loading);
 
   useEffect(() => {
     if (isAuthenticated) history.push("/");
@@ -58,9 +57,18 @@ const Register = ({ history }) => {
     }
   };
 
-  const submitVerification = () => {
-    if (name === "" || email === "" || password === "" || avatar === "")
-      return alert.error("Box Empty");
+  function verify(value, name, e) {
+    if (value === "") {
+      e.preventDefault();
+      return alert.error(`${name} input can't be empty`);
+    }
+  }
+
+  const submitVerification = async (e) => {
+    await verify(name, "Name", e);
+    await verify(email, "Email", e);
+    await verify(password, "Password", e);
+    await verify(avatar, "Avatar", e);
   };
 
   return (
@@ -82,16 +90,6 @@ const Register = ({ history }) => {
             register
           />
 
-          {/* <div>
-            <label htmlFor="name-field">Name</label>
-            <input
-              type="name"
-              id="name_field"
-              name="name"
-              value={name}
-              onChange={onChange}
-            />
-          </div> */}
           <LoggingOptions
             type="email"
             id="email_field"
@@ -100,16 +98,6 @@ const Register = ({ history }) => {
             setValues={onChange}
             register
           />
-          {/* <div>
-            <label htmlFor="email_field">Email</label>
-            <input
-              type="email"
-              id="email_field"
-              name="email"
-              value={email}
-              onChange={onChange}
-            />
-          </div> */}
 
           <LoggingOptions
             type="password"
@@ -119,16 +107,6 @@ const Register = ({ history }) => {
             setValues={onChange}
             register
           />
-          {/* <div>
-            <label htmlFor="password_field">password</label>
-            <input
-              type="password"
-              id="password_field"
-              name="password"
-              value={password}
-              onChange={onChange}
-            />
-          </div> */}
 
           <div className="register__container__form__avatar">
             <label
@@ -139,27 +117,14 @@ const Register = ({ history }) => {
             </label>
 
             <div className="register__container__form__avatar__body">
-              {/* <figure> */}
               {avatarPreview && (
                 <img
                   src={avatarPreview}
                   alt="Avatar"
-                  // style={{ width: "20px" }}
                   className="register__container__form__avatar__body__photo"
                 />
               )}
-              {/* </figure> */}
 
-              {/* <LoggingOptions
-              type="file"
-              id="customFile"
-              text="Choose Avatar"
-              name="avatar"
-              accept="/images/*"
-              // values={password}
-              setValues={onChange}
-              register
-            /> */}
               <div className="register__container__form__avatar__body__upload">
                 <label
                   htmlFor="customFile"
@@ -182,7 +147,9 @@ const Register = ({ history }) => {
             id="register_button"
             type="submit"
             disabled={loading ? true : false}
-            style={{ visibility: loading ? "hidden" : "inherit" }}
+            style={{
+              backgroundColor: loading ? "rgba(128, 128, 128, 0.315)" : "",
+            }}
             className="register__container__button register__container__form__register"
             onClick={submitVerification}
           >
