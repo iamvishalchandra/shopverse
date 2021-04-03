@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
-import { clearErrors } from "../../actions/userActions";
-import { forgotPasswordReducer } from "../../reducers/userReducers";
+import { clearErrors, forgotPassword } from "../../actions/userActions";
 import MetaData from "../MetaData";
 import "./ForgotPassword.style.css";
 
@@ -29,7 +28,7 @@ const ForgotPassword = ({ history }) => {
     e.preventDefault();
     const formData = new FormData();
     formData.set("email", email);
-    dispatch(forgotPasswordReducer(formData));
+    dispatch(forgotPassword(formData));
   };
 
   return (

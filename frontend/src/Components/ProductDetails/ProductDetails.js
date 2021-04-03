@@ -6,6 +6,7 @@ import { clearErrors, getProductDetails } from "../../actions/productActions";
 import Loader from "../Loader/Loader";
 import MetaData from "../MetaData";
 import ProductReviewBox from "../ProductReviewBox/ProductReviewBox";
+import Ratings from "../Ratings/Ratings";
 import "./ProductDetails.style.css";
 
 const ProductDetails = ({ match }) => {
@@ -49,7 +50,7 @@ const ProductDetails = ({ match }) => {
             <hr />
             <div className="productDetails__details__userInputs">
               <div className="productDetails__details__userInputs__rating">
-                SSSS
+                <Ratings ratings={product.rating} />
               </div>
               <span className="productDetails__details__userInputs__reviews">
                 ({product.totalReviews} Reviews)
