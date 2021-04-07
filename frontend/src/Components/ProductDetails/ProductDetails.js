@@ -63,6 +63,7 @@ const ProductDetails = ({ match }) => {
               <span
                 className="productDetails__details__cart__counter productDetails__details__cart__counter--decrease"
                 onClick={() => stock > 1 && setStock(stock - 1)}
+                // onClick={decreaseStock}
               >
                 -
               </span>
@@ -75,7 +76,7 @@ const ProductDetails = ({ match }) => {
 
               <span
                 className="productDetails__details__cart__counter productDetails__details__cart__counter--increase"
-                onClick={() => setStock(stock + 1)}
+                onClick={() => stock < product.stock && setStock(stock + 1)}
               >
                 +
               </span>
