@@ -8,6 +8,7 @@ import "./Header.style.css";
 const Header = () => {
   const { user, loading } = useSelector((state) => state.user);
   const [userOptions, setUserOptions] = useState(false);
+  const { cartItems } = useSelector((state) => state.cart);
 
   return (
     <div className="header">
@@ -31,7 +32,7 @@ const Header = () => {
         <Link to="/cart">
           <div className="header__container__right__cart">
             <span className="header__container__right__cart__span header__container header__container__right__cart__span--count">
-              2
+              {cartItems.length}
             </span>
             <span className="header__container__right__cart__span header__container header__container__right__cart__span--text">
               Cart

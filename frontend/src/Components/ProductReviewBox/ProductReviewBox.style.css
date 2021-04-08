@@ -12,6 +12,7 @@
   color: white;
   font-weight: bold;
   cursor: pointer;
+  outline: none;
 }
 
 .productReviewBox__body {

@@ -116,6 +116,7 @@
   border-radius: 1rem;
   font-weight: bold;
   cursor: pointer;
+  outline: none;
 }
 
 .productDetails__details__stock {

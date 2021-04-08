@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useAlert } from "react-alert";
 import { Carousel } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
+import { addItemsToCart } from "../../actions/cartActions";
 import { clearErrors, getProductDetails } from "../../actions/productActions";
 import Loader from "../Loader/Loader";
 import MetaData from "../MetaData";
@@ -26,6 +27,11 @@ const ProductDetails = ({ match }) => {
       dispatch(clearErrors);
     }
   }, [dispatch, alert, error, match.params.id]);
+
+  const addToCart = () => {
+    dispatch(addItemsToCart(match.params.id, stock));
+    alert.success("Added to cart.");
+  };
 
   return (
     <div className="productDetails">
@@ -63,7 +69,6 @@ const ProductDetails = ({ match }) => {
               <span
                 className="productDetails__details__cart__counter productDetails__details__cart__counter--decrease"
                 onClick={() => stock > 1 && setStock(stock - 1)}
-                // onClick={decreaseStock}
               >
                 -
               </span>
@@ -83,6 +88,8 @@ const ProductDetails = ({ match }) => {
               <button
                 type="button"
                 className="productDetails__details__cart__addBtn"
+                disabled={product.stock <= 0}
+                onClick={addToCart}
               >
                 Add To Cart
               </button>

@@ -1,0 +1,17 @@
+.temp {
+  display: flex;
+  flex-direction: column;
+
+  hr {
+    margin: 10px 0;
+  }
+
+  &2 {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+}
+.items {
+  width: 65%;
+}
