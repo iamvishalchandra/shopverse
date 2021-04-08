@@ -1,0 +1,77 @@
+.checkOutSteps {
+  clear: both;
+  margin: 20px auto;
+  width: auto;
+  font-family: sans-serif;
+  overflow: auto;
+  display: flex;
+  justify-content: center;
+
+  &__links {
+    display: flex;
+
+    &__triangle {
+      &__back {
+        &--active {
+          width: 0;
+          float: left;
+          border-top: 20px solid #fa9c23;
+          border-left: 15px solid #fff;
+          border-bottom: 20px solid #fa9c23;
+          margin-right: -1px;
+        }
+
+        &--incomplete {
+          width: 0;
+          float: left;
+          border-top: 20px solid #eeeeee;
+          border-left: 15px solid #fff;
+          border-bottom: 20px solid #eeeeee;
+          margin-right: -1px;
+        }
+      }
+
+      &__front {
+        &--active {
+          float: left;
+          width: 0;
+          border-top: 20px solid transparent;
+          border-left: 15px solid #fa9c23;
+          border-bottom: 20px solid transparent;
+          margin-left: -1px;
+        }
+
+        &--incomplete {
+          float: left;
+          width: 0;
+          border-top: 20px solid transparent;
+          border-left: 15px solid #eeeeee;
+          border-bottom: 20px solid transparent;
+          margin-left: -1px;
+        }
+      }
+    }
+
+    &__step {
+      margin: 0;
+      border: 0;
+      letter-spacing: 1px;
+      line-height: 30px;
+      padding: 5px 10px 5px 15px;
+      color: grey;
+      text-decoration: none;
+      cursor: default;
+      font-weight: bold;
+      float: left;
+      height: auto;
+
+      &--active {
+        background: #fa9c23;
+        color: #fff;
+      }
+      &--incomplete {
+        background: #eeeeee;
+      }
+    }
+  }
+}

@@ -9,7 +9,7 @@ import Loader from "../Loader/Loader";
 import "./LoginUser.style.css";
 import LoggingOptions from "../LoggingOptions/LoggingOptions";
 
-const LoginUser = ({ history }) => {
+const LoginUser = ({ history, location }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const alert = useAlert();
@@ -19,8 +19,10 @@ const LoginUser = ({ history }) => {
     (state) => state.user
   );
 
+  const redirect = location.search ? location.search.split("=")[1] : "/";
+
   useEffect(() => {
-    if (isAuthenticated) history.push("/");
+    if (isAuthenticated) history.push(redirect);
 
     if (error) {
       alert.error(error);

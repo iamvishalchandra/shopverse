@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { addItemsToCart, removeItemsFromCart } from "../../actions/cartActions";
 
 import CartItems from "../CartItems/CartItems";
@@ -80,7 +81,9 @@ const Cart = () => {
                   </span>
                 </p>
                 <hr />
-                <button>Checkout</button>
+                <Link to="/login?redirect=shipping">
+                  <button>Checkout</button>
+                </Link>
               </div>
             </div>
           </div>

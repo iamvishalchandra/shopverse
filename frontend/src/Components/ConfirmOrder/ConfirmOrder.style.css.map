@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "ConfirmOrder.style.scss"
+    ],
+    "names": [],
+    "file": "ConfirmOrder.style.css"
+}

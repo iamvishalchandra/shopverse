@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "Payment.style.scss"
+    ],
+    "names": [],
+    "file": "Payment.style.css"
+}
