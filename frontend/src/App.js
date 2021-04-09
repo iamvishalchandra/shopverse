@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Footer from "./Components/Footer/Footer";
 import Header from "./Components/Header/Header";
 import Home from "./Components/Home/Home";
-// import Home from "@components/Home/Home";
 import ProductDetails from "./Components/ProductDetails/ProductDetails";
 import "./App.css";
 import LoginUser from "./Components/LoginUser/LoginUser";
@@ -20,7 +19,7 @@ import NewPassword from "./Components/NewPassword/NewPassword";
 import Cart from "./Components/Cart/Cart";
 import Shipping from "./Components/Shipping/Shipping";
 import ConfirmOrder from "./Components/ConfirmOrder/ConfirmOrder";
-import Payment from "./Components/Payment/Payment";
+import PaymentRoute from "./Components/routes/PaymentRoute";
 
 function App() {
   useEffect(() => {
@@ -42,7 +41,7 @@ function App() {
         <Route path="/cart" component={Cart} exact />
         <ProtectedRoute path="/shipping" component={Shipping} exact />
         <ProtectedRoute path="/order/confirm" component={ConfirmOrder} exact />
-        <ProtectedRoute path="/payment" component={Payment} exact />
+        <ProtectedRoute path="/payment" component={PaymentRoute} exact />
         <ProtectedRoute path="/me/update" component={UserProfileUpdate} exact />
         <ProtectedRoute
           path="/password/update"

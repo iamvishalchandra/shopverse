@@ -11,6 +11,7 @@ const Ratings = ({ ratings }) => {
         const ratingValue = i + 1;
         return ratings ? (
           <div
+            key={ratingValue}
             className="ratings__label__star ratings__label__star__displayOnly"
             style={
               ratingValue <= ratings
@@ -31,7 +32,7 @@ const Ratings = ({ ratings }) => {
             ></div>
           </div>
         ) : (
-          <label className="ratings__label">
+          <label className="ratings__label" key={ratingValue}>
             <input
               className="ratings__label__input"
               type="radio"

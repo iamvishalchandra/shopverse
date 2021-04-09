@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { addItemsToCart, removeItemsFromCart } from "../../actions/cartActions";
@@ -28,8 +28,7 @@ const Cart = () => {
   const removeItem = (id) => {
     dispatch(removeItemsFromCart(id));
   };
-  // const subTotal = cartItems.reduce((acc, item) => console.log(acc?.price));
-  // console.log(subTotal);
+
   return (
     <div className="cart">
       <MetaData title="Your Shopverse Cart" />
@@ -49,7 +48,6 @@ const Cart = () => {
                     item={item}
                     increaseQty={increaseQty}
                     decreaseQty={decreaseQty}
-                    key={item.product}
                     removeItem={removeItem}
                   />
                   <hr />
