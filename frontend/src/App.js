@@ -21,6 +21,8 @@ import Shipping from "./Components/Shipping/Shipping";
 import ConfirmOrder from "./Components/ConfirmOrder/ConfirmOrder";
 import PaymentRoute from "./Components/routes/PaymentRoute";
 import OrderSuccess from "./Components/OrderSuccess/OrderSuccess";
+import ListOrders from "./Components/ListOrders/ListOrders";
+import OrderDetail from "./Components/OrderDetail/OrderDetail";
 
 function App() {
   useEffect(() => {
@@ -39,12 +41,14 @@ function App() {
         <Route path="/password/forgot" component={ForgotPassword} exact />
         <Route path="/password/reset/:token" component={NewPassword} exact />
         <ProtectedRoute path="/me" component={Profile} exact />
+        <ProtectedRoute path="/me/update" component={UserProfileUpdate} exact />
         <Route path="/cart" component={Cart} exact />
         <ProtectedRoute path="/shipping" component={Shipping} exact />
         <ProtectedRoute path="/order/confirm" component={ConfirmOrder} exact />
         <ProtectedRoute path="/payment" component={PaymentRoute} exact />
         <ProtectedRoute path="/success" component={OrderSuccess} exact />
-        <ProtectedRoute path="/me/update" component={UserProfileUpdate} exact />
+        <ProtectedRoute path="/orders/me" component={ListOrders} exact />
+        <ProtectedRoute path="/order/:id" component={OrderDetail} exact />
         <ProtectedRoute
           path="/password/update"
           component={UpdatePassword}

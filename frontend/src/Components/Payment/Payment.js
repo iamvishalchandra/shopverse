@@ -40,7 +40,7 @@ const Payment = ({ history }) => {
   const orderInfo = JSON.parse(sessionStorage.getItem("orderInfo"));
 
   if (orderInfo) {
-    order.itemsPrice = orderInfo.itemsPrice;
+    order.itemsPrice = orderInfo.itemPrice;
     order.shippingPrice = orderInfo.shippingCharge;
     order.taxPrice = orderInfo.tax;
     order.totalPrice = orderInfo.totalPrice;
@@ -55,8 +55,8 @@ const Payment = ({ history }) => {
     try {
       const config = { headers: { "Content-Type": "application/json" } };
       res = await axios.post("/api/v1/payment/process", paymentData, config);
+
       const clientSecret = res.data.clientSecret;
-      const address = `${shippingInfo.address}, ${shippingInfo.city}, ${shippingInfo.country} - ${shippingInfo.postalCode}, `;
 
       if (!stripe || !elements) return;
 

@@ -4,8 +4,6 @@ import "./CartItems.style.css";
 const CartItems = ({ item, increaseQty, decreaseQty, removeItem }) => {
   return (
     <div className="cartItems" key={item.product}>
-      {/* <img className="cartItems__image" src={item.image} alt={item.name} /> */}
-
       <img className="cartItems__image" src="/photo/logo.png" alt={item.name} />
 
       <Link className="cartItems__name" to={`/product/${item.product}`}>

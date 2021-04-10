@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,WAAW,CAAC;EACV,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,MAAM;EACtB,WAAW,EAAE,MAAM;CAkBpB;;AAhBE,AAAD,kBAAQ,CAAC;EACP,SAAS,EAAE,IAAI;EACf,WAAW,EAAE,IAAI;EACjB,eAAe,EAAE,SAAS;CAC3B;;AAEA,AAAD,iBAAO,CAAC;EACN,KAAK,EAAE,GAAG;EACV,WAAW,EAAE,IAAI;CAOlB;;AATA,AAKG,iBALG,CAIL,KAAK,CACH,EAAE,CAAC;EACD,WAAW,EAAE,IAAI;CAClB",
+    "sources": [
+        "ListOrders.style.scss"
+    ],
+    "names": [],
+    "file": "ListOrders.style.css"
+}

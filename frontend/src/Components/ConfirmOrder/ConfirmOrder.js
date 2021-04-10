@@ -41,11 +41,19 @@ const ConfirmOrder = ({ history }) => {
         </p>
         <p>
           <b>Phone: </b>
-          {shippingInfo.phoneNo}
+          {shippingInfo.contactNo}
         </p>
         <p>
-          <b>Address: </b> {shippingInfo.address}, {shippingInfo.city},{" "}
-          {shippingInfo.postalCode}, {shippingInfo.country}
+          <b>Address: </b> {shippingInfo.address}
+        </p>
+        <p>
+          <b>City: </b> {shippingInfo.city}
+        </p>
+        <p>
+          <b>Postal Code: </b> {shippingInfo.postalCode}
+        </p>
+        <p>
+          <b>Country: </b> {shippingInfo.country}
         </p>
         <hr />
         <h4>Your Cart Item:</h4>

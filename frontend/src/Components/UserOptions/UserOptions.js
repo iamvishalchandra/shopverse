@@ -10,6 +10,7 @@ const UserOptions = ({ user, userOptions, setUserOptions }) => {
   const alert = useAlert();
 
   const logOutHandler = () => {
+    setUserOptions(!userOptions);
     dispatch(logOut());
     alert.success("Logged Out");
   };
@@ -17,22 +18,19 @@ const UserOptions = ({ user, userOptions, setUserOptions }) => {
   return (
     userOptions && (
       <div className="userOptions">
-        {user?.role !== "admin" ? (
-          <>
-            <Link onClick={() => setUserOptions(!userOptions)} to="/orders/me">
-              Orders
-            </Link>
-          </>
-        ) : (
+        {user?.role === "admin" && (
           <Link onClick={() => setUserOptions(!userOptions)} to="/dashboard">
             Dashboard
           </Link>
         )}
+        <Link onClick={() => setUserOptions(!userOptions)} to="/orders/me">
+          Orders
+        </Link>
         <Link onClick={() => setUserOptions(!userOptions)} to="/me">
           Profile
         </Link>
         <Link
-          onClick={() => setUserOptions(!userOptions)}
+          // onClick={() => setUserOptions(!userOptions)}
           to="/me"
           style={{ color: "red" }}
           onClick={logOutHandler}

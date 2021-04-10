@@ -15,7 +15,7 @@ const Shipping = ({ history }) => {
   const [address, setAddress] = useState(shippingInfo.address);
   const [city, setCity] = useState(shippingInfo.city);
   const [postalCode, setPostalCode] = useState(shippingInfo.postalCode);
-  const [phoneNo, setPhoneNo] = useState(shippingInfo.phoneNo);
+  const [contactNo, setContactNo] = useState(shippingInfo.contactNo);
   const [country, setCountry] = useState(
     shippingInfo.country ? shippingInfo.country : countryList[0].name
   );
@@ -24,7 +24,9 @@ const Shipping = ({ history }) => {
 
   const submitHandle = (e) => {
     e.preventDefault();
-    dispatch(saveShippingInfo({ address, city, postalCode, phoneNo, country }));
+    dispatch(
+      saveShippingInfo({ address, city, postalCode, contactNo, country })
+    );
     history.push("/order/confirm");
   };
 
@@ -56,8 +58,8 @@ const Shipping = ({ history }) => {
             text="Phone"
             id="phone_field"
             types="phone"
-            values={phoneNo}
-            setValues={setPhoneNo}
+            values={contactNo}
+            setValues={setContactNo}
           />
 
           <ShippingInfo

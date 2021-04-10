@@ -1,0 +1,22 @@
+.listOrders {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__title {
+    font-size: 4rem;
+    font-weight: bold;
+    text-decoration: underline;
+  }
+
+  &__body {
+    width: 90%;
+    font-weight: bold;
+
+    table {
+      th {
+        font-weight: bold;
+      }
+    }
+  }
+}
