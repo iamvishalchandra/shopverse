@@ -61,7 +61,7 @@ const ConfirmOrder = ({ history }) => {
             <div>
               <p>
                 {item.quantity} x {item.price} ={" "}
-                <b>{item.quantity * item.price}</b>
+                <b>{(item.quantity * item.price).toFixed(2)}</b>
               </p>
             </div>
             <hr />

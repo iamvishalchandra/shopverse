@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useAlert } from "react-alert";
 import {
   CardCvcElement,
@@ -12,6 +12,7 @@ import MetaData from "../MetaData";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import "./Payment.style.css";
+import { clearErrors, createOrder } from "../../actions/orderActions";
 
 const Payment = ({ history }) => {
   const options = {
@@ -25,8 +26,25 @@ const Payment = ({ history }) => {
 
   const { user } = useSelector((state) => state.user);
   const { cartItems, shippingInfo } = useSelector((state) => state.cart);
+  const { error } = useSelector((state) => state.newOrder);
+
+  useEffect(() => {
+    if (error) {
+      alert.error(error);
+      dispatch(clearErrors);
+    }
+  }, [dispatch, alert, error]);
+
+  const order = { orderItems: cartItems, shippingInfo };
 
   const orderInfo = JSON.parse(sessionStorage.getItem("orderInfo"));
+
+  if (orderInfo) {
+    order.itemsPrice = orderInfo.itemsPrice;
+    order.shippingPrice = orderInfo.shippingCharge;
+    order.taxPrice = orderInfo.tax;
+    order.totalPrice = orderInfo.totalPrice;
+  }
   const paymentData = { amount: Math.round(orderInfo.totalPrice * 100) };
 
   const submitHandle = async (e) => {
@@ -57,7 +75,12 @@ const Payment = ({ history }) => {
         document.querySelector("#paybtn").disabled = false;
       } else {
         if (result.paymentIntent.status === "succeeded") {
-          // TODO: New Order
+          order.paymentInfo = {
+            id: result.paymentIntent.id,
+            status: result.paymentIntent.status,
+          };
+
+          dispatch(createOrder(order));
 
           history.push("/success");
         } else alert.error("Unable to process...\nPls try again later");

@@ -45,7 +45,7 @@ const ProductDetails = ({ match }) => {
               <img
                 className="productDetails__photos__image"
                 src="/photo/logo.png"
-                alt=""
+                alt={product.name}
               />
             </Carousel>
           </div>
