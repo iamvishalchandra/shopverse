@@ -1,0 +1,70 @@
+.sidebar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #232f3e;
+  width: 200px;
+}
+
+.sidebar__navbar__options {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.sidebar__navbar__options__list {
+  list-style: none;
+  padding: 0 20px;
+}
+
+.sidebar__navbar__options__list__links {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-decoration: none;
+  color: white;
+  font-size: 1.35rem;
+  padding: 10px;
+}
+
+.sidebar__navbar__options__list__links:hover {
+  background-color: white;
+  color: navy;
+  border-radius: 5px;
+}
+
+.sidebar__navbar__options__list__innerOptions {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.sidebar__navbar__options__list__innerOptions__list {
+  list-style: none;
+  list-style-position: inside;
+}
+
+.sidebar__navbar__options__list__innerOptions__list__links {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-decoration: none;
+  color: white;
+  font-size: 1rem;
+  padding: 5px;
+}
+
+.sidebar__navbar__options__list__innerOptions__list__links:hover {
+  background-color: red;
+  color: white;
+  border-radius: 5px;
+}
+/*# sourceMappingURL=Sidebar.style.css.map */

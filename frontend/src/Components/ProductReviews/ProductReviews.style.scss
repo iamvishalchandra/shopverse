@@ -1,0 +1,53 @@
+.productReviews {
+  margin-top: 100px;
+
+  display: flex;
+  flex-direction: column;
+  padding-left: 20px;
+
+  &__heading {
+    padding: 0 0 10px 0;
+  }
+
+  &__overallReviews {
+    display: flex;
+    align-items: center;
+
+    &__customerRratings {
+      margin-left: 5px;
+    }
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+
+    &__details {
+      display: flex;
+      flex-direction: column;
+      margin: 15px 0;
+
+      &__user {
+        display: flex;
+        margin-bottom: 5px;
+        align-items: center;
+
+        &__avatar {
+          width: 30px;
+          padding: 10px;
+        }
+
+        &__name {
+          margin-right: 10px;
+          font-weight: bold;
+        }
+      }
+
+      &__comment {
+        font-weight: bold;
+        color: grey;
+        // width: 40%;
+      }
+    }
+  }
+}

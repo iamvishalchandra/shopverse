@@ -1,0 +1,57 @@
+.sidebar {
+  display: flex;
+
+  background-color: #232f3e;
+  // height: 100%;
+  width: 200px;
+
+  &__navbar {
+    &__options {
+      display: flex;
+      flex-direction: column;
+
+      &__list {
+        list-style: none;
+        padding: 0 20px;
+
+        &__links {
+          display: flex;
+          text-decoration: none;
+          color: white;
+
+          font-size: 1.35rem;
+          padding: 10px;
+          &:hover {
+            background-color: white;
+            color: navy;
+            border-radius: 5px;
+          }
+        }
+
+        &__innerOptions {
+          display: flex;
+          flex-direction: column;
+
+          &__list {
+            list-style: none;
+            list-style-position: inside;
+
+            &__links {
+              display: flex;
+              text-decoration: none;
+              color: white;
+
+              font-size: 1rem;
+              padding: 5px;
+              &:hover {
+                background-color: red;
+                color: white;
+                border-radius: 5px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

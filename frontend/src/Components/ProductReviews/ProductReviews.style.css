@@ -1,0 +1,75 @@
+.productReviews {
+  margin-top: 100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding-left: 20px;
+}
+
+.productReviews__heading {
+  padding: 0 0 10px 0;
+}
+
+.productReviews__overallReviews {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.productReviews__overallReviews__customerRratings {
+  margin-left: 5px;
+}
+
+.productReviews__body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.productReviews__body__details {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 15px 0;
+}
+
+.productReviews__body__details__user {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 5px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.productReviews__body__details__user__avatar {
+  width: 30px;
+  padding: 10px;
+}
+
+.productReviews__body__details__user__name {
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.productReviews__body__details__comment {
+  font-weight: bold;
+  color: grey;
+}
+/*# sourceMappingURL=ProductReviews.style.css.map */

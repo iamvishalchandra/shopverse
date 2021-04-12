@@ -2,19 +2,28 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  margin-top: 10%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .productDetails hr {
   margin: 20px 0;
 }
 
-.productDetails__photos {
+.productDetails__body {
+  margin-top: 10%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.productDetails__body__photos {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -24,14 +33,16 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-}
-
-.productDetails__photos__image {
   width: 300px;
+  padding: 0 100px 20px 20px;
 }
 
-.productDetails__details {
-  width: 700px;
+.productDetails__body__photos__image {
+  width: 20rem;
+}
+
+.productDetails__body__details {
+  width: 500px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -41,18 +52,18 @@
           flex-direction: column;
 }
 
-.productDetails__details__title {
+.productDetails__body__details__title {
   font-size: 2rem;
   font-weight: 700;
   color: #413e3e;
 }
 
-.productDetails__details__id {
+.productDetails__body__details__id {
   color: grey;
   font-size: 0.8rem;
 }
 
-.productDetails__details__userInputs {
+.productDetails__body__details__userInputs {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -61,40 +72,40 @@
           align-items: center;
 }
 
-.productDetails__details__userInputs__reviews {
+.productDetails__body__details__userInputs__reviews {
   font-size: 0.85rem;
   color: grey;
   margin-left: 0.5rem;
 }
 
-.productDetails__details__price {
+.productDetails__body__details__price {
   font-size: 2rem;
   font-weight: bold;
 }
 
-.productDetails__details__cart {
+.productDetails__body__details__cart {
   margin: 2rem 0rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.productDetails__details__cart__counter {
+.productDetails__body__details__cart__counter {
   cursor: pointer;
   color: black;
   padding: 0.35rem 0.5rem;
   border-radius: 5px;
 }
 
-.productDetails__details__cart__counter--decrease {
+.productDetails__body__details__cart__counter--decrease {
   background-color: red;
 }
 
-.productDetails__details__cart__counter--increase {
+.productDetails__body__details__cart__counter--increase {
   background-color: green;
 }
 
-.productDetails__details__cart__count {
+.productDetails__body__details__cart__count {
   margin: 0.5rem 0rem;
   padding: 0rem 0.7rem;
   color: grey;
@@ -106,7 +117,7 @@
   text-align: center;
 }
 
-.productDetails__details__cart__addBtn {
+.productDetails__body__details__cart__addBtn {
   background-color: #fa9c23;
   border: none;
   color: white;
@@ -119,26 +130,26 @@
   outline: none;
 }
 
-.productDetails__details__stock {
+.productDetails__body__details__stock {
   font-weight: bold;
   font-size: 1.1rem;
   color: gray;
 }
 
-.productDetails__details__stock__status {
+.productDetails__body__details__stock__status {
   font-weight: bold;
   margin-left: 0.3rem;
 }
 
-.productDetails__details__stock__status--in {
+.productDetails__body__details__stock__status--in {
   color: green;
 }
 
-.productDetails__details__stock__status--out {
+.productDetails__body__details__stock__status--out {
   color: red;
 }
 
-.productDetails__details__description {
+.productDetails__body__details__description {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -150,19 +161,19 @@
      object-fit: contain;
 }
 
-.productDetails__details__description__title {
+.productDetails__body__details__description__title {
   font-size: 2rem;
   font-weight: 700;
   color: #413e3e;
   margin-bottom: 1rem;
 }
 
-.productDetails__details__seller {
+.productDetails__body__details__seller {
   font-weight: bold;
   color: gray;
 }
 
-.productDetails__details__seller__name {
+.productDetails__body__details__seller__name {
   color: black;
   font-size: 0.9rem;
 }

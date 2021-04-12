@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  // border: 2px solid red;
+  height: 85vh;
   min-width: 300px;
 
   &__title {
@@ -22,7 +22,7 @@
       text-decoration: none;
       color: whitesmoke;
       font-weight: bold;
-      border-radius: 4px;
+      border-radius: 40px;
       padding: 5px;
       background-color: #fda12a;
       display: flex;
@@ -30,6 +30,7 @@
       min-width: 200px;
       margin-top: 20px;
       justify-content: center;
+      padding: 15px 0;
 
       &:hover {
         text-decoration: underline;

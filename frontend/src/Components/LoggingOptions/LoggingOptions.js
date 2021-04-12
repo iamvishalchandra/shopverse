@@ -7,7 +7,7 @@ const LoggingOptions = ({ type, id, text, values, setValues, register }) => {
       <label htmlFor={id} className="loggingOptions__label">
         {text}
       </label>
-      {register === true ? (
+      {register ? (
         <input
           type={type}
           id={id}

@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Ratings.style.css";
 
-const Ratings = ({ ratings }) => {
-  const [rating, setRating] = useState(null);
-  const [hover, setHover] = useState(null);
+const Ratings = ({ ratings, rating, setRating, hover, setHover }) => {
+  // const [rating, setRating] = useState(null);
+  // const [hover, setHover] = useState(null);
 
   return (
     <div className="ratings">
@@ -15,7 +15,7 @@ const Ratings = ({ ratings }) => {
             className="ratings__label__star ratings__label__star__displayOnly"
             style={
               ratingValue <= ratings
-                ? { background: "gold" }
+                ? { background: "orange" }
                 : { background: "rgb(170, 166, 166)" }
             }
           >
@@ -24,7 +24,7 @@ const Ratings = ({ ratings }) => {
               style={
                 ratingValue > ratings && 1 - (ratingValue - ratings) > 0
                   ? {
-                      backgroundColor: "gold",
+                      backgroundColor: "orange",
                       width: `${(1 - (ratingValue - ratings)) * 100}%`,
                     }
                   : { backgroundColor: "transparent" }
@@ -45,7 +45,9 @@ const Ratings = ({ ratings }) => {
               className="ratings__label__star"
               style={
                 ratingValue <= (hover || rating)
-                  ? { background: "gold" }
+                  ? hover
+                    ? { background: "gold" }
+                    : { background: "orange" }
                   : { background: "rgb(170, 166, 166)" }
               }
               onMouseEnter={() => setHover(ratingValue)}

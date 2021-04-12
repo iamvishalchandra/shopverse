@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,iBAAiB,CAAC;EAChB,OAAO,EAAE,IAAI;CACd",
+    "sources": [
+        "AdminProductList.style.scss"
+    ],
+    "names": [],
+    "file": "AdminProductList.style.css"
+}

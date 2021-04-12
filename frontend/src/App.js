@@ -23,6 +23,9 @@ import PaymentRoute from "./Components/routes/PaymentRoute";
 import OrderSuccess from "./Components/OrderSuccess/OrderSuccess";
 import ListOrders from "./Components/ListOrders/ListOrders";
 import OrderDetail from "./Components/OrderDetail/OrderDetail";
+import Dashboard from "./Components/Dashboard/Dashboard";
+import AdminProductList from "./Components/AdminProductList/AdminProductList";
+import CreateProduct from "./Components/CreateProduct/CreateProduct";
 
 function App() {
   useEffect(() => {
@@ -52,6 +55,21 @@ function App() {
         <ProtectedRoute
           path="/password/update"
           component={UpdatePassword}
+          exact
+        />
+
+        {/* Admin Routes */}
+        <ProtectedRoute path="/dashboard" isAdmin component={Dashboard} exact />
+        <ProtectedRoute
+          path="/admin/products"
+          isAdmin
+          component={AdminProductList}
+          exact
+        />
+        <ProtectedRoute
+          path="/admin/product"
+          isAdmin
+          component={CreateProduct}
           exact
         />
         <Footer />
