@@ -30,7 +30,7 @@ const AdminProductList = ({ history }) => {
       columns: [
         { label: "Actions", field: "actions" },
         { label: "ID", field: "id", sort: "asc" },
-        { label: "Name", field: "numOfItems", sort: "asc" },
+        { label: "Name", field: "name", sort: "asc" },
         { label: "Price", field: "price", sort: "asc" },
         { label: "Stock", field: "stock", sort: "asc" },
       ],
@@ -47,9 +47,18 @@ const AdminProductList = ({ history }) => {
         actions: (
           <>
             <Link to={`/admin/product/${product._id}`}>
-              <i style={{ textDecoration: "underline" }}>Edit</i>
+              <img
+                src="/photo/edit-3-512.png"
+                style={{ padding: "3px", width: "20px" }}
+                alt=""
+              />
             </Link>
-            <button>Delete</button>
+
+            <img
+              src="/photo/delete-512.png"
+              style={{ padding: "3px", width: "20px" }}
+              alt=""
+            />
           </>
         ),
       });

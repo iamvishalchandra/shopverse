@@ -2,10 +2,27 @@ const ProductModel = require("../models/productModel");
 const ErrorHandler = require("../utils/errorHandler");
 const catchAsyncError = require("../middlewares/catchAsyncError");
 const APIFeatures = require("../utils/apiFeatures");
+const cloudinary = require("cloudinary");
 
 // create new ProductModel => /api/v1/admin/products/new
 exports.newProductModel = catchAsyncError(async (req, res, next) => {
+  let images = [];
+  if (typeof req.body.images === "string") images.push(req.body.images);
+  else images = req.body.images;
+
+  let imagesLinks = [];
+
+  for (let i = 0; i < images.length; i++) {
+    const result = await cloudinary.v2.uploader.upload(images[i], {
+      folder: "shopVerse/products",
+    });
+
+    imagesLinks.push({ public_id: result.public_id, url: result.secure_url });
+  }
+
+  req.body.images = imagesLinks;
   req.body.user = req.user.id;
+
   const product = await ProductModel.create(req.body);
 
   res.status(201).json({
@@ -16,7 +33,7 @@ exports.newProductModel = catchAsyncError(async (req, res, next) => {
 
 // Get All Products => /api/v1/products
 exports.getProducts = catchAsyncError(async (req, res, next) => {
-  const resultsPerPage = 3;
+  const resultsPerPage = 4;
   const productCount = await ProductModel.countDocuments(); //to be used with front-end
 
   const apiFeatures = new APIFeatures(ProductModel.find(), req.query)
@@ -24,6 +41,7 @@ exports.getProducts = catchAsyncError(async (req, res, next) => {
     .filter();
 
   let products = await apiFeatures.query;
+
   let filteredProductsCount = products.length;
 
   apiFeatures.pagination(resultsPerPage);

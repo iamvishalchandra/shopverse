@@ -9,7 +9,7 @@ const Ratings = ({ ratings, rating, setRating, hover, setHover }) => {
     <div className="ratings">
       {[...Array(5)].map((stars, i) => {
         const ratingValue = i + 1;
-        return ratings ? (
+        return ratings >= 0 ? (
           <div
             key={ratingValue}
             className="ratings__label__star ratings__label__star__displayOnly"

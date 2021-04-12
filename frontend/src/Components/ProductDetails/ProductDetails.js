@@ -6,6 +6,7 @@ import { addItemsToCart } from "../../actions/cartActions";
 import { clearErrors, getProductDetails } from "../../actions/productActions";
 import Loader from "../Loader/Loader";
 import MetaData from "../MetaData";
+import ProductImages from "../ProductImages/ProductImages";
 import ProductReviewBox from "../ProductReviewBox/ProductReviewBox";
 import ProductReviews from "../ProductReviews/ProductReviews";
 import Ratings from "../Ratings/Ratings";
@@ -17,7 +18,7 @@ const ProductDetails = ({ match }) => {
   const alert = useAlert();
   const dispatch = useDispatch();
   const { loading, error, product } = useSelector(
-    (state) => state.productDetails
+    (state) => state?.productDetails
   );
 
   useEffect(() => {
@@ -43,13 +44,7 @@ const ProductDetails = ({ match }) => {
           <MetaData title={product.name} />
           <div className="productDetails__body">
             <div className="productDetails__body__photos">
-              <Carousel pause="hover">
-                <img
-                  className="productDetails__body__photos__image"
-                  src="/photo/logo.png"
-                  alt={product.name}
-                />
-              </Carousel>
+              <ProductImages images={product?.images} />
             </div>
             <div className="productDetails__body__details">
               <h3 className="productDetails__body__details__title">

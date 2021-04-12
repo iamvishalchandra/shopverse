@@ -16,6 +16,7 @@ import {
   ADMIN_PRODUCTS_FAIL,
   CREATE_PRODUCT_FAIL,
   CREATE_PRODUCT_SUCCESS,
+  CREATE_PRODUCT_REQUEST,
 } from "../constants/productConstants";
 
 export const getProducts = (
@@ -29,6 +30,8 @@ export const getProducts = (
     dispatch({ type: ALL_PRODUCTS_REQUEST });
 
     let url = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[lte]=${priceRange[1]}&price[gte]=${priceRange[0]}&rating[gte]=${rating}`;
+    if (keyword === "")
+      url = `/api/v1/products?keyword=${keyword}&page=${currentPage}&rating[gte]=${rating}`;
 
     if (category)
       url = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[lte]=${priceRange[1]}&price[gte]=${priceRange[0]}&category=${category}&rating[gte]=${rating}`;
@@ -46,11 +49,12 @@ export const getProducts = (
 
 export const createProduct = (productData) => async (dispatch) => {
   try {
-    dispatch({ type: CREATE_ORDER_REQUEST });
+    dispatch({ type: CREATE_PRODUCT_REQUEST });
 
     const config = { headers: { "Content-Type": "application/json" } };
+
     const { data } = await axios.post(
-      "/api/v1/product/new",
+      "/api/v1/admin/product/new",
       productData,
       config
     );

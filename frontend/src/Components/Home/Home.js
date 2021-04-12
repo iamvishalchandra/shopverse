@@ -14,7 +14,7 @@ const Range = createSliderWithTooltip(Slider.Range);
 
 const Home = ({ match }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [minPriceRange, maxPriceRange] = [1, 10000]; //Initial Price Range
+  const [minPriceRange, maxPriceRange] = [1, 100000]; //Initial Price Range
   const [priceRange, setPriceRange] = useState([minPriceRange, maxPriceRange]);
   const dispatch = useDispatch();
   const alert = useAlert();
@@ -23,7 +23,7 @@ const Home = ({ match }) => {
     loading,
     products,
     error,
-    productsCount,
+    productCount,
     filteredProductsCount,
     resultsPerPage,
   } = useSelector((state) => state.products);
@@ -132,8 +132,7 @@ const Home = ({ match }) => {
               {loading ? (
                 <Loader />
               ) : (
-                products &&
-                products.map((product) => (
+                products?.map((product) => (
                   <ProductCard
                     key={product._id}
                     link={product._id}
@@ -141,7 +140,7 @@ const Home = ({ match }) => {
                     images={product.images[0].url}
                     reviews={product.totalReviews}
                     price={product.price}
-                    ratings={product.rating}
+                    ratings={product.rating ? product.rating : 0}
                   />
                 ))
               )}
@@ -150,8 +149,7 @@ const Home = ({ match }) => {
         ) : loading ? (
           <Loader />
         ) : (
-          products &&
-          products.map((product) => (
+          products?.map((product) => (
             <ProductCard
               key={product._id}
               link={product._id}
@@ -170,7 +168,7 @@ const Home = ({ match }) => {
           <Pagination
             activePage={currentPage}
             itemsCountPerPage={resultsPerPage}
-            totalItemsCount={productsCount}
+            totalItemsCount={productCount}
             firstPageText={"First"}
             nextPageText={">"}
             prevPageText={"<"}

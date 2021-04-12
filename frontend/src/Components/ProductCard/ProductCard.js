@@ -6,7 +6,7 @@ import "./ProductCard.style.css";
 const ProductCard = ({ link, name, images, ratings, reviews, price }) => {
   return (
     <div className="productCard" id={link}>
-      <img src="/photo/logo.png" alt={images} className="productCard__photo" />
+      <img src={images} alt={images} className="productCard__photo" />
       <div className="productCard__title">
         <h5 className="productCard__title__text">
           <Link

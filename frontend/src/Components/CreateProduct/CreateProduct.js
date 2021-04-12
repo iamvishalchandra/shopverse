@@ -9,15 +9,6 @@ import Sidebar from "../Sidebar/Sidebar";
 import "./CreateProduct.style.css";
 
 const CreateProduct = ({ history }) => {
-  const [name, setName] = useState("");
-  const [price, setPrice] = useState(0);
-  const [description, setDescription] = useState("");
-  const [category, setCategory] = useState("");
-  const [stock, setStock] = useState(0);
-  const [seller, setSeller] = useState("");
-  const [images, setImages] = useState([]);
-  const [imagesPreview, setImagesPreview] = useState([]);
-
   const categories = [
     "Accesories",
     "Beauty",
@@ -41,6 +32,15 @@ const CreateProduct = ({ history }) => {
     "Video",
   ];
 
+  const [name, setName] = useState("");
+  const [price, setPrice] = useState(0);
+  const [description, setDescription] = useState("");
+  const [category, setCategory] = useState(categories[0]);
+  const [stock, setStock] = useState(0);
+  const [seller, setSeller] = useState("");
+  const [images, setImages] = useState([]);
+  const [imagesPreview, setImagesPreview] = useState([]);
+
   const alert = useAlert();
   const dispatch = useDispatch();
   const { loading, error, success } = useSelector(
@@ -51,12 +51,12 @@ const CreateProduct = ({ history }) => {
     if (error) {
       alert.error(error);
       dispatch(clearErrors());
+    }
 
-      if (success) {
-        history.push("/admin/products");
-        alert.success("Product Successfully Created");
-        dispatch({ type: NEW_REVIEW_RESET });
-      }
+    if (success) {
+      history.push("/admin/products");
+      alert.success("Product Successfully Created");
+      dispatch({ type: NEW_REVIEW_RESET });
     }
   }, [dispatch, alert, error, history, success]);
 
@@ -80,19 +80,22 @@ const CreateProduct = ({ history }) => {
 
   const onChange = (e) => {
     const files = Array.from(e.target.files);
+
     setImagesPreview([]);
     setImages([]);
 
     files.forEach((file) => {
       const reader = new FileReader();
+
       reader.onload = () => {
         if (reader.readyState === 2) {
           setImagesPreview((oldArray) => [...oldArray, reader.result]);
+
           setImages((oldArray) => [...oldArray, reader.result]);
         }
       };
 
-      reader.readAsDataURL(files);
+      reader.readAsDataURL(file);
     });
   };
   return (
@@ -109,31 +112,14 @@ const CreateProduct = ({ history }) => {
             values={name}
             setValues={setName}
           />
-          {/* <div>
-            <label htmlFor="name_field">Name</label>
-            <input
-              type="text"
-              id="name_field"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-          </div> */}
+
           <LoggingOptions
             type="number"
             id="price_field"
-            text="Price"
+            text="Price ₹"
             values={price}
             setValues={setPrice}
           />
-          {/* <div>
-            <label htmlFor="price_field">Price</label>
-            <input
-              type="number"
-              id="price_field"
-              value={price}
-              onChange={(e) => setPrice(e.target.value)}
-            />
-          </div> */}
 
           <div>
             <label htmlFor="description_field">Description</label>
@@ -167,15 +153,7 @@ const CreateProduct = ({ history }) => {
             values={stock}
             setValues={setStock}
           />
-          {/* <div>
-            <label htmlFor="stock_field">Stock</label>
-            <input
-              type="number"
-              id="stock_field"
-              value={stock}
-              onChange={(e) => setStock(e.target.value)}
-            />
-          </div> */}
+
           <LoggingOptions
             type="text"
             id="seller_field"
@@ -183,15 +161,7 @@ const CreateProduct = ({ history }) => {
             values={seller}
             setValues={setSeller}
           />
-          {/* <div>
-            <label htmlFor="seller_field">Seller</label>
-            <input
-              type="text"
-              id="seller_field"
-              value={seller}
-              onChange={(e) => setSeller(e.target.value)}
-            />
-          </div> */}
+
           <div>
             <label>images</label>
             <div>
@@ -205,7 +175,12 @@ const CreateProduct = ({ history }) => {
               <label htmlFor="customFile">Choose Image</label>
             </div>
             {imagesPreview?.map((image) => (
-              <img src={image} key={image} alt="Product Images" />
+              <img
+                style={{ width: "20px" }}
+                src={image}
+                key={image}
+                alt="Product Images"
+              />
             ))}
           </div>
 

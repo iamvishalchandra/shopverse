@@ -53,7 +53,11 @@ const ListOrders = () => {
         ),
         actions: (
           <Link to={`/order/${order._id}`}>
-            <i style={{ textDecoration: "underline" }}>Check</i>
+            <img
+              src="/photo/eye-512.png"
+              style={{ width: "20px", alignContent: "center" }}
+              alt=""
+            />
           </Link>
         ),
       });

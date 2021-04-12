@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import "./CartItems.style.css";
 const CartItems = ({ item, increaseQty, decreaseQty, removeItem }) => {
   return (
-    <div className="cartItems" key={item.product}>
-      <img className="cartItems__image" src="/photo/logo.png" alt={item.name} />
+    <div className="cartItems" key={item?.product}>
+      <img className="cartItems__image" src={item.image} alt={item.name} />
 
       <Link className="cartItems__name" to={`/product/${item.product}`}>
         {item.name}
@@ -36,12 +36,16 @@ const CartItems = ({ item, increaseQty, decreaseQty, removeItem }) => {
       </div>
 
       <div className="cartItems__delete">
-        <i
+        {/* <img src="/photo/delete-512.ico" alt="" /> */}
+        {/* <i
+          > */}
+        <img
           className="cartItems__delete__icon"
           onClick={() => removeItem(item.product)}
-        >
-          Delete
-        </i>
+          src="/photo/delete-512.png"
+          alt=""
+        />
+        {/* </i> */}
       </div>
     </div>
   );

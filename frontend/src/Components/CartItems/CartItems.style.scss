@@ -1,7 +1,6 @@
 .cartItems {
-  //   border: 2px solid red;
   display: flex;
-  //   align-items: center;
+  align-items: center;
   justify-content: space-evenly;
 
   &__image {
@@ -13,13 +12,16 @@
     text-decoration: none;
     cursor: pointer;
     font-size: 1.4rem;
+    color: black;
 
     &:hover {
       text-decoration: underline;
+      color: orange;
     }
   }
 
   &__price {
+    padding: 0 20px;
     &__value {
       font-size: 2rem;
       color: #febd69;
@@ -30,6 +32,7 @@
   &__quantity {
     display: flex;
     align-items: center;
+    padding: 0 20px;
 
     &__count {
       cursor: pointer;
@@ -51,7 +54,7 @@
       border: none;
       width: 3rem;
       display: flex;
-      // margin: 0 0.2rem;
+
       text-align: center;
     }
   }
@@ -59,9 +62,7 @@
   &__delete {
     &__icon {
       cursor: pointer;
-      &:hover {
-        text-decoration: underline;
-      }
+      width: 20px;
     }
   }
 }
