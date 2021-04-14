@@ -1,5 +1,6 @@
 .loginUser {
-  min-width: 300px;
+  min-width: var(--min-width);
+  height: var(--height);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -10,6 +11,9 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .loginUser__title {
@@ -48,13 +52,14 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  padding: 5px;
 }
 
 .loginUser__container__form__button {
   text-decoration: none;
   color: black;
-  padding: 5px;
   margin: 10px;
+  font-size: 15px;
 }
 
 .loginUser__container__form__button:hover {
@@ -71,13 +76,5 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-}
-
-.loginUser__container__form__accountHolder__login {
-  border: 1px solid grey;
-  border-radius: 5px;
-  background-color: #faa230;
-  font-size: larger;
-  cursor: pointer;
 }
 /*# sourceMappingURL=LoginUser.style.css.map */

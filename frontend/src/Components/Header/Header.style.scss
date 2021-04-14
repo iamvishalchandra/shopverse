@@ -3,7 +3,8 @@
 }
 
 .header {
-  min-width: 300px;
+  // min-width: 300px;
+  min-width: var(--min-width);
   display: flex;
 
   background-color: #232f3e;

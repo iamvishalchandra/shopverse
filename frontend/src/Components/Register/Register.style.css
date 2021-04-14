@@ -1,5 +1,6 @@
 .register {
-  min-width: 300px;
+  min-width: var(--min-width);
+  height: calc(200px + var(--height));
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -7,14 +8,17 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
 }
 
 .register__title {
-  font-size: 60px;
-  padding: 10px;
+  margin-bottom: 50px;
+  font-size: 3rem;
 }
 
 .register__container {

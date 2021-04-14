@@ -1,11 +1,11 @@
 .checkOutSteps {
   clear: both;
   margin: 20px auto;
+  min-width: var(--min-width);
   width: auto;
   font-family: sans-serif;
   overflow: auto;
   display: flex;
-  justify-content: center;
 
   &__links {
     display: flex;
@@ -64,6 +64,7 @@
       font-weight: bold;
       float: left;
       height: auto;
+      font-size: 1rem;
 
       &--active {
         background: #fa9c23;
@@ -73,5 +74,11 @@
         background: #eeeeee;
       }
     }
+  }
+}
+
+@media (max-width: 400px) {
+  .checkOutSteps__links__step {
+    font-size: 10px;
   }
 }

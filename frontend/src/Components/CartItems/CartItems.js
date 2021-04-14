@@ -36,16 +36,12 @@ const CartItems = ({ item, increaseQty, decreaseQty, removeItem }) => {
       </div>
 
       <div className="cartItems__delete">
-        {/* <img src="/photo/delete-512.ico" alt="" /> */}
-        {/* <i
-          > */}
         <img
           className="cartItems__delete__icon"
           onClick={() => removeItem(item.product)}
           src="/photo/delete-512.png"
           alt=""
         />
-        {/* </i> */}
       </div>
     </div>
   );

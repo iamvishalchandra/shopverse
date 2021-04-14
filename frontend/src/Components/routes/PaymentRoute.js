@@ -17,7 +17,6 @@ const PaymentRoute = ({ history }) => {
 
   return (
     <>
-      <h1>Payment</h1>
       {stripeApiKey && (
         <Elements stripe={loadStripe(stripeApiKey)}>
           <Payment history={history} />

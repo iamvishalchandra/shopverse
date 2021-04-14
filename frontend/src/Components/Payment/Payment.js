@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useAlert } from "react-alert";
 import {
   CardCvcElement,
@@ -13,6 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import "./Payment.style.css";
 import { clearErrors, createOrder } from "../../actions/orderActions";
+import FormOptions from "../reUseable/FormOptions/FormOptions";
 
 const Payment = ({ history }) => {
   const options = {
@@ -46,10 +47,11 @@ const Payment = ({ history }) => {
     order.totalPrice = orderInfo.totalPrice;
   }
   const paymentData = { amount: Math.round(orderInfo.totalPrice * 100) };
-
+  const [disabled, setDisabled] = useState(false);
   const submitHandle = async (e) => {
     e.preventDefault();
-    document.querySelector("#paybtn").disabled = true;
+    setDisabled(true);
+
     let res;
 
     try {
@@ -72,7 +74,7 @@ const Payment = ({ history }) => {
 
       if (result.error) {
         alert.error(result.error.message);
-        document.querySelector("#paybtn").disabled = false;
+        setDisabled(false);
       } else {
         if (result.paymentIntent.status === "succeeded") {
           order.paymentInfo = {
@@ -86,7 +88,7 @@ const Payment = ({ history }) => {
         } else alert.error("Unable to process...\nPls try again later");
       }
     } catch (error) {
-      document.querySelector("#paybtn").disabled = false;
+      setDisabled(false);
       alert.error(error.response.data.message);
     }
   };
@@ -95,9 +97,9 @@ const Payment = ({ history }) => {
     <div className="payment">
       <MetaData title="Payment" />
       <CheckOutSteps shipping confirmOrder payment />
-      <div>
-        <form onSubmit={submitHandle}>
-          <h1>Card Info</h1>
+      <div className="payment__container">
+        <h1>Card Info</h1>
+        <form onSubmit={submitHandle} className="payment__container__form">
           <div>
             <label htmlFor="card_num_field">Card Number</label>
             <CardNumberElement
@@ -118,9 +120,13 @@ const Payment = ({ history }) => {
             <label htmlFor="card_cvc_field">Card CVC</label>
             <CardCvcElement type="text" id="card_cvc_field" options={options} />
           </div>
-          <button type="submit" id="paybtn">
-            Pay {orderInfo?.totalPrice}
-          </button>
+          <FormOptions
+            formItem="button"
+            type="submit"
+            text={`Pay ₹${orderInfo?.totalPrice}`}
+            setValues={submitHandle}
+            disabled={disabled}
+          />
         </form>
       </div>
     </div>

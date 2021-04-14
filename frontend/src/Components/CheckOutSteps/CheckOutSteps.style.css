@@ -1,15 +1,13 @@
 .checkOutSteps {
   clear: both;
   margin: 20px auto;
+  min-width: var(--min-width);
   width: auto;
   font-family: sans-serif;
   overflow: auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
 }
 
 .checkOutSteps__links {
@@ -66,6 +64,7 @@
   font-weight: bold;
   float: left;
   height: auto;
+  font-size: 1rem;
 }
 
 .checkOutSteps__links__step--active {
@@ -75,5 +74,11 @@
 
 .checkOutSteps__links__step--incomplete {
   background: #eeeeee;
+}
+
+@media (max-width: 400px) {
+  .checkOutSteps__links__step {
+    font-size: 10px;
+  }
 }
 /*# sourceMappingURL=CheckOutSteps.style.css.map */

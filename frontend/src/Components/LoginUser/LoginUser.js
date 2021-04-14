@@ -5,9 +5,9 @@ import { Link } from "react-router-dom";
 import { clearErrors, userlogin } from "../../actions/userActions";
 import MetaData from "../MetaData";
 import Loader from "../Loader/Loader";
+import FormOptions from "../reUseable/FormOptions/FormOptions";
 
 import "./LoginUser.style.css";
-import LoggingOptions from "../LoggingOptions/LoggingOptions";
 
 const LoginUser = ({ history, location }) => {
   const [email, setEmail] = useState("");
@@ -56,30 +56,36 @@ const LoginUser = ({ history, location }) => {
       ) : (
         <div className="loginUser__container">
           <form className="loginUser__container__form" onSubmit={submitHandle}>
-            <LoggingOptions
+            <FormOptions
+              formItem="input"
               type="email"
               id="email_field"
               text="Email"
+              name="email"
               values={email}
-              setValues={setEmail}
+              setValues={(e) => setEmail(e.target.value)}
+              placeholder="Enter Your Name"
             />
 
-            <LoggingOptions
+            <FormOptions
+              formItem="input"
               type="password"
               id="password_field"
               text="Password"
+              name="email"
               values={password}
-              setValues={setPassword}
+              setValues={(e) => setPassword(e.target.value)}
+              placeholder="Enter Your Password"
             />
 
             <div className="loginUser__container__form__accountHolder">
-              <button
+              <FormOptions
+                formItem="button"
+                text="Login"
                 type="submit"
-                className="loginUser__container__form__button loginUser__container__form__accountHolder__login"
-                onClick={submitVerification}
-              >
-                Login
-              </button>
+                setValues={submitVerification}
+              />
+
               <Link
                 to="/password/forgot"
                 className="loginUser__container__form__button loginUser__container__form__accountHolder__forgot"

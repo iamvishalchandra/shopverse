@@ -1,14 +1,15 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+
 import CheckOutSteps from "../CheckOutSteps/CheckOutSteps";
 import MetaData from "../MetaData";
+import OrderData from "../reUseable/OrderData/OrderData";
 import "./ConfirmOrder.style.css";
 
 const ConfirmOrder = ({ history }) => {
-  const { cartItems, shippingInfo } = useSelector((state) => state.cart);
-  const { user } = useSelector((state) => state.user);
-
+  const { cartItems, shippingInfo } = useSelector((state) => state?.cart);
+  const { user } = useSelector((state) => state?.user);
+  console.log(cartItems);
   const itemPrice = cartItems.reduce(
     (acc, item) => item.price * item.quantity + acc,
     0
@@ -30,75 +31,46 @@ const ConfirmOrder = ({ history }) => {
   };
 
   return (
-    <div className="confirmOrder">
-      <MetaData title="Confirm Order" />
-      <CheckOutSteps shipping confirmOrder />
-      <div>
-        <h4>Shipping Info</h4>
-        <p>
-          <b>Name: </b>
-          {user.name}
-        </p>
-        <p>
-          <b>Phone: </b>
-          {shippingInfo.contactNo}
-        </p>
-        <p>
-          <b>Address: </b> {shippingInfo.address}
-        </p>
-        <p>
-          <b>City: </b> {shippingInfo.city}
-        </p>
-        <p>
-          <b>Postal Code: </b> {shippingInfo.postalCode}
-        </p>
-        <p>
-          <b>Country: </b> {shippingInfo.country}
-        </p>
-        <hr />
-        <h4>Your Cart Item:</h4>
-        <hr />
-        {cartItems.map((item) => (
-          <div>
+    <>
+      <div className="confirmOrder">
+        <CheckOutSteps shipping confirmOrder />
+        <MetaData title="Confirm Order" />
+        <div className="confirmOrder__body">
+          <div className="confirmOrder__body__orderInfo">
+            <h1 className="confirmOrder__body__orderInfo__title confirmOrder__title">
+              Shipping Info
+            </h1>
             <div>
-              <div>
-                <img src="" alt="" />
-              </div>
-              <Link>{item.name}</Link>
+              <OrderData title="Name:" values={user?.name} />
+              <OrderData title="Phone:" values={shippingInfo?.contactNo} />
+              <OrderData
+                title="Address:"
+                values={`${shippingInfo?.address}, ${shippingInfo?.city}, ${shippingInfo?.postalCode}, ${shippingInfo?.country}`}
+              />
             </div>
             <div>
-              <p>
-                {item.quantity} x {item.price} ={" "}
-                <b>{(item.quantity * item.price).toFixed(2)}</b>
-              </p>
+              <hr />
+              <h4 className="confirmOrder__title">Your Cart Item:</h4>
+              <hr />
+              {cartItems.map((item) => (
+                <OrderData item={item} />
+              ))}
             </div>
-            <hr />
           </div>
-        ))}
-      </div>
-      <div>
-        <div>
-          <h4>Order Summary</h4>
-          <hr />
-          <p>
-            Subtotal: <span>₹{itemPrice}</span>
-          </p>
-          <p>
-            Shipping: <span>₹{shippingCharge}</span>
-          </p>
-          <p>
-            GST: <span>₹{tax} ( CGST = 5%, SGST = 5% )</span>
-          </p>
-          <hr />
-          <p>
-            Total: <span>₹{totalPrice}</span>
-          </p>
-          <hr />
 
-          <button onClick={proceedToPayment}>Proceed To Payment</button>
+          <div className="confirmOrder__body__subTotal">
+            <h1 className="confirmOrder__body__subTotal__title confirmOrder__title">
+              Order Summary
+            </h1>
+            <hr />
+            <OrderData
+              subTotal={{ itemPrice, shippingCharge, tax, totalPrice }}
+              setValues={proceedToPayment}
+            />
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

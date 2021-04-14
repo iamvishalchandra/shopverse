@@ -4,6 +4,7 @@ import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, forgotPassword } from "../../actions/userActions";
 import MetaData from "../MetaData";
+import FormOptions from "../reUseable/FormOptions/FormOptions";
 import "./ForgotPassword.style.css";
 
 const ForgotPassword = ({ history }) => {
@@ -34,27 +35,29 @@ const ForgotPassword = ({ history }) => {
   return (
     <div>
       <MetaData title="Forgot Password" />
-      <div>
-        <form onSubmit={submitHandler}>
-          <h1>Forgot Password</h1>
-          <div>
-            <label htmlFor="email_field">Email</label>
-            <input
-              type="email"
-              id="email_field"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
-          <button
+      <div className="forgotPassword">
+        <h1 className="forgotPassword__title">Forgot Password?</h1>
+        <form onSubmit={submitHandler} className="forgotPassword__form">
+          <FormOptions
+            formItem="input"
+            type="email"
+            id="email_field"
+            values={email}
+            name="email"
+            text="E-mail"
+            placeholder="Enter your email"
+            setValues={(e) => setEmail(e.target.value)}
+          />
+
+          <FormOptions
+            formItem="button"
+            text="Send Email"
             type="submit"
             disabled={loading ? true : false}
-            style={{
-              backgroundColor: loading ? "rgba(128, 128, 128, 0.315)" : "",
+            styleItem={{
+              backgroundColor: loading && "rgba(128, 128, 128, 0.315)",
             }}
-          >
-            Send Email
-          </button>
+          />
         </form>
       </div>
     </div>

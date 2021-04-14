@@ -24,7 +24,7 @@
         text-decoration: none;
         color: #2e2e2e;
         &:hover {
-          color: #fa9c23;
+          color: var(--button-color);
           text-decoration: none;
         }
       }
@@ -55,15 +55,22 @@
   }
 
   &__viewDetails {
-    background-color: #fa9c23;
+    margin-top: 20px;
+    background-color: var(--button-color);
     border: 2px solid transparent;
     color: white;
     width: 100%;
+    font-weight: bold;
     height: 30px;
     text-decoration: none;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 3px;
+
+    &:hover {
+      text-decoration: underline;
+      color: black;
+    }
   }
 }

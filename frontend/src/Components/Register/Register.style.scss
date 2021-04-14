@@ -1,12 +1,14 @@
 .register {
-  min-width: 300px;
+  min-width: var(--min-width);
+  height: calc(200px + var(--height));
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
 
   &__title {
-    font-size: 60px;
-    padding: 10px;
+    margin-bottom: 50px;
+    font-size: 3rem;
   }
 
   &__container {

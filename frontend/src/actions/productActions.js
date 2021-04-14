@@ -1,5 +1,4 @@
 import axios from "axios";
-import { CREATE_ORDER_REQUEST } from "../constants/orderConstants";
 import {
   ALL_PRODUCTS_FAIL,
   ALL_PRODUCTS_REQUEST,

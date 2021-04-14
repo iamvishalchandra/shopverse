@@ -3,10 +3,11 @@ import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { clearErrors, signUp } from "../../actions/userActions";
-import LoggingOptions from "../LoggingOptions/LoggingOptions";
+
 import MetaData from "../MetaData";
 import UploadIcon from "../../Photos/UploadIcon.svg";
 import "./Register.style.css";
+import FormOptions from "../reUseable/FormOptions/FormOptions";
 
 const Register = ({ history }) => {
   const [user, setUser] = useState({ name: "", email: "", password: "" });
@@ -64,11 +65,11 @@ const Register = ({ history }) => {
     }
   }
 
-  const submitVerification = async (e) => {
-    await verify(name, "Name", e);
-    await verify(email, "Email", e);
-    await verify(password, "Password", e);
-    await verify(avatar, "Avatar", e);
+  const submitVerification = (e) => {
+    verify(name, "Name", e);
+    verify(email, "Email", e);
+    verify(password, "Password", e);
+    verify(avatar, "Avatar", e);
   };
 
   return (
@@ -81,41 +82,37 @@ const Register = ({ history }) => {
           encType="multipart/form-data"
           className="register__container__form"
         >
-          <LoggingOptions
+          <FormOptions
+            formItem="input"
             type="name"
             id="name_field"
             text="Name"
+            name="name"
             values={name}
             setValues={onChange}
-            register
           />
 
-          <LoggingOptions
+          <FormOptions
+            formItem="input"
             type="email"
             id="email_field"
+            name="email"
             text="Email"
             values={email}
             setValues={onChange}
-            register
           />
 
-          <LoggingOptions
+          <FormOptions
+            formItem="input"
             type="password"
+            name="password"
             id="password_field"
             text="Password"
             values={password}
             setValues={onChange}
-            register
           />
 
           <div className="register__container__form__avatar">
-            <label
-              htmlFor="avatar-upload"
-              className="register__container__form__avatar__label"
-            >
-              Avatar
-            </label>
-
             <div className="register__container__form__avatar__body">
               {avatarPreview && (
                 <img
@@ -124,37 +121,25 @@ const Register = ({ history }) => {
                   className="register__container__form__avatar__body__photo"
                 />
               )}
-
-              <div className="register__container__form__avatar__body__upload">
-                <label
-                  htmlFor="customFile"
-                  className="register__container__form__avatar__body__upload__label"
-                >
-                  Choose Avatar
-                </label>
-                <input
-                  type="file"
-                  id="customFile"
-                  name="avatar"
-                  accept="/images/*"
-                  onChange={onChange}
-                  className="register__container__form__avatar__body__upload__input"
-                />
-              </div>
+              <FormOptions
+                formItem="input"
+                type="file"
+                id="customFile"
+                name="avatar"
+                text="Choose Avatar"
+                accept="/image/*"
+                setValues={onChange}
+                styleItem={{ marginTop: "0" }}
+              />
             </div>
           </div>
-          <button
-            id="register_button"
+          <FormOptions
+            formItem="button"
             type="submit"
+            text="Creat Account"
             disabled={loading ? true : false}
-            style={{
-              backgroundColor: loading ? "rgba(128, 128, 128, 0.315)" : "",
-            }}
-            className="register__container__button register__container__form__register"
-            onClick={submitVerification}
-          >
-            Create Account
-          </button>
+            setValues={submitVerification}
+          />
         </form>
         <div className="register__container__logIn">
           Already Have Account?

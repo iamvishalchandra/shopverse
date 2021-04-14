@@ -1,0 +1,136 @@
+.formOptions {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.formOptions__button {
+  margin: 20px 0;
+  outline: none;
+  background-color: var(--button-color);
+  border: none;
+  padding: 0.4rem 1.8rem;
+  font-family: "calibri";
+  font-weight: bold;
+  border-radius: 3px;
+  font-size: large;
+  cursor: pointer;
+}
+
+.formOptions__button:hover {
+  text-decoration: underline;
+}
+
+.formOptions__label__others {
+  color: black;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 30px 0 5px 0;
+}
+
+.formOptions__label__file {
+  background-color: #faa230;
+  margin: 20px 0 0px 50px;
+  padding: 10px;
+  border-radius: 7px;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.formOptions__label__file:hover {
+  text-decoration: underline;
+}
+
+.formOptions__input__others {
+  width: 250px;
+  height: 30px;
+  font-size: large;
+  color: black;
+}
+
+.formOptions__input__others::-webkit-input-placeholder {
+  color: grey;
+  opacity: 30%;
+  font-style: italic;
+}
+
+.formOptions__input__others:-ms-input-placeholder {
+  color: grey;
+  opacity: 30%;
+  font-style: italic;
+}
+
+.formOptions__input__others::-ms-input-placeholder {
+  color: grey;
+  opacity: 30%;
+  font-style: italic;
+}
+
+.formOptions__input__others::placeholder {
+  color: grey;
+  opacity: 30%;
+  font-style: italic;
+}
+
+.formOptions__input__file {
+  width: 0.1px;
+  cursor: pointer;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.formOptions__textArea {
+  border-radius: 10px;
+  padding: 3px;
+  outline: none;
+}
+
+.formOptions__textArea::-webkit-input-placeholder {
+  color: grey;
+  opacity: 30%;
+  font-style: italic;
+}
+
+.formOptions__textArea:-ms-input-placeholder {
+  color: grey;
+  opacity: 30%;
+  font-style: italic;
+}
+
+.formOptions__textArea::-ms-input-placeholder {
+  color: grey;
+  opacity: 30%;
+  font-style: italic;
+}
+
+.formOptions__textArea::placeholder {
+  color: grey;
+  opacity: 30%;
+  font-style: italic;
+}
+
+.formOptions__select {
+  border-radius: 10px;
+  width: 250px;
+  height: 30px;
+  font-weight: bold;
+  outline: none;
+}
+
+.formOptions__select__list {
+  font-family: "calibri";
+  font-style: italic;
+  font-size: x-large;
+}
+
+@media (max-width: 300px) {
+  .formOptions__input {
+    width: 100%;
+  }
+}
+/*# sourceMappingURL=FormOptions.style.css.map */

@@ -52,7 +52,7 @@ const ListOrders = () => {
           </p>
         ),
         actions: (
-          <Link to={`/order/${order._id}`}>
+          <Link to={`/orderdetail/${order._id}`}>
             <img
               src="/photo/eye-512.png"
               style={{ width: "20px", alignContent: "center" }}

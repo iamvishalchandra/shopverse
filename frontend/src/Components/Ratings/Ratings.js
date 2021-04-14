@@ -6,7 +6,7 @@ const Ratings = ({ ratings, rating, setRating, hover, setHover }) => {
   // const [hover, setHover] = useState(null);
 
   return (
-    <div className="ratings">
+    <div className="ratings" style={{ display: ratings < 1 && "none" }}>
       {[...Array(5)].map((stars, i) => {
         const ratingValue = i + 1;
         return ratings >= 0 ? (

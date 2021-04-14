@@ -51,7 +51,7 @@ function App() {
         <ProtectedRoute path="/payment" component={PaymentRoute} exact />
         <ProtectedRoute path="/success" component={OrderSuccess} exact />
         <ProtectedRoute path="/orders/me" component={ListOrders} exact />
-        <ProtectedRoute path="/order/:id" component={OrderDetail} exact />
+        <ProtectedRoute path="/orderdetail/:id" component={OrderDetail} exact />
         <ProtectedRoute
           path="/password/update"
           component={UpdatePassword}

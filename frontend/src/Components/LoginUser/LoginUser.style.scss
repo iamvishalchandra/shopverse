@@ -1,9 +1,11 @@
 .loginUser {
-  min-width: 300px;
+  min-width: var(--min-width);
+  height: var(--height);
 
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 
   &__title {
     font-size: 60px;
@@ -24,12 +26,13 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      padding: 5px;
 
       &__button {
         text-decoration: none;
         color: black;
-        padding: 5px;
         margin: 10px;
+        font-size: 15px;
 
         &:hover {
           text-decoration: underline;
@@ -40,14 +43,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-
-        &__login {
-          border: 1px solid grey;
-          border-radius: 5px;
-          background-color: #faa230;
-          font-size: larger;
-          cursor: pointer;
-        }
       }
     }
   }

@@ -1,0 +1,53 @@
+.orderData {
+  &__shippingAddress {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+
+    &__text {
+      padding: 0 10px;
+      padding-left: 0;
+    }
+  }
+
+  &__cartItems {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &__name {
+      padding: 30px;
+    }
+    &__cost {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      &__units {
+        padding: 20px;
+        font-weight: bold;
+        color: gray;
+      }
+
+      &__price {
+        padding: 10px;
+      }
+    }
+  }
+
+  &__orderTotal {
+    display: flex;
+    flex-direction: column;
+    &__data {
+      margin: 20px 0;
+      display: flex;
+
+      justify-content: space-between;
+      font-weight: bold;
+      color: gray;
+
+      &__span {
+        color: black;
+      }
+    }
+  }
+}

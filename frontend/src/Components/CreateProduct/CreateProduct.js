@@ -3,8 +3,8 @@ import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, createProduct } from "../../actions/productActions";
 import { NEW_REVIEW_RESET } from "../../constants/productConstants";
-import LoggingOptions from "../LoggingOptions/LoggingOptions";
 import MetaData from "../MetaData";
+import FormOptions from "../reUseable/FormOptions/FormOptions";
 import Sidebar from "../Sidebar/Sidebar";
 import "./CreateProduct.style.css";
 
@@ -36,7 +36,7 @@ const CreateProduct = ({ history }) => {
   const [price, setPrice] = useState(0);
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState(categories[0]);
-  const [stock, setStock] = useState(0);
+  const [stock, setStock] = useState(10);
   const [seller, setSeller] = useState("");
   const [images, setImages] = useState([]);
   const [imagesPreview, setImagesPreview] = useState([]);
@@ -50,6 +50,7 @@ const CreateProduct = ({ history }) => {
   useEffect(() => {
     if (error) {
       alert.error(error);
+
       dispatch(clearErrors());
     }
 
@@ -105,75 +106,82 @@ const CreateProduct = ({ history }) => {
       <div>
         <h1>New Product</h1>
         <form encType="multipart/form-data" onSubmit={submitHandler}>
-          <LoggingOptions
+          <FormOptions
+            formItem="input"
             type="text"
+            name="name"
             id="name_field"
             text="Name"
             values={name}
-            setValues={setName}
+            setValues={(e) => setName(e.target.value)}
+            placeholder="Enter Product Name"
           />
 
-          <LoggingOptions
+          <FormOptions
+            formItem="input"
             type="number"
+            name="price"
             id="price_field"
             text="Price ₹"
             values={price}
-            setValues={setPrice}
+            setValues={(e) => setPrice(e.target.value)}
+            minValue={1}
+          />
+          <FormOptions
+            formItem="textArea"
+            id="description_field"
+            name="description"
+            rows="3"
+            text="Description"
+            values={description}
+            setValues={(e) => setDescription(e.target.value)}
+            placeholder="Desription"
           />
 
-          <div>
-            <label htmlFor="description_field">Description</label>
-            <textarea
-              id="description_field"
-              rows="8"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-            ></textarea>
-          </div>
+          <FormOptions
+            formItem="dropdown"
+            id="category_field"
+            name="category"
+            text="Category"
+            values={category}
+            setValues={(e) => setCategory(e.target.value)}
+            dropdownList={categories}
+          />
 
-          <div>
-            <label htmlFor="category_field">Category</label>
-            <select
-              id="category_field"
-              value={category}
-              onChange={(e) => setCategory(e.target.value)}
-            >
-              {categories.map((category) => (
-                <option key={category} value={category}>
-                  {category}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          <LoggingOptions
+          <FormOptions
+            formItem="input"
             type="number"
+            name="stock"
             id="stock_field"
-            text="Stock"
+            text="Stock (Min Stock 10)"
             values={stock}
-            setValues={setStock}
+            setValues={(e) => setStock(e.target.value)}
+            minValue={10}
           />
 
-          <LoggingOptions
+          <FormOptions
+            formItem="input"
             type="text"
+            name="seller"
             id="seller_field"
             text="Seller"
             values={seller}
-            setValues={setSeller}
+            setValues={(e) => setSeller(e.target.value)}
+            placeholder="Enter Seller Name"
+            styleItem={{ border: "2px solid red" }}
           />
 
           <div>
-            <label>images</label>
-            <div>
-              <input
-                type="file"
-                name="product_images"
-                id="customFile"
-                multiple
-                onChange={onChange}
-              />
-              <label htmlFor="customFile">Choose Image</label>
-            </div>
+            <FormOptions
+              formItem="input"
+              type="file"
+              text="Choose Product Images"
+              name="product_images"
+              id="customFile"
+              multiple
+              setValues={onChange}
+            />
+
             {imagesPreview?.map((image) => (
               <img
                 style={{ width: "20px" }}
@@ -184,9 +192,17 @@ const CreateProduct = ({ history }) => {
             ))}
           </div>
 
-          <button type="submit" disabled={loading ? true : false}>
-            Create Product
-          </button>
+          <FormOptions
+            formItem="button"
+            type="submit"
+            disabled={loading ? true : false}
+            text="Creat Product"
+          />
+          <div>
+            {/* <button type="submit" disabled={loading ? true : false}>
+              Create Product
+            </button> */}
+          </div>
         </form>
       </div>
     </div>

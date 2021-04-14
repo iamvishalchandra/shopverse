@@ -1,3 +1,9 @@
+:root {
+  --button-color: #faa230;
+  --min-width: 300px;
+  --height: 83vh;
+}
+
 * {
   margin: 0;
   padding: 0;

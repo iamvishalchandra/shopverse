@@ -1,0 +1,100 @@
+.formOptions {
+  display: flex;
+  flex-direction: column;
+
+  &__button {
+    margin: 20px 0;
+    outline: none;
+    background-color: var(--button-color);
+    border: none;
+    padding: 0.4rem 1.8rem;
+
+    font-family: "calibri";
+    font-weight: bold;
+    border-radius: 3px;
+    font-size: large;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__label {
+    &__others {
+      color: black;
+      font-size: 20px;
+      font-weight: bold;
+      margin: 30px 0 5px 0;
+    }
+
+    &__file {
+      background-color: #faa230;
+      margin: 20px 0 0px 50px;
+      padding: 10px;
+      border-radius: 7px;
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &__input {
+    &__others {
+      width: 250px;
+      height: 30px;
+      font-size: large;
+      color: black;
+
+      &::placeholder {
+        color: grey;
+        opacity: 30%;
+        font-style: italic;
+      }
+    }
+    &__file {
+      width: 0.1px;
+      cursor: pointer;
+      opacity: 0;
+      overflow: hidden;
+    }
+  }
+
+  &__textArea {
+    border-radius: 10px;
+    padding: 3px;
+    outline: none;
+
+    &::placeholder {
+      color: grey;
+      opacity: 30%;
+      font-style: italic;
+    }
+  }
+
+  &__select {
+    border-radius: 10px;
+    width: 250px;
+    height: 30px;
+    font-weight: bold;
+    outline: none;
+
+    &__list {
+      font-family: "calibri";
+      font-style: italic;
+      font-size: x-large;
+    }
+  }
+}
+
+@media (max-width: 300px) {
+  .formOptions {
+    &__input {
+      width: 100%;
+    }
+  }
+}

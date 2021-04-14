@@ -11,9 +11,9 @@ const ProductCard = ({ link, name, images, ratings, reviews, price }) => {
         <h5 className="productCard__title__text">
           <Link
             className="productCard__title__text__link"
-            to={`/products/${link}`}
+            to={`/product/${link}`}
           >
-            {name}
+            {name.substr(0, 25) + "..."}
           </Link>
         </h5>
       </div>
@@ -23,8 +23,11 @@ const ProductCard = ({ link, name, images, ratings, reviews, price }) => {
             <Ratings ratings={ratings} />
           </div>
         </div>
-        <span className="productCard__rating__reviews">
-          ({reviews} Reviews)
+        <span
+          className="productCard__rating__reviews"
+          // style={{ visibility: ratings < 1 && "hidden" }}
+        >
+          ({reviews ? `${reviews} Reviews` : "No Reviews Yet"})
         </span>
       </div>
       <p className="productCard__price">₹{price}</p>
