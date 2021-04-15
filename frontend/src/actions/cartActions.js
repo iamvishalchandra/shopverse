@@ -29,7 +29,6 @@ export const removeItemsFromCart = (id) => (dispatch, getState) => {
 };
 
 export const saveShippingInfo = (data) => (dispatch) => {
-  console.log(data);
   dispatch({ type: SAVE_SHIPPING_INFO, payload: data });
   localStorage.setItem("shippingInfo", JSON.stringify(data));
 };

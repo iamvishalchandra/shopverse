@@ -1,20 +1,29 @@
 import React, { useEffect } from "react";
 import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
-import { clearErrors, getAdminProducts } from "../../actions/productActions";
+import {
+  clearErrors,
+  deleteSingleProduct,
+  getAdminProducts,
+} from "../../actions/productActions";
 // import "bootstrap-css-only/css/bootstrap.min.css";
 import "mdbreact/dist/css/mdb.css";
 import "./AdminProductList.style.css";
 import { Link } from "react-router-dom";
-import Sidebar from "../Sidebar/Sidebar";
+import Sidebar from "../AdminComponents/Sidebar/Sidebar";
 import MetaData from "../MetaData";
 import Loader from "../Loader/Loader";
 import { MDBDataTable } from "mdbreact";
+import { DELETE_PRODUCT_RESET } from "../../constants/productConstants";
+import { textTruncate } from "../../helpers/useFullFunctions";
 
 const AdminProductList = ({ history }) => {
   const alert = useAlert();
   const dispatch = useDispatch();
   const { loading, error, products } = useSelector((state) => state?.products);
+  const { error: deleteError, isDeleted } = useSelector(
+    (state) => state?.deleteProduct
+  );
 
   useEffect(() => {
     dispatch(getAdminProducts());
@@ -23,7 +32,18 @@ const AdminProductList = ({ history }) => {
       alert.error(error);
       dispatch(clearErrors());
     }
-  }, [dispatch, alert, error]);
+
+    if (deleteError) {
+      alert.error(deleteError);
+      dispatch(clearErrors());
+    }
+
+    if (isDeleted) {
+      alert.success(`Product is Deleted Successfully`);
+      history.push("/admin/products");
+      dispatch({ type: DELETE_PRODUCT_RESET });
+    }
+  }, [dispatch, alert, error, deleteError, history, isDeleted]);
 
   const setProducts = () => {
     const data = {
@@ -40,31 +60,42 @@ const AdminProductList = ({ history }) => {
     products?.forEach((product) => {
       data?.rows?.push({
         id: product._id,
-        name: product.name,
+
+        name: textTruncate(product.name, 30),
         price: `₹${product.price}`,
         stock: product.stock,
 
         actions: (
-          <>
-            <Link to={`/admin/product/${product._id}`}>
+          <div>
+            <button style={{ padding: "5px" }}>
+              <Link to={`/admin/product/${product._id}`}>
+                <img
+                  src="/photo/edit-3-512.png"
+                  style={{ padding: "3px", width: "20px" }}
+                  alt=""
+                />
+              </Link>
+            </button>
+            <button
+              style={{ padding: "5px" }}
+              onClick={() => deleteProductHandle(product._id)}
+            >
               <img
-                src="/photo/edit-3-512.png"
+                src="/photo/delete-512.png"
                 style={{ padding: "3px", width: "20px" }}
                 alt=""
               />
-            </Link>
-
-            <img
-              src="/photo/delete-512.png"
-              style={{ padding: "3px", width: "20px" }}
-              alt=""
-            />
-          </>
+            </button>
+          </div>
         ),
       });
     });
 
     return data;
+  };
+
+  const deleteProductHandle = (id) => {
+    dispatch(deleteSingleProduct(id));
   };
 
   return (

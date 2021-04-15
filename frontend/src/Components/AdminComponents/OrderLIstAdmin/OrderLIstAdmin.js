@@ -1,31 +1,30 @@
-import { useEffect } from "react";
+import { MDBDataTable } from "mdbreact";
+import React, { useEffect } from "react";
 import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
-import { clearErrors, myOrders } from "../../actions/orderActions";
-import Loader from "../Loader/Loader";
-import { MDBDataTable } from "mdbreact";
-import MetaData from "../MetaData";
 import { Link } from "react-router-dom";
-import "@fortawesome/fontawesome-free/css/all.min.css";
-// import "bootstrap-css-only/css/bootstrap.min.css";
-import "mdbreact/dist/css/mdb.css";
-import "./ListOrders.style.css";
+import { clearErrors, getAllOrders } from "../../../actions/orderActions";
+import Loader from "../../Loader/Loader";
+import MetaData from "../../MetaData";
+import Sidebar from "../Sidebar/Sidebar";
+import "./OrderLIstAdmin.style.css";
 
-const ListOrders = () => {
+const OrderLIstAdmin = () => {
   const alert = useAlert();
   const dispatch = useDispatch();
-  const { loading, error, orders } = useSelector((state) => state.myOrders);
+
+  const { loading, error, orders } = useSelector((state) => state.allOrders);
 
   useEffect(() => {
-    dispatch(myOrders());
+    dispatch(getAllOrders());
 
     if (error) {
       alert.error(error);
-      dispatch(clearErrors());
+      dispatch(clearErrors);
     }
   }, [dispatch, alert, error]);
 
-  const getOrders = () => {
+  const setOrders = () => {
     const data = {
       columns: [
         { label: "Actions", field: "actions", sort: "asc" },
@@ -52,15 +51,27 @@ const ListOrders = () => {
           </p>
         ),
         actions: (
-          <button>
-            <Link to={`/order/detail/${order._id}`}>
+          <div>
+            <button style={{ padding: "5px", margin: "0 20px" }}>
+              <Link to={`/admin/order/${order._id}`}>
+                <img
+                  src="/photo/edit-3-512.png"
+                  style={{ padding: "3px", width: "20px" }}
+                  alt=""
+                />
+              </Link>
+            </button>
+            <button
+              style={{ padding: "5px" }}
+              //   onClick={() => deleteProductHandle(order._id)}
+            >
               <img
-                src="/photo/eye-512.png"
-                style={{ width: "20px", alignContent: "center" }}
+                src="/photo/delete-512.png"
+                style={{ padding: "3px", width: "20px" }}
                 alt=""
               />
-            </Link>
-          </button>
+            </button>
+          </div>
         ),
       });
     });
@@ -69,15 +80,15 @@ const ListOrders = () => {
   };
 
   return (
-    <div className="listOrders">
-      <MetaData title="My Orders" />
-      <h1 className="listOrders__title">My Orders</h1>
-
+    <div className="orderLIstAdmin">
+      <MetaData title="All Orders" />
+      <Sidebar />
+      <h1>Order List</h1>
       {loading ? (
         <Loader />
       ) : (
         <MDBDataTable
-          data={getOrders()}
+          data={setOrders()}
           bordered
           striped
           responsiveSm
@@ -90,4 +101,4 @@ const ListOrders = () => {
   );
 };
 
-export default ListOrders;
+export default OrderLIstAdmin;

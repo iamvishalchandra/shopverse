@@ -3,9 +3,14 @@ import { Link } from "react-router-dom";
 import "./Sidebar.style.css";
 
 const Sidebar = () => {
+  const [show, setShow] = useState(true);
   const [productMenu, setProductMenu] = useState(false);
   return (
-    <div className="sidebar">
+    <div className="sidebar" style={{ width: !show && "70px" }}>
+      <div onClick={() => setShow(!show)} className="sidebar__toggle">
+        {show ? "<" : ">"}
+      </div>
+      (
       <nav className="sidebar__navbar">
         <ul className="sidebar__navbar__options">
           <li className="sidebar__navbar__options__list sidebar__navbar__options__list__dashboard">
@@ -18,7 +23,7 @@ const Sidebar = () => {
                 alt=""
                 className="sidebar__navbar__options__list__links__icon"
               />
-              Dashboard
+              {show && "Dashboard"}
             </Link>
           </li>
           <li className="sidebar__navbar__options__list sidebar__navbar__options__list__products">
@@ -31,7 +36,7 @@ const Sidebar = () => {
                 alt=""
                 className="sidebar__navbar__options__list__links__icon"
               />
-              Products
+              {show && "Products"}
             </Link>
             {productMenu === true && (
               <ul
@@ -48,7 +53,7 @@ const Sidebar = () => {
                       alt=""
                       className="sidebar__navbar__options__list__links__icon"
                     />
-                    All
+                    {show && "All"}
                   </Link>
                 </li>
                 <li className="sidebar__navbar__options__list__innerOptions__list sidebar__navbar__options__list__products__innerOptions__list__create">
@@ -61,7 +66,7 @@ const Sidebar = () => {
                       alt=""
                       className="sidebar__navbar__options__list__links__icon"
                     />
-                    Create
+                    {show && "Create"}
                   </Link>
                 </li>
               </ul>
@@ -77,7 +82,7 @@ const Sidebar = () => {
                 alt=""
                 className="sidebar__navbar__options__list__links__icon"
               />
-              Orders
+              {show && "Orders"}
             </Link>
           </li>
           <li className="sidebar__navbar__options__list sidebar__navbar__options__list__users">
@@ -90,7 +95,7 @@ const Sidebar = () => {
                 alt=""
                 className="sidebar__navbar__options__list__links__icon"
               />
-              Users
+              {show && "Users"}
             </Link>
           </li>
           <li className="sidebar__navbar__options__list sidebar__navbar__options__list__reviews">
@@ -99,15 +104,20 @@ const Sidebar = () => {
               className="sidebar__navbar__options__list__links sidebar__navbar__options__list__links__reviews"
             >
               <img
+                style={{
+                  width: "20px",
+                  height: "20px",
+                }}
                 src="/photo/admin/review.png"
                 alt=""
                 className="sidebar__navbar__options__list__links__icon"
               />
-              Reviews
+              {show && "Reviews"}
             </Link>
           </li>
         </ul>
       </nav>
+      )
     </div>
   );
 };

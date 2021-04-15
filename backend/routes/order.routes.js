@@ -15,7 +15,7 @@ const {
 } = require("../middlewares/userAuth");
 
 router.route("/order/new").post(isAuthenticatedUser, newOrder);
-router.route("/orderdetail/:id").get(isAuthenticatedUser, getSingleOrder);
+router.route("/order/detail/:id").get(isAuthenticatedUser, getSingleOrder);
 // router.route("/order/:id").get(isAuthenticatedUser, getSingleOrder);
 router.route("/orders/:uid").get(isAuthenticatedUser, myOrders);
 router

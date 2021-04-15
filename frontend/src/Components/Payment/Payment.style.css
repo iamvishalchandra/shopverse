@@ -1,4 +1,5 @@
 .payment {
+  min-width: var(--min-width);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -12,5 +13,64 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+.payment__container {
+  margin: 50px 0 100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.payment__container__title {
+  font-weight: bold;
+  font-size: 3rem;
+}
+
+.payment__container__form {
+  background-color: whitesmoke;
+  padding: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+}
+
+.payment__container__form__details__label {
+  font-weight: bold;
+}
+
+.payment__container__form__details__input {
+  margin: 10px 0;
+  width: 200px;
+  height: 30px;
+  font-size: large;
+  color: black;
+  background-color: white;
+  border-radius: 50px;
+  padding: 15px 0 0 10px;
+}
+
+.payment__container__form__details__submit {
+  padding-left: 20px;
+}
+
+.exp {
+  border: 2px solid red;
 }
 /*# sourceMappingURL=Payment.style.css.map */

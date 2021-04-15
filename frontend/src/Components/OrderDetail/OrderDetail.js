@@ -19,12 +19,11 @@ const OrderDetail = ({ match, history }) => {
   useEffect(() => {
     dispatch(getOrderDetails(match.params.id));
     if (error) {
-      console.log(error);
       alert.error(error);
       dispatch(clearErrors());
     }
   }, [dispatch, alert, error, match.params.id]);
-  console.log(order);
+
   //   const {
   //     shippingInfo,
   //     orderItems,

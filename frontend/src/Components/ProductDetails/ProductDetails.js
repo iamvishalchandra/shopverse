@@ -10,6 +10,7 @@ import ProductImages from "../ProductImages/ProductImages";
 import ProductReviewBox from "../ProductReviewBox/ProductReviewBox";
 import ProductReviews from "../ProductReviews/ProductReviews";
 import Ratings from "../Ratings/Ratings";
+import { amountFormatter } from "../../helpers/useFullFunctions";
 import "./ProductDetails.style.css";
 
 const ProductDetails = ({ match }) => {
@@ -66,7 +67,7 @@ const ProductDetails = ({ match }) => {
 
               <hr />
               <p className="productDetails__body__details__price">
-                ₹{product.price}
+                ₹{amountFormatter(product.price)}
               </p>
               <div className="productDetails__body__details__cart">
                 <span

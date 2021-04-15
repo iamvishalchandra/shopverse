@@ -9,7 +9,6 @@ import "./ConfirmOrder.style.css";
 const ConfirmOrder = ({ history }) => {
   const { cartItems, shippingInfo } = useSelector((state) => state?.cart);
   const { user } = useSelector((state) => state?.user);
-  console.log(cartItems);
   const itemPrice = cartItems.reduce(
     (acc, item) => item.price * item.quantity + acc,
     0

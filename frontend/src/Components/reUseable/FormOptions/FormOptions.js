@@ -7,7 +7,6 @@ const FormOptions = ({
   id,
   text,
   accept,
-
   values,
   setValues,
   minValue,
@@ -27,7 +26,7 @@ const FormOptions = ({
       {formItem === "button" ? (
         <button
           type={type}
-          onClick={setValues ? setValues : (e) => e.preventDefault()}
+          onClick={setValues && setValues}
           disabled={disabled ? disabled : false}
           className="formOptions__button"
           style={
@@ -57,6 +56,7 @@ const FormOptions = ({
               type={type}
               id={id}
               name={name}
+              step={type === "number" && "0.01"}
               value={values && values}
               accept={accept && accept}
               multiple={multiple ? true : false}

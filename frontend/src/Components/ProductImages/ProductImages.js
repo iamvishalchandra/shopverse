@@ -8,7 +8,7 @@ const ProductImages = ({ images }) => {
     imageUrl.push(img.url);
   });
   const [displayImage, setDisplayImage] = useState(imageUrl[0]);
-  console.table(imageUrl);
+
   return (
     <div className="productImages">
       <div className="productImages__option">

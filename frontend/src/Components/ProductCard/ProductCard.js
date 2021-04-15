@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
+import { amountFormatter, textTruncate } from "../../helpers/useFullFunctions";
 import Ratings from "../Ratings/Ratings";
 import "./ProductCard.style.css";
 
@@ -13,7 +15,7 @@ const ProductCard = ({ link, name, images, ratings, reviews, price }) => {
             className="productCard__title__text__link"
             to={`/product/${link}`}
           >
-            {name.substr(0, 25) + "..."}
+            {textTruncate(name)}
           </Link>
         </h5>
       </div>
@@ -30,7 +32,12 @@ const ProductCard = ({ link, name, images, ratings, reviews, price }) => {
           ({reviews ? `${reviews} Reviews` : "No Reviews Yet"})
         </span>
       </div>
-      <p className="productCard__price">₹{price}</p>
+      <p className="productCard__price">
+        {/* ₹{amountFormatter(price)} */}₹{amountFormatter(price)}
+        {/* {new Intl.NumberFormat("en-IN", { minimumFractionDigits: 2 }).format(
+          price
+        )} */}
+      </p>
 
       <Link to={`/product/${link}`} className="productCard__viewDetails">
         View Details

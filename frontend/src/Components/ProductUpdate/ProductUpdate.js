@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
-import { clearErrors, createProduct } from "../../actions/productActions";
-import { CREATE_PRODUCT_RESET } from "../../constants/productConstants";
+import {
+  clearErrors,
+  getProductDetails,
+  updateSingleProduct,
+} from "../../actions/productActions";
+import { UPDATE_PRODUCT_RESET } from "../../constants/productConstants";
 import MetaData from "../MetaData";
 import FormOptions from "../reUseable/FormOptions/FormOptions";
 import Sidebar from "../AdminComponents/Sidebar/Sidebar";
-import "./CreateProduct.style.css";
+import "./ProductUpdate.style.css";
 
-const CreateProduct = ({ history }) => {
+const ProductUpdate = ({ match, history }) => {
   const categories = [
     "Accesories",
     "Beauty",
@@ -31,36 +35,64 @@ const CreateProduct = ({ history }) => {
     "Television",
     "Video",
   ];
-
   const [name, setName] = useState("");
-  const [price, setPrice] = useState(0);
+  const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
-  const [category, setCategory] = useState(categories[0]);
+  const [category, setCategory] = useState("");
   const [stock, setStock] = useState(10);
   const [seller, setSeller] = useState("");
   const [images, setImages] = useState([]);
+  const [oldImages, setOldImages] = useState([]);
   const [imagesPreview, setImagesPreview] = useState([]);
 
   const alert = useAlert();
   const dispatch = useDispatch();
-  const { loading, error, success } = useSelector(
-    (state) => state?.createProduct
+
+  const { error, product } = useSelector((state) => state?.productDetails);
+  const { loading, error: updateError, isUpdated } = useSelector(
+    (state) => state.updateProduct
   );
 
+  const productId = match.params.id;
+
   useEffect(() => {
+    if (product?._id !== productId) dispatch(getProductDetails(productId));
+    else {
+      setName(product.name);
+      setPrice(product.price);
+      setDescription(product.description);
+      setCategory(product.category);
+      setStock(product.stock);
+      setSeller(product.seller);
+      setOldImages(product.images);
+    }
+
     if (error) {
       alert.error(error);
 
       dispatch(clearErrors());
     }
 
-    if (success) {
-      history.push("/admin/products");
-
-      alert.success("Product Successfully Created");
-      dispatch({ type: CREATE_PRODUCT_RESET });
+    if (updateError) {
+      alert.error(updateError);
+      dispatch(clearErrors());
     }
-  }, [dispatch, alert, error, history, success]);
+
+    if (isUpdated) {
+      history.push("/admin/products");
+      alert.success("Product Updated Successfully");
+      dispatch({ type: UPDATE_PRODUCT_RESET });
+    }
+  }, [
+    dispatch,
+    alert,
+    error,
+    isUpdated,
+    history,
+    updateError,
+    product,
+    productId,
+  ]);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -77,7 +109,7 @@ const CreateProduct = ({ history }) => {
       formData.append("images", image);
     });
 
-    dispatch(createProduct(formData));
+    dispatch(updateSingleProduct(product._id, formData));
   };
 
   const onChange = (e) => {
@@ -85,6 +117,7 @@ const CreateProduct = ({ history }) => {
 
     setImagesPreview([]);
     setImages([]);
+    setOldImages([]);
 
     files.forEach((file) => {
       const reader = new FileReader();
@@ -100,12 +133,14 @@ const CreateProduct = ({ history }) => {
       reader.readAsDataURL(file);
     });
   };
+
   return (
-    <div className="createProduct">
-      <MetaData title="Create New Product" />
+    <div className="productUpdate">
+      <MetaData title="Update Product" />
       <Sidebar />
       <div>
-        <h1>New Product</h1>
+        <h1>Product Update</h1>
+
         <form encType="multipart/form-data" onSubmit={submitHandler}>
           <FormOptions
             formItem="input"
@@ -175,16 +210,24 @@ const CreateProduct = ({ history }) => {
             <FormOptions
               formItem="input"
               type="file"
-              text="Choose Product Images"
+              text="Choose Product's New Images"
               name="product_images"
               id="customFile"
               multiple
               setValues={onChange}
             />
 
+            {oldImages?.map((image) => (
+              <img
+                style={{ width: "100px" }}
+                src={image.url}
+                key={image}
+                alt={image.url}
+              />
+            ))}
             {imagesPreview?.map((image) => (
               <img
-                style={{ width: "20px" }}
+                style={{ width: "100px" }}
                 src={image}
                 key={image}
                 alt="Product Images"
@@ -196,7 +239,7 @@ const CreateProduct = ({ history }) => {
             formItem="button"
             type="submit"
             disabled={loading ? true : false}
-            text="Creat Product"
+            text="Update Product"
           />
         </form>
       </div>
@@ -204,4 +247,4 @@ const CreateProduct = ({ history }) => {
   );
 };
 
-export default CreateProduct;
+export default ProductUpdate;

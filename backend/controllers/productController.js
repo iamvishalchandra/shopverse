@@ -83,6 +83,28 @@ exports.updateProduct = catchAsyncError(async (req, res, next) => {
 
   if (!product) return next(new ErrorHandler("Product doesn't exist", 404));
 
+  let images = [];
+  if (typeof req.body.images === "string") images.push(req.body.images);
+  else images = req.body.images;
+
+  let imagesLinks = [];
+
+  if (images !== undefined) {
+    for (const oldImg of product.images) {
+      const result = await cloudinary.v2.uploader.destroy(oldImg.public_id);
+    }
+
+    for (const img of images) {
+      const result = await cloudinary.v2.uploader.upload(img, {
+        folder: "shopVerse/products",
+      });
+      imagesLinks.push({ public_id: result.public_id, url: result.secure_url });
+    }
+
+    req.body.images = imagesLinks;
+    // req.body.user = req.user.id;
+  }
+
   product = await ProductModel.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
     runValidators: true,
@@ -100,6 +122,12 @@ exports.deleteProduct = catchAsyncError(async (req, res, next) => {
   let product = await ProductModel.findById(req.params.id);
 
   if (!product) return next(new ErrorHandler("Product doesn't exist", 404));
+
+  for (let i = 0; i < product.images.length; i++) {
+    const result = await cloudinary.v2.uploader.destroy(
+      product.images[i].public_id
+    );
+  }
 
   await product.remove();
 

@@ -48,6 +48,7 @@ const Payment = ({ history }) => {
   }
   const paymentData = { amount: Math.round(orderInfo.totalPrice * 100) };
   const [disabled, setDisabled] = useState(false);
+
   const submitHandle = async (e) => {
     e.preventDefault();
     setDisabled(true);
@@ -98,35 +99,59 @@ const Payment = ({ history }) => {
       <MetaData title="Payment" />
       <CheckOutSteps shipping confirmOrder payment />
       <div className="payment__container">
-        <h1>Card Info</h1>
+        <h1 className="payment__container__title">Card Info</h1>
         <form onSubmit={submitHandle} className="payment__container__form">
-          <div>
-            <label htmlFor="card_num_field">Card Number</label>
+          <div className="payment__container__form__details--cardNumber payment__container__form__details">
+            <label
+              className="payment__container__form__details__label--cardNumber payment__container__form__details__label"
+              htmlFor="card_num_field"
+            >
+              Card Number
+            </label>
             <CardNumberElement
               type="text"
               id="card_num_field"
               options={options}
+              className="payment__container__form__details__input--cardNumber payment__container__form__details__input"
             />
           </div>
-          <div>
-            <label htmlFor="card_exp_field">Card Expiry</label>
+          <div className="payment__container__form__details--cardExpiry payment__container__form__details">
+            <label
+              className="payment__container__form__details__label--cardExpiry payment__container__form__details__label"
+              htmlFor="card_exp_field"
+            >
+              Card Expiry
+            </label>
             <CardExpiryElement
               type="text"
               id="card_exp_field"
               options={options}
+              className="payment__container__form__input__details--cardExpiry payment__container__form__details__input"
             />
           </div>
-          <div>
-            <label htmlFor="card_cvc_field">Card CVC</label>
-            <CardCvcElement type="text" id="card_cvc_field" options={options} />
+          <div className="payment__container__form__details--cardCVC payment__container__form__details">
+            <label
+              className="payment__container__form__details__label--cardCVC payment__container__form__details__label"
+              htmlFor="card_cvc_field"
+            >
+              Card CVC
+            </label>
+            <CardCvcElement
+              className="payment__container__form__details__input--cardCVC payment__container__form__details__input"
+              type="text"
+              id="card_cvc_field"
+              options={options}
+            />
           </div>
-          <FormOptions
-            formItem="button"
-            type="submit"
-            text={`Pay ₹${orderInfo?.totalPrice}`}
-            setValues={submitHandle}
-            disabled={disabled}
-          />
+          <div className="payment__container__form__details__submit">
+            <FormOptions
+              formItem="button"
+              type="submit"
+              text={`Pay ₹${orderInfo?.totalPrice}`}
+              setValues={submitHandle}
+              disabled={disabled}
+            />
+          </div>
         </form>
       </div>
     </div>

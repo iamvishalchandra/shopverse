@@ -23,9 +23,12 @@ import PaymentRoute from "./Components/routes/PaymentRoute";
 import OrderSuccess from "./Components/OrderSuccess/OrderSuccess";
 import ListOrders from "./Components/ListOrders/ListOrders";
 import OrderDetail from "./Components/OrderDetail/OrderDetail";
-import Dashboard from "./Components/Dashboard/Dashboard";
 import AdminProductList from "./Components/AdminProductList/AdminProductList";
 import CreateProduct from "./Components/CreateProduct/CreateProduct";
+import ProductUpdate from "./Components/ProductUpdate/ProductUpdate";
+import Dashboard from "./Components/AdminComponents/Dashboard/Dashboard";
+import OrderLIstAdmin from "./Components/AdminComponents/OrderLIstAdmin/OrderLIstAdmin";
+import OrderProcess from "./Components/AdminComponents/OrderProcess/OrderProcess";
 
 function App() {
   useEffect(() => {
@@ -51,7 +54,11 @@ function App() {
         <ProtectedRoute path="/payment" component={PaymentRoute} exact />
         <ProtectedRoute path="/success" component={OrderSuccess} exact />
         <ProtectedRoute path="/orders/me" component={ListOrders} exact />
-        <ProtectedRoute path="/orderdetail/:id" component={OrderDetail} exact />
+        <ProtectedRoute
+          path="/order/detail/:id"
+          component={OrderDetail}
+          exact
+        />
         <ProtectedRoute
           path="/password/update"
           component={UpdatePassword}
@@ -72,6 +79,25 @@ function App() {
           component={CreateProduct}
           exact
         />
+        <ProtectedRoute
+          path="/admin/product/:id"
+          isAdmin
+          component={ProductUpdate}
+          exact
+        />
+        <ProtectedRoute
+          path="/admin/orders"
+          isAdmin
+          component={OrderLIstAdmin}
+          exact
+        />
+        <ProtectedRoute
+          path="/admin/order/:id"
+          isAdmin
+          component={OrderProcess}
+          exact
+        />
+
         <Footer />
       </div>
     </Router>

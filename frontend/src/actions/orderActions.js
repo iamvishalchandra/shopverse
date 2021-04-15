@@ -1,5 +1,8 @@
 import axios from "axios";
 import {
+  ALL_ORDERS_FAIL,
+  ALL_ORDERS_REQUEST,
+  ALL_ORDERS_SUCCESS,
   CLEAR_ERRORS,
   CREATE_ORDER_FAIL,
   CREATE_ORDER_REQUEST,
@@ -10,7 +13,10 @@ import {
   ORDER_DETAILS_FAIL,
   ORDER_DETAILS_REQUEST,
   ORDER_DETAILS_SUCCESS,
+  UPDATE_ORDER_FAIL,
+  UPDATE_ORDER_REQUEST,
 } from "../constants/orderConstants";
+import { CREATE_PRODUCT_SUCCESS } from "../constants/productConstants";
 
 export const createOrder = (order) => async (dispatch, getState) => {
   try {
@@ -42,12 +48,46 @@ export const getOrderDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: ORDER_DETAILS_REQUEST });
 
-    const { data } = await axios.get(`/api/v1/orderdetail/${id}`);
+    const { data } = await axios.get(`/api/v1/order/detail/${id}`);
 
     dispatch({ type: ORDER_DETAILS_SUCCESS, payload: data?.order });
   } catch (error) {
     dispatch({
       type: ORDER_DETAILS_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+};
+
+// Get All Orders - Admin
+export const getAllOrders = () => async (dispatch) => {
+  try {
+    dispatch({ type: ALL_ORDERS_REQUEST });
+
+    const { data } = await axios.get("/api/v1/admin/orders");
+
+    dispatch({ type: ALL_ORDERS_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({ type: ALL_ORDERS_FAIL, payload: error.response.data.message });
+  }
+};
+
+export const updateOrderAction = (id, order) => async (dispatch) => {
+  try {
+    dispatch({ type: UPDATE_ORDER_REQUEST });
+
+    const config = { headers: { "Content-Type": "application/json" } };
+
+    const { data } = await axios.put(
+      `/api/v1/admin/order/${id}`,
+      order,
+      config
+    );
+
+    dispatch({ type: CREATE_PRODUCT_SUCCESS, payload: data.success });
+  } catch (error) {
+    dispatch({
+      type: UPDATE_ORDER_FAIL,
       payload: error.response.data.message,
     });
   }
