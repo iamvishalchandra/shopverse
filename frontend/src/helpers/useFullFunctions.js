@@ -4,7 +4,7 @@ export const amountFormatter = (amount, maxDecimals = 2) => {
   n[0] = n[0]
     .split("")
     .reverse()
-    .map((c, i, a) => (i > 1 && i < a.length && i % 2 != 0 ? c + "," : c))
+    .map((c, i, a) => (i > 1 && i < a.length && i % 2 !== 0 ? c + "," : c))
 
     .reverse()
     .join("");
@@ -15,3 +15,9 @@ export const amountFormatter = (amount, maxDecimals = 2) => {
 
 export const textTruncate = (text, textLength = 25, textReplace = "...") =>
   text.substr(0, textLength) + textReplace;
+
+export const dateFormatter = (date) => {
+  const result = new Date(date).toDateString().split(" ");
+  return `${result[2]} ${result[1]} ${result[3]}`;
+};
+// ₹

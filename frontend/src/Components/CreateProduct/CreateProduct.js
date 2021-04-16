@@ -104,9 +104,13 @@ const CreateProduct = ({ history }) => {
     <div className="createProduct">
       <MetaData title="Create New Product" />
       <Sidebar />
-      <div>
-        <h1>New Product</h1>
-        <form encType="multipart/form-data" onSubmit={submitHandler}>
+      <div className="createProduct__container">
+        <h1 className="createProduct__container__title">New Product</h1>
+        <form
+          className="createProduct__container__form"
+          encType="multipart/form-data"
+          onSubmit={submitHandler}
+        >
           <FormOptions
             formItem="input"
             type="text"
@@ -171,26 +175,27 @@ const CreateProduct = ({ history }) => {
             placeholder="Enter Seller Name"
           />
 
-          <div>
-            <FormOptions
-              formItem="input"
-              type="file"
-              text="Choose Product Images"
-              name="product_images"
-              id="customFile"
-              multiple
-              setValues={onChange}
-            />
-
+          {/* <div> */}
+          <FormOptions
+            formItem="input"
+            type="file"
+            text="Choose Product Images"
+            name="product_images"
+            id="customFile"
+            multiple
+            setValues={onChange}
+          />
+          <div className="createProduct__container__form__images">
             {imagesPreview?.map((image) => (
               <img
-                style={{ width: "20px" }}
+                style={{ width: "50px" }}
                 src={image}
                 key={image}
                 alt="Product Images"
               />
             ))}
           </div>
+          {/* </div> */}
 
           <FormOptions
             formItem="button"

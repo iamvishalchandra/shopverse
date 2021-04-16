@@ -24,6 +24,9 @@ import {
   NEW_PASSWORD_REQUEST,
   NEW_PASSWORD_FAIL,
   NEW_PASSWORD_SUCCESS,
+  ALL_USERS_REQUEST,
+  ALL_USERS_SUCCESS,
+  ALL_USERS_FAIL,
 } from "../constants/userConstants";
 
 //User Sign UP
@@ -155,6 +158,16 @@ export const logOut = () => async (dispatch) => {
     dispatch({ type: LOGOUT_SUCCESS });
   } catch (error) {
     dispatch({ type: LOGOUT_FAIL, payload: error.data.response.message });
+  }
+};
+
+export const allUsersActions = () => async (dispatch) => {
+  try {
+    dispatch({ type: ALL_USERS_REQUEST });
+    const { data } = await axios.get("/api/v1/admin/users");
+    dispatch({ type: ALL_USERS_SUCCESS, payload: data.users });
+  } catch (error) {
+    dispatch({ type: ALL_USERS_FAIL, payload: error.response.data.message });
   }
 };
 

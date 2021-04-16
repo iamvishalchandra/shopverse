@@ -16,6 +16,8 @@ import Loader from "../Loader/Loader";
 import { MDBDataTable } from "mdbreact";
 import { DELETE_PRODUCT_RESET } from "../../constants/productConstants";
 import { textTruncate } from "../../helpers/useFullFunctions";
+// import "@fortawesome/fontawesome-free/css/all.min.css";
+// import "bootstrap-css-only/css/bootstrap.min.css";
 
 const AdminProductList = ({ history }) => {
   const alert = useAlert();

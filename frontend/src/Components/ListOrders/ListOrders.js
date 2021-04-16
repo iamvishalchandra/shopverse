@@ -3,13 +3,9 @@ import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, myOrders } from "../../actions/orderActions";
 import Loader from "../Loader/Loader";
-import { MDBDataTable } from "mdbreact";
 import MetaData from "../MetaData";
-import { Link } from "react-router-dom";
-import "@fortawesome/fontawesome-free/css/all.min.css";
-// import "bootstrap-css-only/css/bootstrap.min.css";
-import "mdbreact/dist/css/mdb.css";
 import "./ListOrders.style.css";
+import OrderInfo from "../reUseable/OrderInfo/OrderInfo";
 
 const ListOrders = () => {
   const alert = useAlert();
@@ -25,66 +21,61 @@ const ListOrders = () => {
     }
   }, [dispatch, alert, error]);
 
-  const getOrders = () => {
-    const data = {
-      columns: [
-        { label: "Actions", field: "actions", sort: "asc" },
-        { label: "Order ID", field: "id", sort: "asc" },
-        { label: "Num Of Items", field: "numOfItems", sort: "asc" },
-        { label: "Amount", field: "amount", sort: "asc" },
-        { label: "Status", field: "status", sort: "asc" },
-      ],
-      rows: [],
-    };
+  // const getOrders = () => {
+  //   const data = {
+  //     columns: [
+  //       { label: "Actions", field: "actions", sort: "asc" },
+  //       { label: "Order ID", field: "id", sort: "asc" },
+  //       { label: "Num Of Items", field: "numOfItems", sort: "asc" },
+  //       { label: "Amount", field: "amount", sort: "asc" },
+  //       { label: "Status", field: "status", sort: "asc" },
+  //     ],
+  //     rows: [],
+  //   };
 
-    orders?.forEach((order) => {
-      data?.rows?.push({
-        id: order._id,
-        numOfItems: order.orderItems.length,
-        amount: `₹${order.totalPrice}`,
-        status: String(order.orderStatus)?.includes("Delivered") ? (
-          <p style={{ color: "green", fontWeight: "bold" }}>
-            {order.orderStatus}
-          </p>
-        ) : (
-          <p style={{ color: "red", fontWeight: "bold" }}>
-            {order.orderStatus}
-          </p>
-        ),
-        actions: (
-          <button>
-            <Link to={`/order/detail/${order._id}`}>
-              <img
-                src="/photo/eye-512.png"
-                style={{ width: "20px", alignContent: "center" }}
-                alt=""
-              />
-            </Link>
-          </button>
-        ),
-      });
-    });
+  //   orders?.forEach((order) => {
+  //     data?.rows?.push({
+  //       id: order._id,
+  //       numOfItems: order.orderItems.length,
+  //       amount: `₹${order.totalPrice}`,
+  //       status: String(order.orderStatus)?.includes("Delivered") ? (
+  //         <p style={{ color: "green", fontWeight: "bold" }}>
+  //           {order.orderStatus}
+  //         </p>
+  //       ) : (
+  //         <p style={{ color: "red", fontWeight: "bold" }}>
+  //           {order.orderStatus}
+  //         </p>
+  //       ),
+  //       actions: (
+  //         <button>
+  //           <Link to={`/order/detail/${order._id}`}>
+  //             <img
+  //               src="/photo/eye-512.png"
+  //               style={{ width: "20px", alignContent: "center" }}
+  //               alt=""
+  //             />
+  //           </Link>
+  //         </button>
+  //       ),
+  //     });
+  //   });
 
-    return data;
-  };
+  //   return data;
+  // };
 
   return (
     <div className="listOrders">
       <MetaData title="My Orders" />
-      <h1 className="listOrders__title">My Orders</h1>
-
+      <h1 className="listOrders__title">Your Orders</h1>
       {loading ? (
         <Loader />
       ) : (
-        <MDBDataTable
-          data={getOrders()}
-          bordered
-          striped
-          responsiveSm
-          hover
-          entriesOptions={[5, 15, 20]}
-          className="listOrders__body"
-        />
+        <div>
+          {orders?.map((order) => (
+            <OrderInfo order={order} isUser />
+          ))}
+        </div>
       )}
     </div>
   );

@@ -1,0 +1,244 @@
+.orderInfo {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(63, 63, 63, 28%);
+  border-radius: 10px;
+  margin: 20px 0;
+  min-width: var(--min-width);
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+    // padding: 10px;
+    min-width: 150px;
+    border: 0.3px solid #a88734;
+    cursor: pointer;
+    height: 45px;
+    font-weight: bold;
+    border-radius: 5px;
+
+    background: linear-gradient(to bottom, #f7dfa5, #f0c14b);
+
+    &:hover {
+      background: #f0c14b;
+    }
+
+    img {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  &__top {
+    background-color: lightgray;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom: 1px solid rgba(63, 63, 63, 28%);
+
+    &__left {
+      display: flex;
+      flex-wrap: wrap;
+
+      &__items {
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        &__title {
+          font-size: 0.8rem;
+          margin-bottom: 5px;
+        }
+
+        &__value {
+          &__customer {
+            color: blue;
+            cursor: pointer;
+            &:hover {
+              text-decoration: underline;
+              color: red;
+            }
+          }
+
+          &__shippingInfo {
+            display: none;
+            position: absolute;
+            margin-top: 10px;
+            background-color: white;
+            border: 1px solid black;
+            flex-direction: column;
+            padding: 5px;
+          }
+
+          &__customer:hover + &__shippingInfo {
+            display: flex;
+          }
+
+          &__content {
+            display: flex;
+            gap: 10px;
+          }
+          &__shippingAdress {
+            text-decoration: underline;
+            color: blue;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+
+    &__mid {
+      // padding: 10px;
+      align-items: flex-start;
+      display: flex;
+      flex-direction: column;
+
+      &__title {
+        font-size: 0.8rem;
+        margin-bottom: 5px;
+      }
+
+      &__delivery {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+
+        &__select {
+          outline: none;
+          padding: 5px;
+          background-color: whitesmoke;
+          border-radius: 5px;
+        }
+
+        &__button {
+          padding: 5px;
+          width: 100px;
+          border: 0.3px solid #a88734;
+          background: linear-gradient(to bottom, #f7dfa5, #f0c14b);
+          cursor: pointer;
+
+          &:hover {
+            background: #f0c14b;
+          }
+        }
+      }
+    }
+
+    &__right {
+      display: flex;
+      flex-direction: column;
+
+      &__items {
+        padding: 10px;
+        align-items: flex-start;
+        display: flex;
+        flex-direction: column;
+
+        &__text {
+          font-size: 0.8rem;
+          margin-bottom: 5px;
+        }
+
+        &__content {
+          display: flex;
+          gap: 5px;
+          hr {
+            background-color: black;
+            border: none;
+            width: 0.5px;
+          }
+        }
+      }
+    }
+  }
+
+  &__products {
+    display: flex;
+    flex-direction: column;
+
+    gap: 30px;
+    padding: 10px;
+
+    gap: 10px;
+
+    &__adminActions {
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      gap: 20px;
+    }
+
+    &__container {
+      display: flex;
+      width: 100%;
+
+      &__items {
+        display: flex;
+        align-items: center;
+        margin-top: 30px;
+        gap: 10px;
+
+        &__image {
+          width: 200px;
+        }
+
+        &__info {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 5px;
+
+          &__name {
+            width: 100%;
+            font-size: 0.9rem;
+            font-weight: 400;
+
+            &:hover {
+              color: var(--button-color);
+              text-decoration: underline;
+            }
+          }
+
+          &__status {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            &__text {
+              font-weight: bold;
+              font-size: 0.9rem;
+            }
+
+            &__value {
+              font-size: 0.9rem;
+            }
+          }
+
+          &__userActions {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+          }
+        }
+      }
+    }
+
+    &__options {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 10px;
+    }
+  }
+}

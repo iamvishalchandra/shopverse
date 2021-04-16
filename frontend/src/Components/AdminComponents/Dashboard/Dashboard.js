@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getAllOrders } from "../../../actions/orderActions";
 import { getAdminProducts } from "../../../actions/productActions";
+import { allUsersActions } from "../../../actions/userActions";
 import { amountFormatter } from "../../../helpers/useFullFunctions";
 import Loader from "../../Loader/Loader";
 import MetaData from "../../MetaData";
@@ -15,6 +16,7 @@ const Dashboard = () => {
   const { loading, totalAmount, orders } = useSelector(
     (state) => state.allOrders
   );
+  const { users } = useSelector((state) => state.allUsers);
 
   let outOfStock = 0;
   products?.forEach((product) => {
@@ -24,13 +26,14 @@ const Dashboard = () => {
   useEffect(() => {
     dispatch(getAdminProducts());
     dispatch(getAllOrders());
+    dispatch(allUsersActions());
   }, [dispatch]);
 
   const dashboardItems = [
     { name: "TotalAmount", value: `₹${amountFormatter(totalAmount)}` },
     { name: "Products", value: products?.length, url: "/admin/products" },
     { name: "Orders", value: orders?.length, url: "/admin/orders" },
-    { name: "Users", value: 43, url: "/admin/users" },
+    { name: "Users", value: users.length, url: "/admin/users" },
     { name: "Out Of Stock", value: outOfStock },
   ];
 

@@ -16,6 +16,10 @@ import {
   UPDATE_ORDER_SUCCESS,
   UPDATE_ORDER_RESET,
   UPDATE_ORDER_FAIL,
+  DELETE_ORDER_REQUEST,
+  DELETE_ORDER_SUCCESS,
+  DELETE_ORDER_FAIL,
+  DELETE_ORDER_RESET,
 } from "../constants/orderConstants";
 
 export const newOrderReducer = (state = {}, action) => {
@@ -101,16 +105,24 @@ export const allOrdersReducer = (state = { orders: [] }, action) => {
 export const updateOrderReducer = (state = {}, action) => {
   switch (action.type) {
     case UPDATE_ORDER_REQUEST:
+    case DELETE_ORDER_REQUEST:
       return { ...state, loading: true };
 
     case UPDATE_ORDER_SUCCESS:
       return { ...state, loading: false, isOrderUpdated: action.payload };
 
+    case DELETE_ORDER_SUCCESS:
+      return { ...state, loading: false, isOrderDeleted: action.payload };
+
     case UPDATE_ORDER_FAIL:
+    case DELETE_ORDER_FAIL:
       return { ...state, error: action.payload };
 
     case UPDATE_ORDER_RESET:
       return { ...state, isOrderUpdated: false };
+
+    case DELETE_ORDER_RESET:
+      return { ...state, isOrderDeleted: false };
 
     case CLEAR_ERRORS:
       return { ...state, error: null };

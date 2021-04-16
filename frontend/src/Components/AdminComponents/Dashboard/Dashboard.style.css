@@ -17,7 +17,6 @@
       -ms-flex-align: center;
           align-items: center;
   display: flex;
-  width: 100%;
 }
 
 .dashboard__container__sections {
@@ -32,12 +31,14 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  gap: 40px;
 }
 
 .dashboard__container__sections__body {
   border-radius: 10px;
+  width: 205px;
   padding: 20px;
-  margin: 30px 20px;
+  margin-top: 70px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

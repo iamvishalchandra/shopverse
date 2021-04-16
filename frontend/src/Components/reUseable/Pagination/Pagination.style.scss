@@ -1,0 +1,17 @@
+.pagination {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 100px 0;
+
+  &__pageNumbers {
+    list-style: none;
+    display: flex;
+
+    li {
+      padding: 10px;
+      border: 1px solid black;
+      cursor: pointer;
+    }
+  }
+}

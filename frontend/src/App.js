@@ -29,6 +29,7 @@ import ProductUpdate from "./Components/ProductUpdate/ProductUpdate";
 import Dashboard from "./Components/AdminComponents/Dashboard/Dashboard";
 import OrderLIstAdmin from "./Components/AdminComponents/OrderLIstAdmin/OrderLIstAdmin";
 import OrderProcess from "./Components/AdminComponents/OrderProcess/OrderProcess";
+import UsersListAdmin from "./Components/AdminComponents/UsersListAdmin/UsersListAdmin";
 
 function App() {
   useEffect(() => {
@@ -95,6 +96,12 @@ function App() {
           path="/admin/order/:id"
           isAdmin
           component={OrderProcess}
+          exact
+        />
+        <ProtectedRoute
+          path="/admin/users"
+          isAdmin
+          component={UsersListAdmin}
           exact
         />
 
