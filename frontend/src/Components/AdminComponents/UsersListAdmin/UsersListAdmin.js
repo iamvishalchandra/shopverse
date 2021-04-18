@@ -6,7 +6,8 @@ import { Link } from "react-router-dom";
 import { allUsersActions, clearErrors } from "../../../actions/userActions";
 import Loader from "../../Loader/Loader";
 import MetaData from "../../MetaData";
-import Pagination from "../../reUseable/Pagination/Pagination";
+import PaginationComponent from "../../reUseable/PaginationComponent/PaginationComponent";
+
 import Sidebar from "../Sidebar/Sidebar";
 import "./UsersListAdmin.style.css";
 
@@ -24,57 +25,69 @@ const UsersListAdmin = () => {
     }
   }, [dispatch, alert, error]);
 
-  //   console.log(users);
   const setUsers = () => {
     const data = {
       columns: [
-        { label: "User Id", field: "id", sort: "asc" },
-        { label: "Name", field: "name", sort: "asc" },
-        { label: "email", field: "email", sort: "asc" },
-        { label: "Role", field: "role", sort: "asc" },
-        { label: "Actions", field: "actions" },
+        { title: "Photo", id: "photo", sort: "asc" },
+        { title: "User Id", id: "id", sort: "asc" },
+        { title: "Name", id: "name", sort: "asc" },
+        { title: "E-mail", id: "email", sort: "asc" },
+        { title: "Role", id: "role", sort: "asc" },
       ],
       rows: [],
+
+      actions: (
+        <>
+          <Link>
+            <button className="usersListAdmin__container__body__edit usersListAdmin__container__body__button">
+              <img
+                className="usersListAdmin__container__body__button__icon"
+                src="/photo/edit-3-512.png"
+                alt="edit"
+              />
+            </button>
+          </Link>
+          <button className="usersListAdmin__container__body__delete usersListAdmin__container__body__button">
+            <img
+              className="usersListAdmin__container__body__button__icon"
+              src="/photo/delete-512.png"
+              alt="delete"
+            />
+          </button>
+        </>
+      ),
     };
 
     users?.forEach((user) => {
       data.rows.push({
+        photo: user.avatar.url,
         id: user._id,
         name: user.name,
         email: user.email,
         role: user.role,
-        actions: (
-          <>
-            <Link>Users</Link>
-            <button>Delete</button>
-          </>
-        ),
       });
     });
+
+    return data;
   };
 
   return (
     <div className="usersListAdmin">
       <MetaData title="All Users" />
-      {/* <Sidebar /> */}
-      <div>
-        <h1>UsersListAdmin</h1>
-        <div>
+      <Sidebar />
+      <div className="usersListAdmin__container">
+        <h1 className="usersListAdmin__container__title">All Members</h1>
+        <div className="usersListAdmin__container__body">
           {loading ? (
             <Loader />
           ) : (
-            users.map((user) => (
-              <div style={{ display: "flex", gap: "10px" }}>
-                <div style={{ width: "200px" }}>{user._id}</div>
-                <div style={{ width: "200px" }}>{user.name}</div>
-                <div style={{ width: "200px" }}>{user.email}</div>
-                <div style={{ width: "200px" }}>{user.role}</div>
-                <Link>Edit</Link>
-                <button>Delete</button>
-              </div>
-            ))
+            <PaginationComponent
+              dataItem={users}
+              tableData={setUsers()}
+              itemsPerPage={3}
+              numOfPages={10}
+            />
           )}
-          <Pagination dataItem={users} />
         </div>
       </div>
     </div>

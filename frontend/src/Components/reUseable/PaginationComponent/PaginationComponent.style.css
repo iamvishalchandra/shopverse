@@ -1,0 +1,129 @@
+.paginationComponent {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: rgba(174, 211, 209, 0.253);
+}
+
+.paginationComponent__container {
+  padding: 20px;
+}
+
+.paginationComponent__container__tableArea {
+  min-height: 40vh;
+}
+
+.paginationComponent__container__tableArea__table {
+  width: 100%;
+}
+
+.paginationComponent__container__tableArea__table__heading {
+  background-color: lightgray;
+}
+
+.paginationComponent__container__tableArea__table__heading__items {
+  text-align: left;
+  color: black;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.paginationComponent__container__tableArea__table__rows {
+  background-color: white;
+}
+
+.paginationComponent__container__tableArea__table__rows__data {
+  border-bottom: 1px solid black;
+  color: black;
+  padding: 30px 15px;
+  width: 200px;
+}
+
+.paginationComponent__container__tableArea__table__rows__data__profilePhoto {
+  padding: 0 0 0 10px;
+  width: 80px;
+}
+
+.paginationComponent__container__tableArea__table__rows__data__photo {
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+}
+
+.paginationComponent__container__tableArea__table__rows__data--actions {
+  width: 80px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 5px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.paginationComponent__container__paging {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.paginationComponent__container__paging__pageNumbers {
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 50px 0 0 0;
+}
+
+.paginationComponent__container__paging__pageNumbers__list {
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.paginationComponent__container__paging__pageNumbers__list__active {
+  background-color: #0099ff;
+  color: whitesmoke;
+  font-weight: bold;
+  font-size: 30px;
+  padding: 5px 13px;
+  cursor: pointer;
+}
+
+.paginationComponent__container__paging__pageNumbers__list__inactive {
+  color: black;
+  font-size: 15px;
+  padding: 5px 13px;
+  cursor: pointer;
+}
+
+.paginationComponent__container__paging__pageNumbers__list__btn {
+  border: none;
+  font-weight: bold;
+  font-size: 1.5rem;
+  cursor: pointer;
+  outline: none;
+}
+
+.paginationComponent__container__paging__pageNumbers__list__btn:hover {
+  color: red;
+  text-decoration: underline;
+}
+/*# sourceMappingURL=PaginationComponent.style.css.map */
