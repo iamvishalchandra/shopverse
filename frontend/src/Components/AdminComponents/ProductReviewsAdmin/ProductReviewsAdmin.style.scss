@@ -1,0 +1,52 @@
+.productReviewsAdmin {
+  display: flex;
+  gap: 15px;
+  &__container {
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__title {
+      margin: 30px 0;
+      font-size: 3rem;
+      font-weight: bold;
+    }
+    &__body {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      min-height: 100vh;
+      min-width: 70vw;
+
+      &__form {
+        display: flex;
+        flex-direction: column;
+      }
+
+      &__noReviews {
+      }
+
+      &__table {
+        &__delete {
+          padding: 5px;
+          background-color: rgb(255, 0, 98);
+          cursor: pointer;
+          border-radius: 10px;
+          border: none;
+          height: 45px;
+
+          &:hover {
+            background-color: red;
+            border: 1px solid black;
+          }
+
+          &__icon {
+            width: 30px;
+          }
+        }
+      }
+    }
+  }
+}

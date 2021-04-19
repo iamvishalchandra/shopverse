@@ -258,6 +258,8 @@ exports.deleteUser = catchAsyncError(async (req, res, next) => {
     );
 
   // Remove Avatar - TBC
+  const avatarId = user?.avatar?.public_id;
+  await cloudinary.v2.uploader.destroy(avatarId);
 
   await user.remove();
 

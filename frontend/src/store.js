@@ -8,10 +8,13 @@ import {
   createProductReducer,
   deleteProductReducer,
   updateProductReducer,
+  productReviewsReducer,
+  deleteProductReviewReducer,
 } from "./reducers/productReducers";
 import {
   allUsersReducer,
   forgotPasswordReducer,
+  userDetailsReducer,
   userProfileReducer,
   userReducer,
 } from "./reducers/userReducers";
@@ -31,10 +34,13 @@ const reducer = combineReducers({
   createProduct: createProductReducer,
   deleteProduct: deleteProductReducer,
   updateProduct: updateProductReducer,
+  productReviews: productReviewsReducer,
+  deleteProductReview: deleteProductReviewReducer,
   user: userReducer,
   userProfile: userProfileReducer,
   forgotPassword: forgotPasswordReducer,
   allUsers: allUsersReducer,
+  userDetails: userDetailsReducer,
   cart: cartReducer,
   newOrder: newOrderReducer,
   myOrders: myOrdersReducer,

@@ -1,0 +1,44 @@
+.userProfileUpdate {
+  min-width: var(--min-width);
+  min-height: var(--height);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+
+  &__title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 40px 0;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    background-color: whitesmoke;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.185);
+
+    &__form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      &__avatar {
+        display: flex;
+
+        &__profile {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          &__image {
+            width: 50px;
+            border-radius: 50%;
+          }
+        }
+      }
+    }
+  }
+}

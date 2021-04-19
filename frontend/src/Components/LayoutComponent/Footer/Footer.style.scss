@@ -1,0 +1,16 @@
+.footer {
+  min-width: calc(45px + var(--min-width));
+  // min-width: 400px;
+  display: flex;
+  justify-content: center;
+  color: grey;
+  padding: 10px 0;
+  background-color: #232f3e;
+
+  &__content {
+    min-width: 100%;
+    font-weight: bold;
+    color: whitesmoke;
+    text-align: center;
+  }
+}

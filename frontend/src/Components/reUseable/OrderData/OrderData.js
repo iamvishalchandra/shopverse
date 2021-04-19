@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { amountFormatter } from "../../../helpers/useFullFunctions";
 import FormOptions from "../FormOptions/FormOptions";
 import "./OrderData.style.css";
 
@@ -31,11 +32,11 @@ const OrderData = ({
             </div>
             <div className="orderData__cartItems__cost">
               <p className="orderData__cartItems__cost__units">
-                {item.quantity} x ₹{item.price}
+                {item.quantity} x ₹{amountFormatter(item.price)}
               </p>
               =
               <b className="orderData__cartItems__cost__price">
-                ₹{(item.quantity * item.price).toFixed(2)}
+                ₹{amountFormatter(item.quantity * item.price)}
               </b>
             </div>
           </div>
@@ -46,31 +47,31 @@ const OrderData = ({
           <p className="orderData__orderTotal__data">
             Subtotal:
             <span className="orderData__orderTotal__data__span">
-              ₹{subTotal.itemPrice.toFixed(2)}
+              ₹{amountFormatter(subTotal.itemPrice)}
             </span>
           </p>
           <p className="orderData__orderTotal__data">
             Shipping:
             <span className="orderData__orderTotal__data__span">
-              ₹{subTotal.shippingCharge.toFixed(2)}
+              ₹{amountFormatter(subTotal.shippingCharge)}
             </span>
           </p>
           <p className="orderData__orderTotal__data">
             GST:
             <span className="orderData__orderTotal__data__span">
-              ₹{subTotal.tax.toFixed(2)}
+              ₹{amountFormatter(subTotal.tax)}
             </span>
           </p>
           <p className="orderData__orderTotal__data">
             CGST (5%):
             <span className="orderData__orderTotal__data__span">
-              ₹{(subTotal.tax / 2).toFixed(2)}
+              ₹{amountFormatter(subTotal.tax / 2)}
             </span>
           </p>
           <p className="orderData__orderTotal__data">
             SGST (5%):
             <span className="orderData__orderTotal__data__span">
-              ₹{(subTotal.tax / 2).toFixed(2)}
+              ₹{amountFormatter(subTotal.tax / 2)}
             </span>
           </p>
 
@@ -78,7 +79,7 @@ const OrderData = ({
           <p className="orderData__orderTotal__data">
             Total:
             <span className="orderData__orderTotal__data__span">
-              ₹{subTotal.totalPrice}
+              ₹{amountFormatter(subTotal.totalPrice)}
             </span>
           </p>
           <hr />

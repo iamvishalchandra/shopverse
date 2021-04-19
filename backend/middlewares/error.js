@@ -2,7 +2,6 @@ const ErrorHandler = require("../utils/errorHandler");
 
 module.exports = (err, req, res, next) => {
   err.statusCode = err.statusCode || 500;
-
   //   Development Mode Error Handler
 
   if (process.env.NODE_ENV === "DEVELOPMENT") {
@@ -20,7 +19,6 @@ module.exports = (err, req, res, next) => {
     let error = { ...err };
 
     // Wrong Mongoose Object id Error
-
     if (err.name === "CastError") {
       const message = `Resource not found. Invalid: ${err.path}`;
       error = new ErrorHandler(message, 400);
@@ -51,9 +49,9 @@ module.exports = (err, req, res, next) => {
       error = new ErrorHandler(message, 400);
     }
 
-    res.status(err.statusCode).json({
+    res.status(error.statusCode).json({
       success: false,
-      message: err.message || "Internal Server Error",
+      message: error.message || err.message || "Internal Server Error",
     });
   }
 };

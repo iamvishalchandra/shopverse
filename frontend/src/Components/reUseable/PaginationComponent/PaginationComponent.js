@@ -90,9 +90,6 @@ const PaginationComponent = ({
                   {col.title}
                 </th>
               ))}
-              <th className="paginationComponent__container__tableArea__table__heading__items">
-                Actions
-              </th>
             </tr>
 
             {currentItems.map((rows) => (
@@ -112,16 +109,19 @@ const PaginationComponent = ({
                       </td>
                     ) : (
                       key === cols.id && (
-                        <td className="paginationComponent__container__tableArea__table__rows__data">
+                        <td
+                          className={
+                            cols.id === "actions"
+                              ? "paginationComponent__container__tableArea__table__rows__data paginationComponent__container__tableArea__table__rows__data--actions"
+                              : "paginationComponent__container__tableArea__table__rows__data"
+                          }
+                        >
                           {value}
                         </td>
                       )
                     )
                   )
                 )}
-                <td className="paginationComponent__container__tableArea__table__rows__data paginationComponent__container__tableArea__table__rows__data--actions">
-                  {tableData.actions}
-                </td>
               </tr>
             ))}
           </table>

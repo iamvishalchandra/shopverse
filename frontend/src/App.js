@@ -1,35 +1,51 @@
 // import "./App.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Footer from "./Components/Footer/Footer";
-import Header from "./Components/Header/Header";
-import Home from "./Components/Home/Home";
-import ProductDetails from "./Components/ProductDetails/ProductDetails";
-import "./App.css";
-import LoginUser from "./Components/LoginUser/LoginUser";
-import Register from "./Components/Register/Register";
 import { useEffect } from "react";
-import store from "./store";
 import { loadUser } from "./actions/userActions";
-import Profile from "./Components/Profile/Profile";
+import store from "./store";
 import ProtectedRoute from "./Components/routes/ProtectedRoute";
-import UserProfileUpdate from "./Components/UserProfileUpdate/UserProfileUpdate";
-import UpdatePassword from "./Components/UpdatePassword/UpdatePassword";
-import ForgotPassword from "./Components/ForgotPassword/ForgotPassword";
-import NewPassword from "./Components/NewPassword/NewPassword";
-import Cart from "./Components/Cart/Cart";
-import Shipping from "./Components/Shipping/Shipping";
-import ConfirmOrder from "./Components/ConfirmOrder/ConfirmOrder";
+
+// Layout Components
+
+import Footer from "./Components/LayoutComponent/Footer/Footer";
+import Header from "./Components/LayoutComponent/Header/Header";
+import Home from "./Components/LayoutComponent/Home/Home";
+import Register from "./Components/LayoutComponent/Register/Register";
+import LoginUser from "./Components/LayoutComponent/LoginUser/LoginUser";
+
+// Product Components
+import ProductDetails from "./Components/ProductComponents/ProductDetails/ProductDetails";
+
+// User Components
+import ForgotPassword from "./Components/UserComponents/ForgotPassword/ForgotPassword";
+import NewPassword from "./Components/UserComponents/NewPassword/NewPassword";
+import Profile from "./Components/UserComponents/Profile/Profile";
+import UpdatePassword from "./Components/UserComponents/UpdatePassword/UpdatePassword";
+import UserProfileUpdate from "./Components/UserComponents/UserProfileUpdate/UserProfileUpdate";
+
+// Cart Components
+import Cart from "./Components/CartComponents/Cart/Cart";
+
+// Order Components
+import ConfirmOrder from "./Components/OrderComponents/ConfirmOrder/ConfirmOrder";
+import ListOrders from "./Components/OrderComponents/ListOrders/ListOrders";
+import OrderDetail from "./Components/OrderComponents/OrderDetail/OrderDetail";
+import OrderSuccess from "./Components/OrderComponents/OrderSuccess/OrderSuccess";
 import PaymentRoute from "./Components/routes/PaymentRoute";
-import OrderSuccess from "./Components/OrderSuccess/OrderSuccess";
-import ListOrders from "./Components/ListOrders/ListOrders";
-import OrderDetail from "./Components/OrderDetail/OrderDetail";
+import Shipping from "./Components/OrderComponents/Shipping/Shipping";
+
+// Admin Components
 import AdminProductList from "./Components/AdminProductList/AdminProductList";
 import CreateProduct from "./Components/CreateProduct/CreateProduct";
-import ProductUpdate from "./Components/ProductUpdate/ProductUpdate";
 import Dashboard from "./Components/AdminComponents/Dashboard/Dashboard";
 import OrderLIstAdmin from "./Components/AdminComponents/OrderLIstAdmin/OrderLIstAdmin";
 import OrderProcess from "./Components/AdminComponents/OrderProcess/OrderProcess";
+import ProductReviewsAdmin from "./Components/AdminComponents/ProductReviewsAdmin/ProductReviewsAdmin";
+// import ProductUpdate from "./Components/ProductUpdate/ProductUpdate";
+import UpdateUser from "./Components/AdminComponents/UpdateUser/UpdateUser";
 import UsersListAdmin from "./Components/AdminComponents/UsersListAdmin/UsersListAdmin";
+import "./App.css";
+import ProductUpdate from "./Components/AdminComponents/ProductUpdate/ProductUpdate";
 
 function App() {
   useEffect(() => {
@@ -87,6 +103,12 @@ function App() {
           exact
         />
         <ProtectedRoute
+          path="/admin/reviews"
+          isAdmin
+          component={ProductReviewsAdmin}
+          exact
+        />
+        <ProtectedRoute
           path="/admin/orders"
           isAdmin
           component={OrderLIstAdmin}
@@ -102,6 +124,12 @@ function App() {
           path="/admin/users"
           isAdmin
           component={UsersListAdmin}
+          exact
+        />
+        <ProtectedRoute
+          path="/admin/user/:id"
+          isAdmin
+          component={UpdateUser}
           exact
         />
 

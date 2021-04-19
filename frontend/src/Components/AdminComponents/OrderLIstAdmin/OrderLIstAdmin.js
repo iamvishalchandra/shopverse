@@ -9,8 +9,8 @@ import {
   getAllOrders,
 } from "../../../actions/orderActions";
 import { DELETE_ORDER_RESET } from "../../../constants/orderConstants";
-import Loader from "../../Loader/Loader";
-import MetaData from "../../MetaData";
+import Loader from "../../reUseable/Loader/Loader";
+import MetaData from "../../reUseable/MetaData";
 import OrderInfo from "../../reUseable/OrderInfo/OrderInfo";
 import Sidebar from "../Sidebar/Sidebar";
 import "./OrderLIstAdmin.style.css";

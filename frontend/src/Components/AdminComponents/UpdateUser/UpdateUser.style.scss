@@ -1,0 +1,9 @@
+.updateUser {
+  display: flex;
+  gap: 10%;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+  }
+}

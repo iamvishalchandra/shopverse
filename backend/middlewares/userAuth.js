@@ -6,13 +6,14 @@ const ErrorHandler = require("../utils/errorHandler");
 const catchAsyncError = require("./catchAsyncError");
 
 exports.isAuthenticatedUser = catchAsyncError(async (req, res, next) => {
-  const { token } = req.cookies;
+  const { token } = req?.cookies;
+
   if (!token)
     return next(
       new ErrorHandler("UnAuthorized access. Login to get access.", 401)
     );
 
-  const decoded = jwt.verify(token, process.env.JWT_SECRET);
+  const decoded = jwt?.verify(token, process.env.JWT_SECRET);
 
   req.user = await UserModel.findById(decoded.id);
   next();

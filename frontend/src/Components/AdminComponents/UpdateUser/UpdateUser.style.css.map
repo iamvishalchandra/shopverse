@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,WAAW,CAAC;EACV,OAAO,EAAE,IAAI;EACb,GAAG,EAAE,GAAG;CAMT;;AAJE,AAAD,sBAAY,CAAC;EACX,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,MAAM;CACvB",
+    "sources": [
+        "UpdateUser.style.scss"
+    ],
+    "names": [],
+    "file": "UpdateUser.style.css"
+}

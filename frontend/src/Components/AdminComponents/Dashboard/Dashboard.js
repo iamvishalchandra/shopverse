@@ -5,8 +5,8 @@ import { getAllOrders } from "../../../actions/orderActions";
 import { getAdminProducts } from "../../../actions/productActions";
 import { allUsersActions } from "../../../actions/userActions";
 import { amountFormatter } from "../../../helpers/useFullFunctions";
-import Loader from "../../Loader/Loader";
-import MetaData from "../../MetaData";
+import Loader from "../../reUseable/Loader/Loader";
+import MetaData from "../../reUseable/MetaData";
 import Sidebar from "../Sidebar/Sidebar";
 import "./Dashboard.style.css";
 

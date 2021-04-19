@@ -177,18 +177,19 @@ exports.createProductReview = catchAsyncError(async (req, res, next) => {
 // Get Product Review => /api/v1/review
 exports.getProductReviews = catchAsyncError(async (req, res, next) => {
   const product = await ProductModel.findById(req.query.id);
+  if (!product) return next(new ErrorHandler("Product doesn't exist", 404));
 
   res.status(200).json({ success: true, reviews: product.reviews });
 });
 
 // Get Product Review => /api/v1/review
 exports.deleteReviews = catchAsyncError(async (req, res, next) => {
-  const product = await ProductModel.findById(req.query.productid);
+  const product = await ProductModel.findById(req.query.productId);
+  if (!product) return next(new ErrorHandler("Product doesn't exist", 404));
 
   const reviews = await product.reviews.filter(
     (review) => review._id.toString() !== req.query.id.toString()
   );
-
   const totalReviews = reviews.length;
 
   const ratings =
@@ -196,7 +197,7 @@ exports.deleteReviews = catchAsyncError(async (req, res, next) => {
     reviews.length;
 
   await ProductModel.findByIdAndUpdate(
-    req.query.productid,
+    req.query.productId,
     {
       reviews,
       ratings,

@@ -71,7 +71,10 @@ export const getAllOrders = () => async (dispatch) => {
 
     dispatch({ type: ALL_ORDERS_SUCCESS, payload: data });
   } catch (error) {
-    dispatch({ type: ALL_ORDERS_FAIL, payload: error.response.data.message });
+    dispatch({
+      type: ALL_ORDERS_FAIL,
+      payload: error?.response?.data?.message,
+    });
   }
 };
 

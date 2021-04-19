@@ -3,7 +3,7 @@ import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, createProduct } from "../../actions/productActions";
 import { CREATE_PRODUCT_RESET } from "../../constants/productConstants";
-import MetaData from "../MetaData";
+import MetaData from "../reUseable/MetaData";
 import FormOptions from "../reUseable/FormOptions/FormOptions";
 import Sidebar from "../AdminComponents/Sidebar/Sidebar";
 import "./CreateProduct.style.css";
@@ -175,7 +175,6 @@ const CreateProduct = ({ history }) => {
             placeholder="Enter Seller Name"
           />
 
-          {/* <div> */}
           <FormOptions
             formItem="input"
             type="file"
@@ -195,7 +194,6 @@ const CreateProduct = ({ history }) => {
               />
             ))}
           </div>
-          {/* </div> */}
 
           <FormOptions
             formItem="button"

@@ -1,0 +1,77 @@
+.profile {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  min-height: 85vh;
+  min-width: 300px;
+
+  &__title {
+    margin-top: 50px;
+    font-size: var(--heading-size);
+    text-decoration: underline;
+    margin-bottom: 50px;
+  }
+
+  &__container {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    &__links {
+      text-decoration: none;
+      color: whitesmoke;
+      font-weight: bold;
+      border-radius: 40px;
+      padding: 5px;
+      background-color: #fda12a;
+      display: flex;
+      width: 80%;
+      min-width: 200px;
+      margin-top: 20px;
+      justify-content: center;
+      padding: 15px 0;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    &__avatar {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 20%;
+
+      &__figure {
+        width: 16rem;
+        height: 16rem;
+        border-radius: 50%;
+        overflow: hidden;
+        &__photo {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+
+    &__details {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: 50%;
+
+      &__changePassword {
+        background-color: red;
+      }
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  .profile {
+    &__container {
+      flex-direction: column;
+    }
+  }
+}

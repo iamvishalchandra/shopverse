@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Elements } from "@stripe/react-stripe-js";
 import axios from "axios";
-import Payment from "../Payment/Payment";
 import { loadStripe } from "@stripe/stripe-js";
+import Payment from "../OrderComponents/Payment/Payment";
 
 const PaymentRoute = ({ history }) => {
   const [stripeApiKey, setStripeApiKey] = useState("");
