@@ -39,6 +39,10 @@
   cursor: pointer;
 }
 
+.usersListAdmin__container__body__button:hover {
+  border: 1px solid black;
+}
+
 .usersListAdmin__container__body__button__icon {
   width: 30px;
 }

@@ -7,6 +7,7 @@ const PaginationComponent = ({
   itemsPerPage = 10,
   numOfPages = 10,
 }) => {
+  console.log(tableData);
   const [data, setData] = useState([]);
   const [pageNumberLimit, setPageNumberLimit] = useState(1);
   const [maxPageNumberLimit, setMaxPageNumberLimit] = useState(numOfPages);
@@ -100,7 +101,10 @@ const PaginationComponent = ({
                 {tableData.columns.map((cols) =>
                   Object.entries(rows).map(([key, value]) =>
                     key === cols.id && cols.id === "photo" ? (
-                      <td className="paginationComponent__container__tableArea__table__rows__data paginationComponent__container__tableArea__table__rows__data__profilePhoto">
+                      <td
+                        className="paginationComponent__container__tableArea__table__rows__data paginationComponent__container__tableArea__table__rows__data__profilePhoto"
+                        label-data={`${cols.title}`}
+                      >
                         <img
                           className="paginationComponent__container__tableArea__table__rows__data__photo"
                           src={value}
@@ -110,10 +114,11 @@ const PaginationComponent = ({
                     ) : (
                       key === cols.id && (
                         <td
+                          label-data={`${cols.title}`}
                           className={
                             cols.id === "actions"
-                              ? "paginationComponent__container__tableArea__table__rows__data paginationComponent__container__tableArea__table__rows__data--actions"
-                              : "paginationComponent__container__tableArea__table__rows__data"
+                              ? `paginationComponent__container__tableArea__table__rows__data paginationComponent__container__tableArea__table__rows__data--actions`
+                              : `paginationComponent__container__tableArea__table__rows__data`
                           }
                         >
                           {value}

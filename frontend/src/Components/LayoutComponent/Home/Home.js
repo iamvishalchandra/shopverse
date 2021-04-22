@@ -102,15 +102,9 @@ const Home = ({ match }) => {
                 onChange={(priceRange) => setPriceRange(priceRange)}
               />
             </div>
-            <div
-              className="home__section__keyword__slider"
-              style={{ display: "flex", justifyContent: "space-between" }}
-            >
-              <div style={{ display: "flex", flexDirection: "column" }}>
-                <div className="home__section__keyword__category">
-                  {/* <h4 className="home__section__keyword__category__title">
-                Category
-              </h4> */}
+            <div className="home__section__keyword__result">
+              <div className="home__section__keyword__result__options">
+                <div className="home__section__keyword__result__options__category">
                   <FormOptions
                     formItem="dropdown"
                     id="category_field"
@@ -120,30 +114,18 @@ const Home = ({ match }) => {
                     setValues={(e) => setCategory(e.target.value)}
                     dropdownList={categories}
                   />
-
-                  {/* <ul className="home__section__keyword__category__list">
-                {categories.map((category) => (
-                  <li
-                    className="home__section__keyword__category__list__items"
-                    key={category}
-                    onClick={() => setCategory(category)}
-                  >
-                    {category}
-                  </li>
-                ))}
-              </ul> */}
                 </div>
-                <div className="home__section__keyword__rating">
-                  <h4 className="home__section__keyword__rating__title">
+                <div className="home__section__keyword__result__options__rating">
+                  <h4 className="home__section__keyword__result__options__rating__title">
                     Rating
                   </h4>
                   <ul
-                    style={{ display: "flex", flexDirection: "column" }}
-                    className="home__section__keyword__rating__list"
+                    // style={{ display: "flex", flexDirection: "column" }}
+                    className="home__section__keyword__result__options__rating__list"
                   >
                     {[5, 4, 3, 2, 1].map((star) => (
                       <li
-                        className="home__section__keyword__rating__list__items"
+                        className="home__section__keyword__result__options__rating__list__items"
                         key={star}
                         onClick={() => setRating(star)}
                       >

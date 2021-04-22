@@ -16,7 +16,6 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  height: 100%;
   margin: 1rem;
   overflow: hidden;
 }

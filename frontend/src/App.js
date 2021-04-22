@@ -35,17 +35,16 @@ import PaymentRoute from "./Components/routes/PaymentRoute";
 import Shipping from "./Components/OrderComponents/Shipping/Shipping";
 
 // Admin Components
-import AdminProductList from "./Components/AdminProductList/AdminProductList";
+import AdminProductList from "./Components/AdminComponents/AdminProductList/AdminProductList";
 import CreateProduct from "./Components/CreateProduct/CreateProduct";
 import Dashboard from "./Components/AdminComponents/Dashboard/Dashboard";
 import OrderLIstAdmin from "./Components/AdminComponents/OrderLIstAdmin/OrderLIstAdmin";
 import OrderProcess from "./Components/AdminComponents/OrderProcess/OrderProcess";
 import ProductReviewsAdmin from "./Components/AdminComponents/ProductReviewsAdmin/ProductReviewsAdmin";
-// import ProductUpdate from "./Components/ProductUpdate/ProductUpdate";
+import ProductUpdate from "./Components/AdminComponents/ProductUpdate/ProductUpdate";
 import UpdateUser from "./Components/AdminComponents/UpdateUser/UpdateUser";
 import UsersListAdmin from "./Components/AdminComponents/UsersListAdmin/UsersListAdmin";
 import "./App.css";
-import ProductUpdate from "./Components/AdminComponents/ProductUpdate/ProductUpdate";
 
 function App() {
   useEffect(() => {

@@ -6,7 +6,7 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  background-color: rgba(174, 211, 209, 0.253);
+  background-color: rgba(165, 164, 214, 0.253);
 }
 
 .paginationComponent__container {
@@ -99,7 +99,8 @@
 }
 
 .paginationComponent__container__paging__pageNumbers__list__active {
-  background-color: #0099ff;
+  background-color: #00c3ff;
+  border: 1px solid rgba(0, 0, 0, 0.596);
   color: whitesmoke;
   font-weight: bold;
   font-size: 30px;
@@ -125,5 +126,45 @@
 .paginationComponent__container__paging__pageNumbers__list__btn:hover {
   color: red;
   text-decoration: underline;
+}
+
+@media (max-width: 800px) {
+  .paginationComponent__container__tableArea__table {
+    display: none;
+    display: block;
+  }
+  .paginationComponent__container__tableArea__table__heading__items {
+    display: none;
+  }
+  .paginationComponent__container__tableArea__table__rows {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin-bottom: 50px;
+  }
+  .paginationComponent__container__tableArea__table__rows__data {
+    border: 1px solid white;
+    padding: 10px 10px;
+    background-color: rgba(34, 33, 33, 0.746);
+    min-width: 290px;
+    width: 100%;
+    text-align: right;
+    position: relative;
+  }
+  .paginationComponent__container__tableArea__table__rows__data::before {
+    content: attr(label-data);
+    position: absolute;
+    left: 0;
+    padding-left: 20px;
+    font-weight: bold;
+    text-decoration: underline;
+  }
 }
 /*# sourceMappingURL=PaginationComponent.style.css.map */

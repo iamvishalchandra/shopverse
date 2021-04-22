@@ -1,21 +1,108 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { amountFormatter } from "../../../helpers/useFullFunctions";
+import { Link, useHistory } from "react-router-dom";
+import {
+  amountFormatter,
+  dateFormatter,
+} from "../../../helpers/useFullFunctions";
 import FormOptions from "../FormOptions/FormOptions";
 import "./OrderData.style.css";
 
-const OrderData = ({
-  title,
-  values,
-  item,
-  subTotal,
-  setValues,
-  styleText,
-  styleValue,
-}) => {
+const OrderData = ({ order, link }) => {
+  const history = useHistory();
   return (
     <div className="orderData">
-      {item ? (
+      <h1 className="orderData__orderNo">Order #{order?._id}</h1>
+      <div className="orderData__container">
+        <div className="orderData__container__info">
+          <div className="orderData__container__info__shipping">
+            <h4 className="orderData__container__info__title">Shipping Info</h4>
+            <p>
+              Name: <b>{order?.user?.name}</b>
+            </p>
+            <p>
+              Address:{" "}
+              <b>{`${order?.shippingInfo?.address},
+            ${order?.shippingInfo?.city},
+            ${order?.shippingInfo?.country}`}</b>
+            </p>
+            <p>
+              Pincode: <b>{order?.shippingInfo?.postalCode}</b>
+            </p>
+            <p>
+              Phone: <b>{order?.shippingInfo?.contactNo}</b>
+            </p>
+          </div>
+          <div className="orderData__container__info__payment">
+            <h4 className="orderData__container__info__title">Payment Info</h4>
+            <p>
+              Amount: <b>₹{amountFormatter(order?.totalPrice)}</b>
+            </p>
+            <p>
+              Status:{" "}
+              {order?.paymentInfo?.status === "succeeded" ? (
+                <b style={{ color: "rgb(117, 243, 35)" }}>PAID</b>
+              ) : (
+                <b style={{ color: "red" }}>NOT PAID</b>
+              )}
+            </p>
+          </div>
+          <div>
+            <h4 className="orderData__container__info__title">Order Status</h4>
+            <p>
+              Order Date: <b>{dateFormatter(order?.createdAt)}</b>
+            </p>
+            <p>
+              Delivery:
+              {String(order?.orderStatus)?.includes("Delivered") ? (
+                <b style={{ color: "#75f323", fontWeight: "bold" }}>
+                  {order?.orderStatus}
+                </b>
+              ) : (
+                <b style={{ color: "red", fontWeight: "bold" }}>
+                  {order?.orderStatus}
+                </b>
+              )}
+            </p>
+          </div>
+        </div>
+        <div className="orderData__container__items">
+          {order?.orderItems?.map((item) => (
+            <>
+              <div className="orderData__container__items__body">
+                <img
+                  className="orderData__container__items__body__image"
+                  src={item.image}
+                  alt={item.title}
+                  style={{ width: "100px" }}
+                />
+
+                <div className="orderData__container__items__body__detail">
+                  <Link to={`/product/${item.product}`}>{item?.name}</Link>
+                  <div className="orderData__container__items__body__cost">
+                    <p className="orderData__container__items__body__cost__units">
+                      {item.quantity} x ₹{amountFormatter(item.price)} =
+                      <b className="orderData__container__items__body__cost__price">
+                        {" "}
+                        ₹{amountFormatter(item.quantity * item.price)}
+                      </b>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <hr />
+            </>
+          ))}
+        </div>
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <FormOptions
+            setValues={() => history.push(link)}
+            formItem="button"
+            text="Back To Orders"
+          />
+        </div>
+      </div>
+
+      {/* {item ? (
         <>
           <div className="orderData__cartItems">
             <div className="orderData__cartItems__image">
@@ -104,7 +191,7 @@ const OrderData = ({
             {values}
           </p>
         </div>
-      )}
+      )} */}
     </div>
   );
 };

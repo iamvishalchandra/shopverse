@@ -5,19 +5,18 @@ import {
   clearErrors,
   deleteSingleProduct,
   getAdminProducts,
-} from "../../actions/productActions";
+} from "../../../actions/productActions";
 // import "bootstrap-css-only/css/bootstrap.min.css";
 import "mdbreact/dist/css/mdb.css";
 import "./AdminProductList.style.css";
 import { Link } from "react-router-dom";
-import Sidebar from "../AdminComponents/Sidebar/Sidebar";
-import MetaData from "../reUseable/MetaData";
-import Loader from "../reUseable/Loader/Loader";
+import Sidebar from "../Sidebar/Sidebar";
+import MetaData from "../../reUseable/MetaData";
+import Loader from "../../reUseable/Loader/Loader";
 import { MDBDataTable } from "mdbreact";
-import { DELETE_PRODUCT_RESET } from "../../constants/productConstants";
-import { textTruncate } from "../../helpers/useFullFunctions";
-// import "@fortawesome/fontawesome-free/css/all.min.css";
-// import "bootstrap-css-only/css/bootstrap.min.css";
+import { DELETE_PRODUCT_RESET } from "../../../constants/productConstants";
+import { textTruncate } from "../../../helpers/useFullFunctions";
+import PaginationComponent from "../../reUseable/PaginationComponent/PaginationComponent";
 
 const AdminProductList = ({ history }) => {
   const alert = useAlert();
@@ -50,11 +49,11 @@ const AdminProductList = ({ history }) => {
   const setProducts = () => {
     const data = {
       columns: [
-        { label: "Actions", field: "actions" },
-        { label: "ID", field: "id", sort: "asc" },
-        { label: "Name", field: "name", sort: "asc" },
-        { label: "Price", field: "price", sort: "asc" },
-        { label: "Stock", field: "stock", sort: "asc" },
+        { title: "ID", id: "id", sort: "asc" },
+        { title: "Name", id: "name", sort: "asc" },
+        { title: "Price", id: "price", sort: "asc" },
+        { title: "Stock", id: "stock", sort: "asc" },
+        { title: "Actions", id: "actions" },
       ],
       rows: [],
     };
@@ -62,29 +61,28 @@ const AdminProductList = ({ history }) => {
     products?.forEach((product) => {
       data?.rows?.push({
         id: product._id,
-
         name: textTruncate(product.name, 30),
         price: `₹${product.price}`,
         stock: product.stock,
 
         actions: (
-          <div>
-            <button style={{ padding: "5px" }}>
+          <div className="adminProductList__container__content__actions">
+            <button className="adminProductList__container__content__actions__button adminProductList__container__content__actions__button--edit">
               <Link to={`/admin/product/${product._id}`}>
                 <img
                   src="/photo/edit-3-512.png"
-                  style={{ padding: "3px", width: "20px" }}
-                  alt=""
+                  alt="productimg"
+                  className="adminProductList__container__content__actions__button__icon"
                 />
               </Link>
             </button>
             <button
-              style={{ padding: "5px" }}
+              className="adminProductList__container__content__actions__button adminProductList__container__content__actions__button--delete"
               onClick={() => deleteProductHandle(product._id)}
             >
               <img
+                className="adminProductList__container__content__actions__button__icon"
                 src="/photo/delete-512.png"
-                style={{ padding: "3px", width: "20px" }}
                 alt=""
               />
             </button>
@@ -103,16 +101,16 @@ const AdminProductList = ({ history }) => {
   return (
     <div className="adminProductList">
       <MetaData title="Product List" />
-      <div>
+      <div className="adminProductList__sidebaar">
         <Sidebar />
       </div>
-      <div>
-        <h1>All Product List</h1>
+      <div className="adminProductList__container">
+        <h1 className="adminProductList__container__title">All Product List</h1>
         {loading ? (
           <Loader />
         ) : (
-          <div>
-            <MDBDataTable data={setProducts()} bordered striped hover />
+          <div className="adminProductList__container__content">
+            <PaginationComponent tableData={setProducts()} />
           </div>
         )}
       </div>

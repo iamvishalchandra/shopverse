@@ -138,10 +138,14 @@ const ProductUpdate = ({ match, history }) => {
     <div className="productUpdate">
       <MetaData title="Update Product" />
       <Sidebar />
-      <div>
-        <h1>Product Update</h1>
+      <div className="productUpdate__container">
+        <h1 className="productUpdate__container__title">Product Update</h1>
 
-        <form encType="multipart/form-data" onSubmit={submitHandler}>
+        <form
+          className="productUpdate__container__form"
+          encType="multipart/form-data"
+          onSubmit={submitHandler}
+        >
           <FormOptions
             formItem="input"
             type="text"
@@ -206,33 +210,36 @@ const ProductUpdate = ({ match, history }) => {
             placeholder="Enter Seller Name"
           />
 
-          <div>
+          <div className="productUpdate__container__form__imageArea">
             <FormOptions
               formItem="input"
               type="file"
-              text="Choose Product's New Images"
+              text="Browse Image(s)"
               name="product_images"
               id="customFile"
               multiple
               setValues={onChange}
             />
-
-            {oldImages?.map((image) => (
-              <img
-                style={{ width: "100px" }}
-                src={image.url}
-                key={image}
-                alt={image.url}
-              />
-            ))}
-            {imagesPreview?.map((image) => (
-              <img
-                style={{ width: "100px" }}
-                src={image}
-                key={image}
-                alt="Product Images"
-              />
-            ))}
+            <div>
+              {oldImages?.map((image) => (
+                <img
+                  style={{ width: "100px" }}
+                  src={image.url}
+                  key={image}
+                  alt={image.url}
+                />
+              ))}
+            </div>
+            <div>
+              {imagesPreview?.map((image) => (
+                <img
+                  style={{ width: "100px" }}
+                  src={image}
+                  key={image}
+                  alt="Product Images"
+                />
+              ))}
+            </div>
           </div>
 
           <FormOptions

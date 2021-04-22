@@ -1,52 +1,48 @@
 .orderData {
-  &__shippingAddress {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
 
-    &__text {
-      padding: 0 10px;
-      padding-left: 0;
-    }
+  &__orderNo {
+    font-size: 1.2rem;
+    text-align: center;
+    margin-top: 30px;
   }
 
-  &__cartItems {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    &__name {
-      padding: 30px;
-    }
-    &__cost {
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      &__units {
-        padding: 20px;
-        font-weight: bold;
-        color: gray;
-      }
-
-      &__price {
-        padding: 10px;
-      }
-    }
-  }
-
-  &__orderTotal {
+  &__container {
     display: flex;
     flex-direction: column;
-    &__data {
-      margin: 20px 0;
+
+    &__info {
       display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      gap: 10px;
+      margin: 50px 0;
 
-      justify-content: space-between;
-      font-weight: bold;
-      color: gray;
+      &__title {
+        font-weight: bold;
+        font-size: 1.3rem;
+        text-decoration: underline;
+        margin-bottom: 15px;
+      }
+    }
 
-      &__span {
-        color: black;
+    &__items {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+
+      &__body {
+        display: flex;
+        justify-content: flex-start;
+        gap: 10px;
+        align-items: center;
+
+        &__detail {
+          display: flex;
+          flex-direction: column;
+          gap: 15px;
+        }
       }
     }
   }
