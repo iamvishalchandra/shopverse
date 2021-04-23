@@ -1,4 +1,18 @@
 .orderProcess {
   display: flex;
   gap: 10px;
+
+  &__container {
+    margin: 30px 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__title {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 30px;
+    }
+  }
 }

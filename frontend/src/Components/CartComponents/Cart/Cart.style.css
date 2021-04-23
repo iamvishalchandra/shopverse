@@ -44,6 +44,9 @@
       flex-wrap: wrap-reverse;
   -ms-flex-pack: distribute;
       justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .cart__container__products__summary {
@@ -57,6 +60,7 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  height: 100%;
 }
 
 .cart__container__products__summary__title {

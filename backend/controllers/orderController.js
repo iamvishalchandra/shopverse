@@ -87,7 +87,6 @@ exports.updateOrder = catchAsyncError(async (req, res, next) => {
 
   order.orderStatus = req.body.orderStatus;
   order.deliveredAt = Date.now();
-
   await order.save();
 
   res.status(200).json({ success: true });

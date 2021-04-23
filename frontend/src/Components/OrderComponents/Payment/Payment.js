@@ -7,7 +7,6 @@ import {
   useElements,
   useStripe,
 } from "@stripe/react-stripe-js";
-// import CheckOutSteps from "../CheckOutSteps/CheckOutSteps";
 import MetaData from "../../reUseable/MetaData";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
@@ -15,6 +14,7 @@ import { clearErrors, createOrder } from "../../../actions/orderActions";
 import FormOptions from "../../reUseable/FormOptions/FormOptions";
 import "./Payment.style.css";
 import CheckOutSteps from "../CheckOutSteps/CheckOutSteps";
+import { amountFormatter } from "../../../helpers/useFullFunctions";
 
 const Payment = ({ history }) => {
   const options = {
@@ -148,7 +148,7 @@ const Payment = ({ history }) => {
             <FormOptions
               formItem="button"
               type="submit"
-              text={`Pay ₹${orderInfo?.totalPrice}`}
+              text={`Pay ₹${amountFormatter(orderInfo?.totalPrice)}`}
               setValues={submitHandle}
               disabled={disabled}
             />

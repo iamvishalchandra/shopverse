@@ -186,14 +186,7 @@ const OrderInfo = ({
           </div>
         )}
         {order?.orderItems?.map((item) => (
-          <div
-            className="orderInfo__products__container"
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              gap: "40px",
-            }}
-          >
+          <div className="orderInfo__products__container">
             <div className="orderInfo__products__container__items">
               <img
                 src={item.image}
@@ -212,18 +205,27 @@ const OrderInfo = ({
                   <h3 className="orderInfo__products__container__items__info__status__text">
                     Payment:
                   </h3>
-                  <h4
-                    className="orderInfo__products__container__items__info__status__value"
-                    style={{
-                      color:
-                        order?.paymentInfo?.status === "succeeded"
-                          ? "green"
-                          : "red",
-                      fontWeight: "bold",
-                    }}
-                  >
-                    {order?.paymentInfo?.status}
-                  </h4>
+                  {order?.paymentInfo?.status === "succeeded" ? (
+                    <h4
+                      className="orderInfo__products__container__items__info__status__value"
+                      style={{
+                        color: "green",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      PAID
+                    </h4>
+                  ) : (
+                    <h4
+                      className="orderInfo__products__container__items__info__status__value"
+                      style={{
+                        color: "red",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      NOT PAID
+                    </h4>
+                  )}
                 </div>
                 <div className="orderInfo__products__container__items__info__status">
                   <h3 className="orderInfo__products__container__items__info__status__text">

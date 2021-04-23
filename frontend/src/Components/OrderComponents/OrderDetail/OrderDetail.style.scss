@@ -1,25 +1,15 @@
 .orderDetail {
   min-width: var(--min-width);
+  min-height: var(--height);
   &__container {
     display: flex;
     flex-direction: column;
+    margin: 50px;
 
-    &__title {
-      font-size: 60px;
-    }
-
-    &__info {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      padding: 0 25px;
-      align-items: center;
-    }
-
-    &__details {
-      display: flex;
-      flex-direction: column;
-      padding: 20px;
+    &__orderNo {
+      // font-weight: bold;
+      text-align: center;
+      margin-bottom: 30px;
     }
   }
 }

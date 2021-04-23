@@ -45,21 +45,19 @@ const OrderLIstAdmin = ({ history }) => {
     <div className="orderLIstAdmin">
       <MetaData title="All Orders" />
       <Sidebar />
-      <div>
-        <h1>Order List</h1>
+      <div className="orderLIstAdmin__container">
+        <h1 className="orderLIstAdmin__container__title">Order List</h1>
 
         {loading ? (
           <Loader />
         ) : (
-          <div>
-            {orders?.map((order) => (
-              <OrderInfo
-                order={order}
-                isAdminList
-                deleteOrder={deleteOrderHandler}
-              />
-            ))}
-          </div>
+          orders?.map((order) => (
+            <OrderInfo
+              order={order}
+              isAdminList
+              deleteOrder={deleteOrderHandler}
+            />
+          ))
         )}
       </div>
     </div>

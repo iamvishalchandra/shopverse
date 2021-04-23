@@ -17,6 +17,7 @@ const OrderProcess = ({ match, history }) => {
   const dispatch = useDispatch();
 
   const { loading, order } = useSelector((state) => state?.orderDetails);
+
   const {
     shippingInfo,
     orderItems,
@@ -28,8 +29,7 @@ const OrderProcess = ({ match, history }) => {
 
   const { error, isOrderUpdated } = useSelector((state) => state?.updateOrder);
 
-  const [status, setStatus] = useState(order?.orderStatus);
-
+  const [status, setStatus] = useState("Processing");
   const orderId = match.params.id;
 
   useEffect(() => {
@@ -40,16 +40,14 @@ const OrderProcess = ({ match, history }) => {
       dispatch(clearErrors());
     }
     if (isOrderUpdated) {
-      alert.error(isOrderUpdated);
+      alert.success("Order Updated Successfully");
       dispatch({ type: UPDATE_ORDER_RESET });
     }
   }, [dispatch, error, isOrderUpdated, alert, orderId]);
 
   const updateOrderHandler = (id) => {
     const formData = new FormData();
-    console.log(status);
     formData.set("orderStatus", status);
-
     dispatch(updateOrderAction(id, formData));
   };
 
@@ -60,23 +58,23 @@ const OrderProcess = ({ match, history }) => {
     <div className="orderProcess">
       <MetaData title={`Process Order #${order?._id}`} />
       <Sidebar />
-      <div>
-        <h1>Process Order</h1>
-        <div>
+      <div className="orderProcess__container">
+        <h1 className="orderProcess__container__title">Process Order</h1>
+        <div className="orderProcess__container__data">
           {loading ? (
             <Loader />
           ) : (
-            <div>
-              {order && (
-                <OrderInfo
-                  order={order}
-                  isAdmin
-                  status={status}
-                  setStatus={setStatus}
-                  updateOrder={updateOrderHandler}
-                />
-              )}
-            </div>
+            // <div className='orderProcess__container'>
+            order && (
+              <OrderInfo
+                order={order}
+                isAdmin
+                status={status}
+                setStatus={setStatus}
+                updateOrder={updateOrderHandler}
+              />
+            )
+            // </div>
           )}
         </div>
       </div>

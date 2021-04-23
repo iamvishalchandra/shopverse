@@ -1,5 +1,6 @@
 .productReviewsAdmin {
   display: flex;
+
   gap: 15px;
   &__container {
     margin-bottom: 50px;
@@ -19,15 +20,14 @@
 
       min-height: 100vh;
       min-width: 70vw;
-
       &__form {
         display: flex;
         flex-direction: column;
       }
 
       &__noReviews {
+        text-align: center;
       }
-
       &__table {
         &__delete {
           padding: 5px;

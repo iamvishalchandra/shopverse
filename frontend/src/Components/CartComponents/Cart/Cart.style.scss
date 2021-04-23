@@ -26,6 +26,7 @@
       display: flex;
       flex-wrap: wrap-reverse;
       justify-content: space-around;
+      align-items: center;
 
       &__summary {
         border: 2px solid black;
@@ -33,6 +34,7 @@
         padding: 20px;
         display: flex;
         flex-direction: column;
+        height: 100%;
 
         &__title {
           font-size: 2rem;

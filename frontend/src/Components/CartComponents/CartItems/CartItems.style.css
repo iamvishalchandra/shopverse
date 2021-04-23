@@ -63,6 +63,8 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   min-width: 100%;
 }
 
@@ -114,12 +116,9 @@
 }
 
 .cartItems__details__value__options__delete {
-  background-color: #e92243;
-  padding: 5px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  border-radius: 5px;
 }
 
 .cartItems__details__value__options__delete__icon {
@@ -127,8 +126,9 @@
   width: 20px;
 }
 
-.cartItems__details__value__options__delete:hover {
-  border: 1px solid black;
-  background-color: red;
+.cartItems__details__value__offstock {
+  color: red;
+  font-weight: bold;
+  font-size: 1.4rem;
 }
 /*# sourceMappingURL=CartItems.style.css.map */

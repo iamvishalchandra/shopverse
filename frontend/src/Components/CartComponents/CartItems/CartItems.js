@@ -22,33 +22,36 @@ const CartItems = ({ item, increaseQty, decreaseQty, removeItem }) => {
         >
           {item.name}
         </Link>
-        <div
-          className="cartItems__details__value"
-          style={{ display: "flex", flexWrap: "wrap" }}
-        >
+        <div className="cartItems__details__value">
           <div className="cartItems__details__value__options">
-            <div className="cartItems__details__value__options__quantity">
-              <span
-                className="cartItems__details__value__options__quantity__count--decrease cartItems__details__value__options__quantity__count"
-                onClick={() => decreaseQty(item.product, item.quantity)}
-              >
-                -
-              </span>
-              <input
-                className="cartItems__details__value__options__quantity__value"
-                type="number"
-                value={item.quantity}
-                readOnly
-              />
-              <span
-                className="cartItems__details__value__options__quantity__count--increase cartItems__details__value__options__quantity__count"
-                onClick={() =>
-                  increaseQty(item.product, item.quantity, item.stock)
-                }
-              >
-                +
-              </span>
-            </div>
+            {item.stock > 0 ? (
+              <div className="cartItems__details__value__options__quantity">
+                <span
+                  className="cartItems__details__value__options__quantity__count--decrease cartItems__details__value__options__quantity__count"
+                  onClick={() => decreaseQty(item.product, item.quantity)}
+                >
+                  -
+                </span>
+                <input
+                  className="cartItems__details__value__options__quantity__value"
+                  type="number"
+                  value={item.quantity}
+                  readOnly
+                />
+                <span
+                  className="cartItems__details__value__options__quantity__count--increase cartItems__details__value__options__quantity__count"
+                  onClick={() =>
+                    increaseQty(item.product, item.quantity, item.stock)
+                  }
+                >
+                  +
+                </span>
+              </div>
+            ) : (
+              <p className="cartItems__details__value__offstock">
+                Currently Out Of Stock
+              </p>
+            )}
 
             <div className="cartItems__details__value__options__delete">
               <img

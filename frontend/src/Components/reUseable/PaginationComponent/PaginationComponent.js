@@ -7,7 +7,6 @@ const PaginationComponent = ({
   itemsPerPage = 10,
   numOfPages = 10,
 }) => {
-  console.log(tableData);
   const [data, setData] = useState([]);
   const [pageNumberLimit, setPageNumberLimit] = useState(1);
   const [maxPageNumberLimit, setMaxPageNumberLimit] = useState(numOfPages);

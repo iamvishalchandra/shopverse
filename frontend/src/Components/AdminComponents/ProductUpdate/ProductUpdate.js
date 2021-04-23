@@ -96,7 +96,7 @@ const ProductUpdate = ({ match, history }) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-
+    if (stock < 0) return alert.error("Stock value Cannot be less than 0");
     const formData = new FormData();
     formData.set("name", name);
     formData.set("price", price);
@@ -196,7 +196,7 @@ const ProductUpdate = ({ match, history }) => {
             text="Stock (Min Stock 10)"
             values={stock}
             setValues={(e) => setStock(e.target.value)}
-            minValue={10}
+            minValue={0}
           />
 
           <FormOptions

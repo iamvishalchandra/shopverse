@@ -1,4 +1,3 @@
-// import "./App.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { useEffect } from "react";
 import { loadUser } from "./actions/userActions";
@@ -36,7 +35,7 @@ import Shipping from "./Components/OrderComponents/Shipping/Shipping";
 
 // Admin Components
 import AdminProductList from "./Components/AdminComponents/AdminProductList/AdminProductList";
-import CreateProduct from "./Components/CreateProduct/CreateProduct";
+import CreateProduct from "./Components/AdminComponents/CreateProduct/CreateProduct";
 import Dashboard from "./Components/AdminComponents/Dashboard/Dashboard";
 import OrderLIstAdmin from "./Components/AdminComponents/OrderLIstAdmin/OrderLIstAdmin";
 import OrderProcess from "./Components/AdminComponents/OrderProcess/OrderProcess";
@@ -64,11 +63,9 @@ function App() {
         <Route path="/password/reset/:token" component={NewPassword} exact />
         <ProtectedRoute path="/me" component={Profile} exact />
         <ProtectedRoute path="/me/update" component={UserProfileUpdate} exact />
+
+        {/* Cart & Orders */}
         <Route path="/cart" component={Cart} exact />
-        <ProtectedRoute path="/shipping" component={Shipping} exact />
-        <ProtectedRoute path="/order/confirm" component={ConfirmOrder} exact />
-        <ProtectedRoute path="/payment" component={PaymentRoute} exact />
-        <ProtectedRoute path="/success" component={OrderSuccess} exact />
         <ProtectedRoute path="/orders/me" component={ListOrders} exact />
         <ProtectedRoute
           path="/order/detail/:id"
@@ -80,6 +77,12 @@ function App() {
           component={UpdatePassword}
           exact
         />
+
+        {/* Order Process */}
+        <ProtectedRoute path="/shipping" component={Shipping} exact />
+        <ProtectedRoute path="/order/confirm" component={ConfirmOrder} exact />
+        <ProtectedRoute path="/payment" component={PaymentRoute} exact />
+        <ProtectedRoute path="/success" component={OrderSuccess} exact />
 
         {/* Admin Routes */}
         <ProtectedRoute path="/dashboard" isAdmin component={Dashboard} exact />

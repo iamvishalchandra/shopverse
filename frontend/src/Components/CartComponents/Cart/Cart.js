@@ -12,9 +12,18 @@ import MetaData from "../../reUseable/MetaData";
 import CartItems from "../CartItems/CartItems";
 import "./Cart.style.css";
 
-const Cart = () => {
+const Cart = ({ history }) => {
   const dispatch = useDispatch();
+
   const { cartItems } = useSelector((state) => state.cart);
+
+  const inStockItems = [];
+
+  cartItems.map((items) => items.stock > 0 && inStockItems.push(items));
+  const totalAmount = inStockItems?.reduce(
+    (acc, item) => item.price * item.quantity + acc,
+    0
+  );
 
   const increaseQty = (id, quantity, stock) => {
     const newQty = quantity + 1;
@@ -73,7 +82,7 @@ const Cart = () => {
                   <p className="cart__container__products__summary__quantities__data__subtotal cart__container__products__summary__quantities__data__name">
                     Subtotal:{" "}
                     <span className="cart__container__products__summary__quantities__data__subtotal__units cart__container__products__summary__quantities__data__name__value">
-                      {cartItems?.reduce(
+                      {inStockItems?.reduce(
                         (acc, item) => item?.quantity + acc,
                         0
                       )}{" "}
@@ -83,13 +92,20 @@ const Cart = () => {
                   <p className="cart__container__products__summary__quantities__data__subtotal cart__container__products__summary__quantities__data__name">
                     Shipping Cost:
                     <span className="cart__container__products__summary__quantities__data__subtotal__units cart__container__products__summary__quantities__data__name__value">
-                      {cartItems?.reduce(
+                      {inStockItems?.reduce(
                         (acc, item) => item.price * item.quantity + acc,
                         0
                       ) < 500 ? (
-                        <>
-                          <span style={{ color: "black" }}> ₹</span>50
-                        </>
+                        inStockItems?.reduce(
+                          (acc, item) => item.price * item.quantity + acc,
+                          0
+                        ) > 0 ? (
+                          <>
+                            <span style={{ color: "black" }}> ₹</span>50
+                          </>
+                        ) : (
+                          0
+                        )
                       ) : (
                         " Free"
                       )}{" "}
@@ -98,20 +114,17 @@ const Cart = () => {
                   <p className="cart__container__products__summary__quantities__data__name">
                     Total Amount: ₹
                     <span className="cart__container__products__summary__quantities__data__name__value">
-                      {amountFormatter(
-                        cartItems?.reduce(
-                          (acc, item) => item.price * item.quantity + acc,
-                          0
-                        )
-                      )}
+                      {amountFormatter(totalAmount)}
                     </span>
                   </p>
                 </div>
 
-                <Link to="/login?redirect=shipping">
-                  <FormOptions formItem="button" text="CheckOut" />
-                </Link>
-                {/* <button>Checkout</button> */}
+                <FormOptions
+                  disabled={totalAmount < 1}
+                  formItem="button"
+                  text="CheckOut"
+                  setValues={() => history?.push("/login?redirect=shipping")}
+                />
               </div>
             </div>
           </div>

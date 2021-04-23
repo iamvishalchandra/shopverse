@@ -230,9 +230,8 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  gap: 30px;
-  padding: 10px;
-  gap: 10px;
+  padding: 5px;
+  gap: 5px;
 }
 
 .orderInfo__products__adminActions {
@@ -243,10 +242,11 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  width: 100%;
   gap: 20px;
 }
 
@@ -254,7 +254,6 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 100%;
 }
 
 .orderInfo__products__container__items {
@@ -269,7 +268,7 @@
 }
 
 .orderInfo__products__container__items__image {
-  width: 200px;
+  width: 5rem;
 }
 
 .orderInfo__products__container__items__info {
@@ -340,5 +339,17 @@
       -ms-flex-pack: center;
           justify-content: center;
   gap: 10px;
+}
+
+@media (max-width: 750px) {
+  .orderInfo__top__left__items--total, .orderInfo__top__left__items--shipping {
+    display: none;
+  }
+  .orderInfo__top__right__items--orderNo {
+    display: none;
+  }
+  .orderInfo__products__container__items__info__status {
+    display: none;
+  }
 }
 /*# sourceMappingURL=OrderInfo.style.css.map */

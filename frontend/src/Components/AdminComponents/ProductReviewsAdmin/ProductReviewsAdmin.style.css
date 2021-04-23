@@ -50,6 +50,10 @@
           flex-direction: column;
 }
 
+.productReviewsAdmin__container__body__noReviews {
+  text-align: center;
+}
+
 .productReviewsAdmin__container__body__table__delete {
   padding: 5px;
   background-color: #ff0062;

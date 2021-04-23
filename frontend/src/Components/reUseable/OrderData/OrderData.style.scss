@@ -1,11 +1,12 @@
 .orderData {
   display: flex;
-  flex-direction: column;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 20px;
 
-  &__orderNo {
-    font-size: 1.2rem;
-    text-align: center;
-    margin-top: 30px;
+  hr {
+    margin: 20px 0;
+    opacity: 30%;
   }
 
   &__container {
@@ -14,34 +15,55 @@
 
     &__info {
       display: flex;
+      gap: 30px;
       flex-wrap: wrap;
-      justify-content: space-around;
-      gap: 10px;
-      margin: 50px 0;
-
-      &__title {
-        font-weight: bold;
-        font-size: 1.3rem;
-        text-decoration: underline;
-        margin-bottom: 15px;
-      }
     }
 
-    &__items {
+    &__title {
+      font-weight: bold;
+      font-size: 1.3rem;
+      text-decoration: underline;
+      margin-bottom: 15px;
+    }
+
+    &__orderItems {
       display: flex;
       flex-direction: column;
-      width: 100%;
+      align-items: flex-start;
 
-      &__body {
+      &__product {
         display: flex;
+        align-items: center;
         justify-content: flex-start;
         gap: 10px;
-        align-items: center;
+      }
+    }
+  }
 
-        &__detail {
+  &__summary {
+    display: flex;
+    flex-direction: column;
+
+    &__title {
+      font-weight: bold;
+      font-size: 1.3rem;
+      text-decoration: underline;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    &__body {
+      border: 1px solid rgba(0, 0, 0, 0.219);
+      padding: 10px;
+      border-radius: 20px;
+
+      &__info {
+        display: flex;
+        flex-direction: column;
+
+        &__amount {
           display: flex;
-          flex-direction: column;
-          gap: 15px;
+          justify-content: space-between;
         }
       }
     }
