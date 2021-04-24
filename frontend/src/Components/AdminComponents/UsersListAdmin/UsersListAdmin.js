@@ -1,4 +1,3 @@
-import { MDBDataTable } from "mdbreact";
 import React, { useEffect } from "react";
 import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";

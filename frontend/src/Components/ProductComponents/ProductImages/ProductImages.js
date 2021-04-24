@@ -14,6 +14,7 @@ const ProductImages = ({ images }) => {
       <div className="productImages__option">
         {images?.map((image) => (
           <img
+            key={image._id}
             className="productImages__option__images"
             src={image.url}
             alt=""

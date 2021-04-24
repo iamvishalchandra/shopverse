@@ -1,19 +1,28 @@
 .usersListAdmin {
   display: flex;
+  min-width: var(--min-width);
+  min-height: var(--height);
   gap: 1%;
 
   &__container {
     margin: 40px 0;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    margin-right: 5px;
+    width: 100%;
 
     &__title {
       font-weight: bold;
       margin-bottom: 20px;
+      text-align: center;
     }
 
     &__body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
       &__edit {
         background-color: rgb(0, 255, 234);
       }

@@ -56,7 +56,7 @@ const FormOptions = ({
               type={type}
               id={id}
               name={name}
-              step={type === "number" && "0.01"}
+              step={type === "number" ? "0.01" : undefined}
               value={values && values}
               accept={accept && accept}
               multiple={multiple ? true : false}

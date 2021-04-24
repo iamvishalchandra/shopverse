@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+
 import {
   addItemsToCart,
   removeItemsFromCart,
@@ -56,15 +56,16 @@ const Cart = ({ history }) => {
           <div className="cart__container__products">
             <div className="cart__container__products__items">
               {cartItems.map((item) => (
-                <>
+                <div key={item.product}>
                   <hr />
+
                   <CartItems
                     item={item}
                     increaseQty={increaseQty}
                     decreaseQty={decreaseQty}
                     removeItem={removeItem}
                   />
-                </>
+                </div>
               ))}
               <hr />
             </div>

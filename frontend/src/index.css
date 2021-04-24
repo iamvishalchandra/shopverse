@@ -3,6 +3,7 @@
   --min-width: 300px;
   --height: 83vh;
   --heading-size: 2rem;
+  --layout-background: #232f3e;
 }
 
 * {

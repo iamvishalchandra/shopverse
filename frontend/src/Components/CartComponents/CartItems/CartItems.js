@@ -4,7 +4,7 @@ import { amountFormatter } from "../../../helpers/useFullFunctions";
 import "./CartItems.style.css";
 const CartItems = ({ item, increaseQty, decreaseQty, removeItem }) => {
   return (
-    <div className="cartItems" key={item?.product}>
+    <div className="cartItems">
       <div className="cartItems__product">
         <img
           className="cartItems__product__image"

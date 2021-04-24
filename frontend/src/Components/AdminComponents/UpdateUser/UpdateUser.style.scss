@@ -1,5 +1,7 @@
 .updateUser {
   display: flex;
+  min-height: var(--min-width);
+  min-height: var(--height);
   gap: 10%;
 
   &__container {

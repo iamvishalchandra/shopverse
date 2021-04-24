@@ -47,7 +47,7 @@ const UpdateUser = ({ match, history }) => {
       history.push("/admin/users");
       dispatch({ type: UPDATE_USER_RESET });
     }
-  }, [dispatch, error, alert, isUpdated, history]);
+  }, [dispatch, error, alert, isUpdated, history, user, userId]);
 
   const submitHandle = (e) => {
     e.preventDefault();

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   amountFormatter,
   dateFormatter,
@@ -7,8 +7,7 @@ import {
 import FormOptions from "../FormOptions/FormOptions";
 import "./OrderData.style.css";
 
-const OrderData = ({ order, link, isConfirmOrder, setValues }) => {
-  const history = useHistory();
+const OrderData = ({ order, isConfirmOrder, setValues }) => {
   return (
     <div className="orderData">
       <div className="orderData__container">
@@ -66,7 +65,7 @@ const OrderData = ({ order, link, isConfirmOrder, setValues }) => {
           <h4 className="orderData__container__title">Your Cart Item(s):</h4>
           <hr />
           {order?.orderItems?.map((item) => (
-            <>
+            <div key={item._id || item.product}>
               <div className="orderData__container__orderItems__product">
                 <img
                   className="orderData__container__orderItems__product__image"
@@ -76,10 +75,7 @@ const OrderData = ({ order, link, isConfirmOrder, setValues }) => {
                 />
 
                 <div className="orderData__container__orderItems__product__data">
-                  <Link to={`/product/${item.product}`}>
-                    {/* {item?.name?.substr(0, 20) + "..."} */}
-                    {item?.name}
-                  </Link>
+                  <Link to={`/product/${item.product}`}>{item?.name}</Link>
                   <div className="orderData__container__orderItems__product__data__cost">
                     <p className="orderData__container__orderItems__product__data__cost__units">
                       {item.quantity} x ₹{amountFormatter(item.price)} =
@@ -91,8 +87,8 @@ const OrderData = ({ order, link, isConfirmOrder, setValues }) => {
                   </div>
                 </div>
               </div>
-              <hr />
-            </>
+              <hr style={{ width: "100%" }} />
+            </div>
           ))}
         </div>
       </div>

@@ -17,7 +17,7 @@ const CheckOutSteps = ({ shipping, confirmOrder, payment }) => {
           <div className="checkOutSteps__links__triangle__front--active"></div>
         </Link>
       ) : (
-        <Link disabled>
+        <Link to="#" disabled>
           <div className="checkOutSteps__links__triangle__back--incomplete"></div>
           <div className="checkOutSteps__links__step checkOutSteps__links__step--incomplete">
             Shipping
@@ -38,7 +38,7 @@ const CheckOutSteps = ({ shipping, confirmOrder, payment }) => {
           <div className="checkOutSteps__links__triangle__front--active"></div>
         </Link>
       ) : (
-        <Link disabled>
+        <Link to="#" disabled>
           <div className="checkOutSteps__links__triangle__back--incomplete"></div>
           <div className="checkOutSteps__links__step checkOutSteps__links__step--incomplete">
             Order
@@ -59,7 +59,7 @@ const CheckOutSteps = ({ shipping, confirmOrder, payment }) => {
           <div className="checkOutSteps__links__triangle__front--active"></div>
         </Link>
       ) : (
-        <Link disabled>
+        <Link to="#" disabled>
           <div className="checkOutSteps__links__triangle__back--incomplete"></div>
           <div className="checkOutSteps__links__step checkOutSteps__links__step--incomplete">
             Payment

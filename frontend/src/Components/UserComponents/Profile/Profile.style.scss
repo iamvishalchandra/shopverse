@@ -2,8 +2,9 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  min-height: 85vh;
+  min-height: var(--height);
   min-width: 300px;
+  margin-bottom: 30px;
 
   &__title {
     margin-top: 50px;

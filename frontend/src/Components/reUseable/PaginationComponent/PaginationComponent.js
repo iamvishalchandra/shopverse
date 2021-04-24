@@ -7,7 +7,7 @@ const PaginationComponent = ({
   itemsPerPage = 10,
   numOfPages = 10,
 }) => {
-  const [data, setData] = useState([]);
+  // const [data, setData] = useState([]);
   const [pageNumberLimit, setPageNumberLimit] = useState(1);
   const [maxPageNumberLimit, setMaxPageNumberLimit] = useState(numOfPages);
   const [minPageNumberLimit, setMinPageNumberLimit] = useState(0);
@@ -29,7 +29,7 @@ const PaginationComponent = ({
           id={number}
           onClick={() => handleClick(number)}
           className={
-            currentPage == number
+            currentPage === number
               ? "paginationComponent__container__paging__pageNumbers__list__active"
               : "paginationComponent__container__paging__pageNumbers__list__inactive"
           }
@@ -47,7 +47,7 @@ const PaginationComponent = ({
   const handlePrevious = () => {
     setCurrentPage(currentPage - 1);
 
-    if ((currentPage - 1) % pageNumberLimit == 0) {
+    if ((currentPage - 1) % pageNumberLimit === 0) {
       // setMaxPageNumberLimit(maxPageNumberLimit - pageNumberLimit);
       setMinPageNumberLimit(minPageNumberLimit - pageNumberLimit);
     }
@@ -81,52 +81,59 @@ const PaginationComponent = ({
       <div className="paginationComponent__container">
         <div className="paginationComponent__container__tableArea">
           <table className="paginationComponent__container__tableArea__table">
-            <tr className="paginationComponent__container__tableArea__table__heading">
-              {tableData?.columns?.map((col) => (
-                <th
-                  className="paginationComponent__container__tableArea__table__heading__items"
-                  id={col.id}
-                >
-                  {col.title}
-                </th>
-              ))}
-            </tr>
+            <tbody>
+              <tr className="paginationComponent__container__tableArea__table__heading">
+                {tableData?.columns?.map((col) => (
+                  <th
+                    className="paginationComponent__container__tableArea__table__heading__items"
+                    id={col.id}
+                    key={col.id}
+                  >
+                    {col.title}
+                  </th>
+                ))}
+              </tr>
+            </tbody>
 
             {currentItems.map((rows) => (
-              <tr
-                id={rows.id}
-                className="paginationComponent__container__tableArea__table__rows"
-              >
-                {tableData.columns.map((cols) =>
-                  Object.entries(rows).map(([key, value]) =>
-                    key === cols.id && cols.id === "photo" ? (
-                      <td
-                        className="paginationComponent__container__tableArea__table__rows__data paginationComponent__container__tableArea__table__rows__data__profilePhoto"
-                        label-data={`${cols.title}`}
-                      >
-                        <img
-                          className="paginationComponent__container__tableArea__table__rows__data__photo"
-                          src={value}
-                          alt={textTruncate(value, 10)}
-                        />
-                      </td>
-                    ) : (
-                      key === cols.id && (
+              <tbody key={rows.id}>
+                <tr
+                  id={rows.id}
+                  className="paginationComponent__container__tableArea__table__rows"
+                >
+                  {tableData.columns.map((cols) =>
+                    Object.entries(rows).map(([key, value]) =>
+                      key === cols.id && cols.id === "photo" ? (
                         <td
+                          key={cols.id}
+                          className="paginationComponent__container__tableArea__table__rows__data paginationComponent__container__tableArea__table__rows__data__profilePhoto"
                           label-data={`${cols.title}`}
-                          className={
-                            cols.id === "actions"
-                              ? `paginationComponent__container__tableArea__table__rows__data paginationComponent__container__tableArea__table__rows__data--actions`
-                              : `paginationComponent__container__tableArea__table__rows__data`
-                          }
                         >
-                          {value}
+                          <img
+                            className="paginationComponent__container__tableArea__table__rows__data__photo"
+                            src={value}
+                            alt={textTruncate(value, 10)}
+                          />
                         </td>
+                      ) : (
+                        key === cols.id && (
+                          <td
+                            key={cols.id}
+                            label-data={`${cols.title}`}
+                            className={
+                              cols.id === "actions"
+                                ? `paginationComponent__container__tableArea__table__rows__data paginationComponent__container__tableArea__table__rows__data--actions`
+                                : `paginationComponent__container__tableArea__table__rows__data`
+                            }
+                          >
+                            {value}
+                          </td>
+                        )
                       )
                     )
-                  )
-                )}
-              </tr>
+                  )}
+                </tr>
+              </tbody>
             ))}
           </table>
         </div>
@@ -148,7 +155,7 @@ const PaginationComponent = ({
               <button
                 className="paginationComponent__container__paging__pageNumbers__previous__btn paginationComponent__container__paging__pageNumbers__list__btn"
                 onClick={handlePrevious}
-                disabled={currentPage == pages[0] ? true : false}
+                disabled={currentPage === pages[0] ? true : false}
               >
                 Previous
               </button>
@@ -160,7 +167,9 @@ const PaginationComponent = ({
               <button
                 className="paginationComponent__container__paging__pageNumbers__next__btn paginationComponent__container__paging__pageNumbers__list__btn"
                 onClick={handleNext}
-                disabled={currentPage == pages[pages.length - 1] ? true : false}
+                disabled={
+                  currentPage === pages[pages.length - 1] ? true : false
+                }
               >
                 Next
               </button>

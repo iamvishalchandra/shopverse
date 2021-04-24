@@ -1,6 +1,5 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { amountFormatter } from "../../../helpers/useFullFunctions";
 import MetaData from "../../reUseable/MetaData";
 import OrderData from "../../reUseable/OrderData/OrderData";
 import CheckOutSteps from "../CheckOutSteps/CheckOutSteps";

@@ -55,6 +55,7 @@ const Dashboard = () => {
                   .replace(/\s+/g, "")
                   .trim()
                   .toLowerCase()}`}
+                key={item.name}
               >
                 <div className="dashboard__container__sections__body__innerSection">
                   <div className="dashboard__container__sections__body__innerSection__details">
@@ -67,7 +68,7 @@ const Dashboard = () => {
                   </div>
 
                   <Link
-                    to={item.url}
+                    to={`${item.url}`}
                     style={{
                       visibility: item.url ? "visible" : "hidden",
                       display: item.name === "TotalAmount" && "none",
@@ -86,81 +87,6 @@ const Dashboard = () => {
               </div>
             ))}
           </div>
-
-          {/* <div>
-            <div>
-              <div>
-                <div>
-                  <div>
-                    Total Amount <br />
-                    <b>{totalAmount}</b>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div>
-            <div>
-              <div>
-                <div>
-                  <div>
-                    Products <br />
-                    <b>{products?.length}</b>
-                  </div>
-                </div>
-                <Link to="/admin/products">
-                  <span>View Details</span>
-                  <span></span>
-                  <span>
-                    <i></i>
-                  </span>
-                </Link>
-              </div>
-            </div>
-            <div>
-              <div>
-                <div>
-                  <div>
-                    Orders <br />
-                    <b>125</b>
-                  </div>
-                </div>
-                <Link to="/admin/orders">
-                  <span>View Details</span>
-                  <span>
-                    <i></i>
-                  </span>
-                </Link>
-              </div>
-            </div>
-
-            <div>
-              <div>
-                <div>
-                  <div>
-                    Usera <br /> <b>43</b>
-                  </div>
-                </div>
-                <Link to="/admin/users">
-                  <span>View Details</span>
-                  <span>
-                    <i></i>
-                  </span>
-                </Link>
-              </div>
-            </div>
-
-            <div>
-              <div>
-                <div>
-                  <div>
-                    Out Of Stock <br /> <b>{outOfStock}</b>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> */}
         </div>
       )}
     </div>

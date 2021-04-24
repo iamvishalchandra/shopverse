@@ -16,9 +16,10 @@ const OrderInfo = ({
   setStatus,
   updateOrder,
   deleteOrder,
+  keyId,
 }) => {
   return (
-    <div className="orderInfo">
+    <div className="orderInfo" key={keyId}>
       <div className="orderInfo__top">
         <div className="orderInfo__top__left">
           <div className="orderInfo__top__left__items orderInfo__top__left__items--date">
@@ -119,14 +120,12 @@ const OrderInfo = ({
             Order #{order?._id}
           </div>
           <div className="orderInfo__top__right__items__content">
-            <Link>Order Details</Link>
+            <Link to={`#`}>Order Details</Link>
             <hr />
-            <Link>Invoice</Link>
+            <Link to={`#`}>Invoice</Link>
           </div>
         </div>
       </div>
-
-      {/* products */}
 
       <div className="orderInfo__products">
         {(isAdmin || isAdminList) && (
@@ -185,8 +184,10 @@ const OrderInfo = ({
             </button>
           </div>
         )}
+
+        {/* products */}
         {order?.orderItems?.map((item) => (
-          <div className="orderInfo__products__container">
+          <div className="orderInfo__products__container" key={item._id}>
             <div className="orderInfo__products__container__items">
               <img
                 src={item.image}

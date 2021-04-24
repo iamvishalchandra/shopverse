@@ -19,6 +19,12 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.adminProductList__container__title {
+  margin-top: 30px;
 }
 
 .adminProductList__container__title {

@@ -6,14 +6,13 @@ import {
   deleteSingleProduct,
   getAdminProducts,
 } from "../../../actions/productActions";
-// import "bootstrap-css-only/css/bootstrap.min.css";
+
 import "mdbreact/dist/css/mdb.css";
 import "./AdminProductList.style.css";
 import { Link } from "react-router-dom";
 import Sidebar from "../Sidebar/Sidebar";
 import MetaData from "../../reUseable/MetaData";
 import Loader from "../../reUseable/Loader/Loader";
-import { MDBDataTable } from "mdbreact";
 import { DELETE_PRODUCT_RESET } from "../../../constants/productConstants";
 import { textTruncate } from "../../../helpers/useFullFunctions";
 import PaginationComponent from "../../reUseable/PaginationComponent/PaginationComponent";
@@ -101,9 +100,9 @@ const AdminProductList = ({ history }) => {
   return (
     <div className="adminProductList">
       <MetaData title="Product List" />
-      <div className="adminProductList__sidebaar">
-        <Sidebar />
-      </div>
+
+      <Sidebar />
+
       <div className="adminProductList__container">
         <h1 className="adminProductList__container__title">All Product List</h1>
         {loading ? (

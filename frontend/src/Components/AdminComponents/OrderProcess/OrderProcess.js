@@ -18,15 +18,6 @@ const OrderProcess = ({ match, history }) => {
 
   const { loading, order } = useSelector((state) => state?.orderDetails);
 
-  const {
-    shippingInfo,
-    orderItems,
-    paymentInfo,
-    user,
-    totalPrice,
-    orderStatus,
-  } = useSelector((state) => state.productDetails);
-
   const { error, isOrderUpdated } = useSelector((state) => state?.updateOrder);
 
   const [status, setStatus] = useState("Processing");
@@ -51,9 +42,6 @@ const OrderProcess = ({ match, history }) => {
     dispatch(updateOrderAction(id, formData));
   };
 
-  const shippingAddress = `${shippingInfo?.address}, ${shippingInfo?.city}, ${shippingInfo?.postalCode}, ${shippingInfo?.country}`;
-  const isPaid = paymentInfo?.status === "success" ? true : false;
-
   return (
     <div className="orderProcess">
       <MetaData title={`Process Order #${order?._id}`} />
@@ -64,7 +52,6 @@ const OrderProcess = ({ match, history }) => {
           {loading ? (
             <Loader />
           ) : (
-            // <div className='orderProcess__container'>
             order && (
               <OrderInfo
                 order={order}
@@ -74,7 +61,6 @@ const OrderProcess = ({ match, history }) => {
                 updateOrder={updateOrderHandler}
               />
             )
-            // </div>
           )}
         </div>
       </div>

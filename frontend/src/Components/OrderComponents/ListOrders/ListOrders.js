@@ -21,49 +21,6 @@ const ListOrders = () => {
     }
   }, [dispatch, alert, error]);
 
-  // const getOrders = () => {
-  //   const data = {
-  //     columns: [
-  //       { label: "Actions", field: "actions", sort: "asc" },
-  //       { label: "Order ID", field: "id", sort: "asc" },
-  //       { label: "Num Of Items", field: "numOfItems", sort: "asc" },
-  //       { label: "Amount", field: "amount", sort: "asc" },
-  //       { label: "Status", field: "status", sort: "asc" },
-  //     ],
-  //     rows: [],
-  //   };
-
-  //   orders?.forEach((order) => {
-  //     data?.rows?.push({
-  //       id: order._id,
-  //       numOfItems: order.orderItems.length,
-  //       amount: `₹${order.totalPrice}`,
-  //       status: String(order.orderStatus)?.includes("Delivered") ? (
-  //         <p style={{ color: "green", fontWeight: "bold" }}>
-  //           {order.orderStatus}
-  //         </p>
-  //       ) : (
-  //         <p style={{ color: "red", fontWeight: "bold" }}>
-  //           {order.orderStatus}
-  //         </p>
-  //       ),
-  //       actions: (
-  //         <button>
-  //           <Link to={`/order/detail/${order._id}`}>
-  //             <img
-  //               src="/photo/eye-512.png"
-  //               style={{ width: "20px", alignContent: "center" }}
-  //               alt=""
-  //             />
-  //           </Link>
-  //         </button>
-  //       ),
-  //     });
-  //   });
-
-  //   return data;
-  // };
-
   return (
     <div className="listOrders">
       <MetaData title="My Orders" />
@@ -71,11 +28,13 @@ const ListOrders = () => {
       {loading ? (
         <Loader />
       ) : (
-        <div>
+        <>
           {orders?.map((order) => (
-            <OrderInfo order={order} isUser />
+            <div className="listOrders__orders" key={order._id}>
+              <OrderInfo order={order} isUser />
+            </div>
           ))}
-        </div>
+        </>
       )}
     </div>
   );

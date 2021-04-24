@@ -4,142 +4,116 @@ import "./Sidebar.style.css";
 
 const Sidebar = () => {
   const [show, setShow] = useState(false);
-  const [productMenu, setProductMenu] = useState(false);
+
   return (
-    <>
-      <div className="sidebar" style={{ width: !show && "70px" }}>
-        <div
-          onClick={() => setShow(!show)}
-          className={
-            show ? `sidebar__toggle sidebar__toggle__active` : `sidebar__toggle`
-          }
-        >
-          {/* {show ? "<" : ">"} */}
-        </div>
-        <nav
-          className={
-            show ? `sidebar__navbar sidebar__navbar__active` : `sidebar__navbar`
-          }
-          style={{ width: show && "300px" }}
-        >
-          <ul className="sidebar__navbar__options">
-            <li className="sidebar__navbar__options__list sidebar__navbar__options__list__dashboard">
+    <div className="sidebar" style={{ width: show ? "350px" : "25px" }}>
+      <div
+        onClick={() => setShow(!show)}
+        className={
+          show ? `sidebar__toggle sidebar__toggle__active` : `sidebar__toggle`
+        }
+      >
+        click
+      </div>
+      <div className="sidebar__container" style={{ width: show && "300px" }}>
+        <div className="sidebar__container__menu">
+          <ul className="sidebar__container__menu__options">
+            <li
+              className={`sidebar__container__menu__options__list sidebar__container__menu__options__list__active`}
+            >
               <Link
                 to="/dashboard"
-                className="sidebar__navbar__options__list__links sidebar__navbar__options__list__links__dashboard"
+                className="sidebar__container__menu__options__list__link"
               >
                 <img
                   src="/photo/admin/dashboard.png"
-                  alt=""
-                  className="sidebar__navbar__options__list__links__icon"
+                  alt="dashboard"
+                  className="sidebar__container__menu__options__list__link__image"
                 />
-                {/* {show && "Dashboard"} */}
-                <h3 className="sidebar__navbar__options__list__links__text">
+                <span className="sidebar__container__menu__options__list__link__title">
                   Dashboard
-                </h3>
+                </span>
               </Link>
             </li>
-            <li className="sidebar__navbar__options__list sidebar__navbar__options__list__products">
+            <li className="sidebar__container__menu__options__list">
               <Link
-                className="sidebar__navbar__options__list__links sidebar__navbar__options__list__links__products"
-                onClick={() => setProductMenu(!productMenu)}
+                to="/admin/products"
+                className="sidebar__container__menu__options__list__link"
               >
                 <img
                   src="/photo/admin/product.png"
-                  alt=""
-                  className="sidebar__navbar__options__list__links__icon"
+                  alt="products"
+                  className="sidebar__container__menu__options__list__link__image"
                 />
-                <h3 className="sidebar__navbar__options__list__links__text">
+                <span className="sidebar__container__menu__options__list__link__title">
                   Products
-                </h3>
+                </span>
               </Link>
-              {productMenu === true && (
-                <ul
-                  id="productSubmenu"
-                  className="sidebar__navbar__options__list__products__innerOptions sidebar__navbar__options__list__innerOptions"
-                >
-                  <li className="sidebar__navbar__options__list__innerOptions__list sidebar__navbar__options__list__products__innerOptions__list__all">
-                    <Link
-                      to="/admin/products"
-                      className="sidebar__navbar__options__list__innerOptions__list__links"
-                    >
-                      <img
-                        src="/photo/eye-512.png"
-                        alt=""
-                        className="sidebar__navbar__options__list__links__icon"
-                      />
-                      <h3 className="sidebar__navbar__options__list__links__text">
-                        All
-                      </h3>
-                    </Link>
-                  </li>
-                  <li className="sidebar__navbar__options__list__innerOptions__list sidebar__navbar__options__list__products__innerOptions__list__create">
-                    <Link
-                      to="/admin/product"
-                      className="sidebar__navbar__options__list__innerOptions__list__links"
-                    >
-                      <img
-                        src="/photo/admin/createProduct.png"
-                        alt=""
-                        className="sidebar__navbar__options__list__links__icon"
-                      />
-                      <h3 className="sidebar__navbar__options__list__links__text">
-                        Create
-                      </h3>
-                    </Link>
-                  </li>
-                </ul>
-              )}
             </li>
-            <li className="sidebar__navbar__options__list sidebar__navbar__options__list__orders">
+            <li className="sidebar__container__menu__options__list">
+              <Link
+                to="/admin/product"
+                className="sidebar__container__menu__options__list__link"
+              >
+                <img
+                  src="/photo/admin/createProduct.png"
+                  alt="products"
+                  className="sidebar__container__menu__options__list__link__image"
+                />
+                <span className="sidebar__container__menu__options__list__link__title">
+                  Create Products
+                </span>
+              </Link>
+            </li>
+            <li className="sidebar__container__menu__options__list">
               <Link
                 to="/admin/orders"
-                className="sidebar__navbar__options__list__links sidebar__navbar__options__list__links__orders"
+                className="sidebar__container__menu__options__list__link"
               >
                 <img
                   src="/photo/admin/order.png"
-                  alt=""
-                  className="sidebar__navbar__options__list__links__icon"
+                  alt="dashboard"
+                  className="sidebar__container__menu__options__list__link__image"
                 />
-                <h3 className="sidebar__navbar__options__list__links__text">
+                <span className="sidebar__container__menu__options__list__link__title">
                   Orders
-                </h3>
+                </span>
               </Link>
             </li>
-            <li className="sidebar__navbar__options__list sidebar__navbar__options__list__users">
+            <li className="sidebar__container__menu__options__list">
               <Link
                 to="/admin/users"
-                className="sidebar__navbar__options__list__links sidebar__navbar__options__list__links__users"
+                className="sidebar__container__menu__options__list__link"
               >
                 <img
                   src="/photo/admin/users.png"
-                  alt=""
-                  className="sidebar__navbar__options__list__links__icon"
+                  alt="users"
+                  className="sidebar__container__menu__options__list__link__image"
                 />
-                <h3 className="sidebar__navbar__options__list__links__text">
+                <span className="sidebar__container__menu__options__list__link__title">
                   Users
-                </h3>
+                </span>
               </Link>
             </li>
-            <li className="sidebar__navbar__options__list sidebar__navbar__options__list__reviews">
+            <li className="sidebar__container__menu__options__list">
               <Link
                 to="/admin/reviews"
-                className="sidebar__navbar__options__list__links sidebar__navbar__options__list__links__reviews"
+                className="sidebar__container__menu__options__list__link"
               >
                 <img
                   src="/photo/admin/review.png"
-                  alt=""
-                  className="sidebar__navbar__options__list__links__icon"
+                  alt="reviews"
+                  className="sidebar__container__menu__options__list__link__image"
                 />
-                <h3 className="sidebar__navbar__options__list__links__text">
+                <span className="sidebar__container__menu__options__list__link__title">
                   Reviews
-                </h3>
+                </span>
               </Link>
             </li>
           </ul>
-        </nav>
+        </div>
       </div>
-    </>
+    </div>
   );
 };
 

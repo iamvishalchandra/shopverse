@@ -137,6 +137,7 @@
     display: none;
   }
   .paginationComponent__container__tableArea__table__rows {
+    width: 115%;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -153,7 +154,7 @@
     border: 1px solid white;
     padding: 10px 10px;
     background-color: rgba(34, 33, 33, 0.746);
-    min-width: 290px;
+    min-width: 300px;
     width: 100%;
     text-align: right;
     position: relative;

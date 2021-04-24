@@ -9,8 +9,9 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  min-height: 85vh;
+  min-height: var(--height);
   min-width: 300px;
+  margin-bottom: 30px;
 }
 
 .profile__title {

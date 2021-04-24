@@ -1,8 +1,6 @@
-import { MDBDataTable } from "mdbreact";
 import React, { useEffect } from "react";
 import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import {
   clearErrors,
   deleteOrderAction,
@@ -52,11 +50,14 @@ const OrderLIstAdmin = ({ history }) => {
           <Loader />
         ) : (
           orders?.map((order) => (
-            <OrderInfo
-              order={order}
-              isAdminList
-              deleteOrder={deleteOrderHandler}
-            />
+            <div key={order._id}>
+              <OrderInfo
+                order={order}
+                isAdminList
+                deleteOrder={deleteOrderHandler}
+                keyId={order._id}
+              />
+            </div>
           ))
         )}
       </div>
