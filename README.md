@@ -3,7 +3,7 @@ Full MERN stack e-commerce website.
 
 This is project developed using React.js as frontend, express.js for backend and MongoDB is used as database here.
 
-[<img src='https://repository-images.githubusercontent.com/345858352/d146cd80-a7f0-11eb-8f8c-eb0a0ecf3092' alt='shopverse'>]
+<img src='https://repository-images.githubusercontent.com/345858352/d146cd80-a7f0-11eb-8f8c-eb0a0ecf3092' alt='shopverse'>
 
 Features:
 
