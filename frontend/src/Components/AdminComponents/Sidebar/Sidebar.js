@@ -4,7 +4,7 @@ import "./Sidebar.style.css";
 
 const Sidebar = () => {
   const [show, setShow] = useState(false);
-
+  console.log(show);
   return (
     <div className="sidebar" style={{ width: show ? "350px" : "25px" }}>
       <div
@@ -13,7 +13,19 @@ const Sidebar = () => {
           show ? `sidebar__toggle sidebar__toggle__active` : `sidebar__toggle`
         }
       >
-        click
+        {show ? (
+          <img
+            className="sidebar__toggle__icons sidebar__toggle__icons--close"
+            src="/photo/menu/menuClose.png"
+            alt="menu"
+          />
+        ) : (
+          <img
+            className="sidebar__toggle__icons sidebar__toggle__icons--open"
+            src="/photo/menu/menuIcon.png"
+            alt="menu"
+          />
+        )}
       </div>
       <div className="sidebar__container" style={{ width: show && "300px" }}>
         <div className="sidebar__container__menu">

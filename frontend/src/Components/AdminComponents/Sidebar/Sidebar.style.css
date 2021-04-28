@@ -6,9 +6,33 @@
   position: absolute;
   top: 0;
   left: 15px;
-  color: red;
   z-index: 100;
   cursor: pointer;
+  border-radius: 5px;
+}
+
+.sidebar__toggle__active {
+  right: 0px;
+  left: unset;
+}
+
+.sidebar__toggle__icons {
+  width: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  border-radius: 10px;
+}
+
+.sidebar__toggle__icons--close {
+  background-color: red;
+}
+
+.sidebar__toggle__icons--open {
+  background-color: green;
 }
 
 .sidebar__container {
@@ -57,6 +81,8 @@
 .sidebar__container__menu__options__list__link__image {
   width: 30px;
   padding-left: 1rem;
+  -webkit-filter: invert(100%);
+          filter: invert(100%);
 }
 
 .sidebar__container__menu__options__list__link__title {
@@ -66,6 +92,9 @@
 }
 
 @media (max-width: 500px) {
+  .sidebar__toggle {
+    left: unset;
+  }
   .sidebar__container {
     width: 0;
   }

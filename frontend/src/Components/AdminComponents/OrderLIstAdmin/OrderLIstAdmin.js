@@ -44,7 +44,9 @@ const OrderLIstAdmin = ({ history }) => {
       <MetaData title="All Orders" />
       <Sidebar />
       <div className="orderLIstAdmin__container">
-        <h1 className="orderLIstAdmin__container__title">Order List</h1>
+        <h1 className="orderLIstAdmin__container__title">
+          All User's Order List
+        </h1>
 
         {loading ? (
           <Loader />

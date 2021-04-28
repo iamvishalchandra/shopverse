@@ -2,10 +2,13 @@
   display: flex;
   min-height: var(--min-width);
   min-height: var(--height);
-  gap: 10%;
+  gap: 10px;
 
   &__container {
     display: flex;
     flex-direction: column;
+
+    width: 100%;
+    align-items: center;
   }
 }

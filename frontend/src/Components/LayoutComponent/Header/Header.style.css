@@ -3,7 +3,7 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  background-color: #232f3e;
+  background-color: var(--layout-background);
   padding: 1rem 1rem;
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -46,6 +46,7 @@
 }
 
 .header__container__right__cart {
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -55,19 +56,17 @@
           flex-direction: column;
 }
 
-.header__container__right__cart__span--count {
-  background-color: #febd69;
-  padding: 0.2rem 0.8rem;
-  border-radius: 0.2rem;
-  color: black;
-  font-weight: bold;
-  font-size: 0.9rem;
+.header__container__right__cart__icon {
+  width: 50px;
+  -webkit-filter: invert(100%);
+          filter: invert(100%);
 }
 
-.header__container__right__cart__span--text {
-  font-size: 1.2rem;
+.header__container__right__cart__span {
+  position: absolute;
+  left: 15px;
+  text-decoration: none;
   color: white;
-  margin-right: 3px;
 }
 
 .header__container__right__user {

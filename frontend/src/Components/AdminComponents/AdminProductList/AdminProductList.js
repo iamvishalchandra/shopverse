@@ -14,7 +14,10 @@ import Sidebar from "../Sidebar/Sidebar";
 import MetaData from "../../reUseable/MetaData";
 import Loader from "../../reUseable/Loader/Loader";
 import { DELETE_PRODUCT_RESET } from "../../../constants/productConstants";
-import { textTruncate } from "../../../helpers/useFullFunctions";
+import {
+  amountFormatter,
+  textTruncate,
+} from "../../../helpers/useFullFunctions";
 import PaginationComponent from "../../reUseable/PaginationComponent/PaginationComponent";
 
 const AdminProductList = ({ history }) => {
@@ -60,8 +63,13 @@ const AdminProductList = ({ history }) => {
     products?.forEach((product) => {
       data?.rows?.push({
         id: product._id,
-        name: textTruncate(product.name, 30),
-        price: `₹${product.price}`,
+        name: (
+          <Link to={`/product/${product._id}`}>
+            {" "}
+            {textTruncate(product.name, 30)}
+          </Link>
+        ),
+        price: `₹${amountFormatter(product.price)}`,
         stock: product.stock,
 
         actions: (
@@ -104,7 +112,9 @@ const AdminProductList = ({ history }) => {
       <Sidebar />
 
       <div className="adminProductList__container">
-        <h1 className="adminProductList__container__title">All Product List</h1>
+        <h1 className="adminProductList__container__title">
+          All Products ({products.length})
+        </h1>
         {loading ? (
           <Loader />
         ) : (

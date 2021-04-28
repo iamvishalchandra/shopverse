@@ -17,8 +17,8 @@ const Header = () => {
           <Link to="/">
             <img
               className="header__container__left__logo__image"
-              src="/photo/logo.png"
-              alt=""
+              src="/photo/icon.png"
+              alt="logo"
             />
           </Link>
         </div>
@@ -31,12 +31,17 @@ const Header = () => {
       <div className="header__container header__container__right">
         <Link to="/cart">
           <div className="header__container__right__cart">
+            <img
+              className="header__container__right__cart__icon"
+              src="/photo/cart.png"
+              alt=""
+            />
             <span className="header__container__right__cart__span header__container header__container__right__cart__span--count">
               {cartItems.length}
             </span>
-            <span className="header__container__right__cart__span header__container header__container__right__cart__span--text">
+            {/* <span className="header__container__right__cart__span header__container header__container__right__cart__span--text">
               Cart
-            </span>
+            </span> */}
           </div>
         </Link>
         {user ? (

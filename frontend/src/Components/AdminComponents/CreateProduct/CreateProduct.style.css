@@ -3,6 +3,8 @@
   display: -ms-flexbox;
   display: flex;
   min-width: var(--min-width);
+  min-height: var(--height);
+  gap: 10px;
 }
 
 .createProduct__container {
@@ -17,7 +19,7 @@
       -ms-flex-align: center;
           align-items: center;
   margin-bottom: 40px;
-  width: 70%;
+  width: 100%;
 }
 
 .createProduct__container__title {
@@ -38,7 +40,7 @@
   background-color: whitesmoke;
   padding: 30px;
   border-radius: 10px;
-  width: 50%;
+  width: 40%;
   min-width: 250px;
 }
 

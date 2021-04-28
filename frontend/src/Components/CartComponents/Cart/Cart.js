@@ -16,6 +16,7 @@ const Cart = ({ history }) => {
   const dispatch = useDispatch();
 
   const { cartItems } = useSelector((state) => state.cart);
+  const { user } = useSelector((state) => state.user);
 
   const inStockItems = [];
 
@@ -123,8 +124,10 @@ const Cart = ({ history }) => {
                 <FormOptions
                   disabled={totalAmount < 1}
                   formItem="button"
-                  text="CheckOut"
-                  setValues={() => history?.push("/login?redirect=shipping")}
+                  text={user ? "CheckOut" : "Login to Checkout"}
+                  setValues={() =>
+                    history?.push(user ? "/login?redirect=shipping" : "/login")
+                  }
                 />
               </div>
             </div>

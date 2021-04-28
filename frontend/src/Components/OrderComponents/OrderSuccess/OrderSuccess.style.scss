@@ -1,9 +1,9 @@
 .orderSuccess {
   display: flex;
-  height: 70vh;
+  height: var(--height);
   align-items: center;
   justify-content: center;
-  min-width: 300px;
+  min-width: var(--min-width);
 
   &__body {
     display: flex;

@@ -7,7 +7,7 @@
 }
 
 .productUpdate__container {
-  margin: 20px 0;
+  margin-bottom: 30px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -18,6 +18,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  width: 100%;
 }
 
 .productUpdate__container__form {

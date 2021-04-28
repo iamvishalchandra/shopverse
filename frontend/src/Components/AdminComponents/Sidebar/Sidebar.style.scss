@@ -5,9 +5,29 @@
     position: absolute;
     top: 0;
     left: 15px;
-    color: red;
     z-index: 100;
     cursor: pointer;
+    border-radius: 5px;
+
+    &__active {
+      right: 0px;
+      left: unset;
+    }
+
+    &__icons {
+      width: 40px;
+      display: flex;
+      justify-content: flex-end;
+      border-radius: 10px;
+
+      &--close {
+        background-color: red;
+      }
+
+      &--open {
+        background-color: green;
+      }
+    }
   }
 
   &__container {
@@ -43,6 +63,7 @@
             &__image {
               width: 30px;
               padding-left: 1rem;
+              filter: invert(100%);
             }
             &__title {
               padding-left: 1rem;
@@ -57,8 +78,13 @@
 }
 
 @media (max-width: 500px) {
-  .sidebar__container {
-    width: 0;
+  .sidebar {
+    &__toggle {
+      left: unset;
+    }
+    &__container {
+      width: 0;
+    }
   }
 }
 

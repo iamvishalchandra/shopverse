@@ -1,6 +1,5 @@
 import { useSelector } from "react-redux";
 import Ratings from "../../reUseable/Ratings/Ratings";
-// import Ratings from "../Ratings/Ratings";
 import "./ProductReviews.style.css";
 
 const ProductReviews = ({ totalRatings, reviews }) => {
@@ -12,7 +11,7 @@ const ProductReviews = ({ totalRatings, reviews }) => {
       <div className="productReviews__overallReviews">
         <Ratings ratings={totalRatings} />
         <p className="productReviews__overallReviews__customerRratings">
-          {totalRatings} out of 5 (
+          {totalRatings?.toFixed(1)} out of 5 (
           <span style={{ color: "red" }}>{reviews?.length} Customer(s)</span>)
         </p>
       </div>
@@ -21,11 +20,6 @@ const ProductReviews = ({ totalRatings, reviews }) => {
           {reviews.map((review) => (
             <div className="productReviews__body__details" key={review._id}>
               <div className="productReviews__body__details__user">
-                <img
-                  className="productReviews__body__details__user__avatar"
-                  src={"/photo/logo.png"}
-                  alt=""
-                />
                 {user?._id === review.user ? (
                   <p className="productReviews__body__details__user__name">
                     You
