@@ -23,6 +23,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.11.19",
     "nodemailer": "^6.5.0",
+    "normalize-url": ">=4.5.1
     "react-alert": "^7.0.2",
     "react-alert-template-basic": "^1.0.0",
     "react-bootstrap": "^1.5.2",
